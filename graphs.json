@@ -1,0 +1,8 @@
+{
+    "String PPI": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
+    "BlogCatalog": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
+    "Wikipedia": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
+    "KG-COVID-19": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
+    "Twitter": "http://nrvis.com/download/data/massive/soc-twitter.zip",
+    "Flikr": "http://nrvis.com/download/data/heter/flickr.zip"
+}
