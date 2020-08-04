@@ -4,4 +4,4 @@ from tqdm.auto import tqdm
 
 data = compress_json.load("graphs.json")
 for url in tqdm(data.values(), desc="Downloading graphs"):
-    download(url, path=path)
+    download(url)
