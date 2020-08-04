@@ -1,15 +1,15 @@
 {
     "String PPI": {
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
-        "extraction_path": "string.tsv"
+        "extraction_path": "string"
     },
     "BlogCatalog": {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
-        "extraction_path": "BlogCatalog.tsv"
+        "extraction_path": "BlogCatalog"
     },
     "Wikipedia": {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
-        "extraction_path": "Wikipedia.tsv"
+        "extraction_path": "Wikipedia"
     },
     "KG-COVID-19": {
         "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
@@ -17,10 +17,10 @@
     },
     "Twitter": {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
-        "extraction_path": "twitter.tsv"
+        "extraction_path": "twitter"
     },
     "Flikr": {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
-        "extraction_path": "flickr.tsv"
+        "extraction_path": "flickr"
     }
 }

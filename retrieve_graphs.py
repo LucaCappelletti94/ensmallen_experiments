@@ -19,4 +19,4 @@ for data in tqdm(graphs.values(), desc="Downloading graphs"):
                 shutil.copyfileobj(f_in, f_out)
     elif path.endswith(".zip"):
         with zipfile.ZipFile(path, 'r') as zip_ref:
-            zip_ref.extract(data["extraction_path"])
+            zip_ref.extractall(data["extraction_path"])
