@@ -1,8 +1,26 @@
 {
-    "String PPI": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
-    "BlogCatalog": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
-    "Wikipedia": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
-    "KG-COVID-19": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
-    "Twitter": "http://nrvis.com/download/data/massive/soc-twitter.zip",
-    "Flikr": "http://nrvis.com/download/data/heter/flickr.zip"
+    "String PPI": {
+        "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
+        "extraction_path": "string.tsv"
+    },
+    "BlogCatalog": {
+        "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
+        "extraction_path": "BlogCatalog.tsv"
+    },
+    "Wikipedia": {
+        "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
+        "extraction_path": "Wikipedia.tsv"
+    },
+    "KG-COVID-19": {
+        "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
+        "extraction_path": "kg-covid-19"
+    },
+    "Twitter": {
+        "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
+        "extraction_path": "twitter.tsv"
+    },
+    "Flikr": {
+        "url": "http://nrvis.com/download/data/heter/flickr.zip",
+        "extraction_path": "flickr.tsv"
+    }
 }
