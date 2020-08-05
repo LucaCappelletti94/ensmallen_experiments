@@ -1,6 +1,5 @@
 """Module with methods to handle extraction of zip files."""
-import zipfile
-import shutil
+import subprocess
 
 
 def unzip(source: str, destination: str):
@@ -13,5 +12,8 @@ def unzip(source: str, destination: str):
     destination: str,
         The destination for the compress file.
     """
-    with zipfile.ZipFile(source, 'r') as zip_ref:
-        zip_ref.extractall(destination)
+    command = "unzip {source} -d {destination}".format(
+        source=source,
+        destination=destination
+    )
+    subprocess.call(command, shell=True)
