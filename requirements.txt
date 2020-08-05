@@ -1,4 +1,4 @@
 compress_json
 encodeproject
 tqdm
-ensmallen_graph
+ensmallen_graph==0.3.4
