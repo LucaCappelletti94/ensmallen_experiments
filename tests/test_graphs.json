@@ -1,0 +1,26 @@
+[
+    {
+        "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
+        "folder_name":"string",
+        "extraction_path": "string.tsv",
+        "edge_file": "string.tsv",
+        "name": "String PPI",
+        "separator":"\t",
+        "subject_col":0,
+        "object_col":1,
+        "weight_col":6,
+        "rows_to_skip": 1
+    },
+    {
+        "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
+        "folder_name":"bio-mouse-gene",
+        "extraction_path": "",
+        "edge_file": "bio-mouse-gene.edges",
+        "name": "bio-mouse-gene",
+        "separator":" ",
+        "subject_col":0,
+        "object_col":1,
+        "weight_col":2,
+        "rows_to_skip": 3
+    }
+]
