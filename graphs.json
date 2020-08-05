@@ -25,8 +25,48 @@
         "name": "Twitter"
     },
     {
+        "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
+        "extraction_path": "friendster",
+        "name": "Friendster"
+    },
+    {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "extraction_path": "flickr",
         "name": "Flikr"
+    },
+    {
+        "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
+        "extraction_path": "IMDB",
+        "name": "IMDB"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
+        "extraction_path": "bn-human-Jung",
+        "name": "bn-human-Jung"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
+        "extraction_path": "bn-fly-drosophila-medulla-1",
+        "name": "bn-fly-drosophila-medulla-1"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
+        "extraction_path": "bn-mouse_retina-1",
+        "name": "bn-mouse_retina-1"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
+        "extraction_path": "bn-macaque-rhesus-brain-1",
+        "name": "bn-macaque-rhesus-brain-1"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
+        "extraction_path": "bio-mouse-gene",
+        "name": "bio-mouse-gene"
+    },
+    {
+        "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
+        "extraction_path": "bio-human-gene",
+        "name": "bio-human-gene"
     }
 ]

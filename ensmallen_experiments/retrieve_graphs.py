@@ -26,11 +26,11 @@ def retrieve_graphs(path: str, root: str = "graphs"):
             root=root,
             path=row.url.split("/")[-1]
         )
-        download(row.url, path, cache=True)
-        extract(
-            path,
-            "{root}/{path}".format(
-                root=root,
-                path=row.extraction_path
-            )
+        target = "{root}/{path}".format(
+            root=root,
+            path=row.extraction_path
         )
+        download(row.url, path, cache=True)
+        if os.path.exists(target):
+            continue
+        extract(path, target)

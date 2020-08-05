@@ -12,7 +12,7 @@ def unzip(source: str, destination: str):
     destination: str,
         The destination for the compress file.
     """
-    command = "unzip {source} -d {destination}".format(
+    command = "unzip -q {source} -d {destination}".format(
         source=source,
         destination=destination
     )
