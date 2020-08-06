@@ -42,6 +42,8 @@ def retrieve_graphs(
             logger.info("Extracting %s -> %s", path, extracted_folder)
             extract(path, extracted_folder)
 
+        continue
+
         extracted_file = os.path.join(folder, row.edge_file)
         normalized_file = os.path.join(folder, normalized_filename)
         if not os.path.exists(normalized_file):
