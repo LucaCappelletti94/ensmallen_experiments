@@ -16,10 +16,11 @@ def retrieve_graph(
     sanitized_filename: str = "sanitized_graph.tsv"
 ):
     folder = os.path.join(root, row.folder_name)
-    path = os.path.join(root, row.url.split("/")[-1])
-    if not os.path.exists(path):
-        logger.info("Downloading %s -> %s", row.url, path)
-        download(row.url, path, cache=True)
+    if row.url is not None:
+        path = os.path.join(root, row.url.split("/")[-1])
+        if not os.path.exists(path):
+            logger.info("Downloading %s -> %s", row.url, path)
+            download(row.url, path, cache=True)
 
     extracted_folder = os.path.join(folder, row.extraction_path).strip("/")
     if not os.path.exists(extracted_folder):
