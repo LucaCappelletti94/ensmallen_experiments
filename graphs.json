@@ -117,7 +117,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": "bn-human-Jung/bn-human-Jung2015_M87126525.edges"
+        "edge_file": "bn-human-Jung2015_M87126525.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
