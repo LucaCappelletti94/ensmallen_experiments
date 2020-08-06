@@ -12,7 +12,7 @@ def retrieve_graphs(
     path: str, 
     root: str = "graphs", 
     normalized_filename: str = "normalized_graph.tsv", 
-    sanitized_filename: str = "sanitzed_graph.tsv"
+    sanitized_filename: str = "sanitized_graph.tsv"
     ):
     """Retrieve graphs in given dataframe.
 
