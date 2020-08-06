@@ -2,6 +2,7 @@ import re
 import bs4
 import requests
 from tqdm.auto import tqdm
+from encodeproject import download
 
 
 def get_files_from_url(dir_url):
