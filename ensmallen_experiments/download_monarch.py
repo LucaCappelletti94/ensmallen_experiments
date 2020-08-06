@@ -36,12 +36,14 @@ def download_file(file_pointer, url: str):
         for chunk in r.iter_content(chunk_size=8192): 
             file_pointer.write(chunk)
 
-def download_monarch(dir_url: str = """https://archive.monarchinitiative.org/202008/rdf/"""):
+def download_monarch(filename: str, dir_url: str = """https://archive.monarchinitiative.org/202008/rdf/"""):
     """
     Download monarch into a single edge file.
 
     Arguments
     ---------
+    filename: str,
+        The path where the monarch file will be saved.
     dir_url: str,
         The url from where to retreive the files urls
     """
