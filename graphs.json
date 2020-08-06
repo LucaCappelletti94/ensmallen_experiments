@@ -6,9 +6,9 @@
         "sep": "\t",
         "subject_col": 0,
         "object_col": 1,
-        "weight_col": null,
+        "weight_col": 6,
         "rows_to_skip": 0,
-        "extraction_path": "string",
+        "extraction_path": "string.tsv",
         "edge_file": "string.tsv"
     },
     {
@@ -19,9 +19,9 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 2,
         "extraction_path": "",
-        "edge_file": "blog_catalog.tsv"
+        "edge_file": "soc-BlogCatalog.mtx"
     },
     {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
@@ -31,21 +31,21 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 2,
         "extraction_path": "",
-        "edge_file": "wikipedia.tsv"
+        "edge_file": "web-wikipedia2009.mtx"
     },
     {
         "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
         "folder_name": "kg_covid_19",
         "name": "KG-COVID-19",
         "sep": "\t",
-        "subject_col": 0,
-        "object_col": 1,
+        "subject_col": 1,
+        "object_col": 3,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 1,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "merged-kg_edges.tsv"
     },
     {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
@@ -55,9 +55,9 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 1,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "soc-twitter-konect.edges"
     },
     {
         "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
@@ -67,9 +67,9 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 2,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "soc-friendster.mtx"
     },
     {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
@@ -81,7 +81,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "flickr.edges"
     },
     {
         "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
@@ -105,7 +105,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bn-human-Jung/bn-human-Jung2015_M87126525.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
@@ -117,7 +117,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bn/bn-fly-drosophila_medulla_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
@@ -129,7 +129,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bn/bn-mouse_retina_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
@@ -141,7 +141,7 @@
         "weight_col": null,
         "rows_to_skip": 0,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
@@ -151,9 +151,9 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 3,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bio-mouse-gene.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
@@ -163,8 +163,8 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 3,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "bio-human-gene1.edges"
     }
 ]
