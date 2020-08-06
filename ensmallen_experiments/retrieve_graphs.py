@@ -39,7 +39,7 @@ def retrieve_graph(
         sanitize_csv(normalized_file, sanitized_file, row)
 
 
-def _job(**kwargs):
+def _job(kwargs):
     retrieve_graph(**kwargs)
 
 
