@@ -2,7 +2,7 @@
     {
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
         "folder_name": "string",
-        "name": "String PPI",
+        "graph": "String PPI",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -14,7 +14,7 @@
     {
         "url": null,
         "folder_name": "monarch",
-        "name": "Monarch",
+        "graph": "Monarch",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -26,7 +26,7 @@
     {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
         "folder_name": "blog_catalog",
-        "name": "BlogCatalog",
+        "graph": "BlogCatalog",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -38,7 +38,7 @@
     {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
         "folder_name": "wikipedia",
-        "name": "Wikipedia",
+        "graph": "Wikipedia",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -50,7 +50,7 @@
     {
         "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
         "folder_name": "kg_covid_19",
-        "name": "KG-COVID-19",
+        "graph": "KG-COVID-19",
         "separator": "\t",
         "subject_col": 1,
         "object_col": 3,
@@ -62,7 +62,7 @@
     {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
         "folder_name": "twitter",
-        "name": "Twitter",
+        "graph": "Twitter",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -74,7 +74,7 @@
     {
         "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
         "folder_name": "friendster",
-        "name": "Friendster",
+        "graph": "Friendster",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -86,7 +86,7 @@
     {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
-        "name": "Flikr",
+        "graph": "Flikr",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -98,7 +98,7 @@
     {
         "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
         "folder_name": "IMDB",
-        "name": "IMDB",
+        "graph": "IMDB",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -110,7 +110,7 @@
     {
         "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
         "folder_name": "bn-human-Jung",
-        "name": "bn-human-Jung",
+        "graph": "bn-human-Jung",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -122,7 +122,7 @@
     {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
         "folder_name": "bn-fly-drosophila-medulla-1",
-        "name": "bn-fly-drosophila-medulla-1",
+        "graph": "bn-fly-drosophila-medulla-1",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -134,7 +134,7 @@
     {
         "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
         "folder_name": "bn-mouse_retina-1",
-        "name": "bn-mouse_retina-1",
+        "graph": "bn-mouse_retina-1",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -146,7 +146,7 @@
     {
         "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
         "folder_name": "bn-macaque-rhesus-brain-1",
-        "name": "bn-macaque-rhesus-brain-1",
+        "graph": "bn-macaque-rhesus-brain-1",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -158,7 +158,7 @@
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
         "folder_name": "bio-mouse-gene",
-        "name": "bio-mouse-gene",
+        "graph": "bio-mouse-gene",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
@@ -170,7 +170,7 @@
     {
         "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
         "folder_name": "bio-human-gene",
-        "name": "bio-human-gene",
+        "graph": "bio-human-gene",
         "separator": "\t",
         "subject_col": 0,
         "object_col": 1,
