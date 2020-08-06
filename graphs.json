@@ -91,9 +91,9 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
-        "rows_to_skip": 0,
+        "rows_to_skip": 56,
         "extraction_path": "",
-        "edge_file": ".tsv"
+        "edge_file": "IMDB.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
