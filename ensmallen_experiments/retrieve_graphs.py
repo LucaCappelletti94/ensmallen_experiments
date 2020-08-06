@@ -73,7 +73,7 @@ def retrieve_graphs(
 
     with Pool(min(cpu_count(), len(graphs))) as p:
         list(tqdm(
-            p.imap(retrieve_graph, tasks),
+            p.imap(_job, tasks),
             desc="Downloading graphs",
             total=len(graphs)
         ))
