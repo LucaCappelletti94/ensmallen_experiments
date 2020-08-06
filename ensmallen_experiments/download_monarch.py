@@ -1,11 +1,12 @@
 import re
-import bs4 
+import bs4
 import requests
 from tqdm.auto import tqdm
 
+
 def get_files_from_url(dir_url):
     """Given the url to a http folder, return the list of urls present in it.
-    
+
     Arguments
     ---------
     dir_url: str,
@@ -20,8 +21,10 @@ def get_files_from_url(dir_url):
             continue
         url = dir_url + file
         urls.append(url)
+    return urls
 
-def download_file(file_pointer, url: str):  
+
+def download_file(file_pointer, url: str):
     """Read the content of the url and write it to the file pointer
     Since the files are  big, this function use streaming download.
     Arguments
@@ -33,8 +36,9 @@ def download_file(file_pointer, url: str):
     """
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
-        for chunk in r.iter_content(chunk_size=8192): 
+        for chunk in r.iter_content(chunk_size=8192):
             file_pointer.write(chunk)
+
 
 def download_monarch(filename: str, dir_url: str = """https://archive.monarchinitiative.org/202008/rdf/"""):
     """
