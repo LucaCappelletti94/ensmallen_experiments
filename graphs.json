@@ -1,72 +1,170 @@
 [
     {
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
-        "extraction_path": "string/string.tsv",
-        "name": "String PPI"
+        "folder_name": "string",
+        "name": "String PPI",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": 6,
+        "rows_to_skip": 1,
+        "extraction_path": "string.tsv",
+        "edge_file": "string.tsv"
     },
     {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
-        "extraction_path": "blog_catalog",
-        "name": "BlogCatalog"
+        "folder_name": "blog_catalog",
+        "name": "BlogCatalog",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 2,
+        "extraction_path": "",
+        "edge_file": "soc-BlogCatalog.mtx"
     },
     {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
-        "extraction_path": "wikipedia",
-        "name": "Wikipedia"
+        "folder_name": "wikipedia",
+        "name": "Wikipedia",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 2,
+        "extraction_path": "",
+        "edge_file": "web-wikipedia2009.mtx"
     },
     {
         "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
-        "extraction_path": "kg_covid_19",
-        "name": "KG-COVID-19"
+        "folder_name": "kg_covid_19",
+        "name": "KG-COVID-19",
+        "separator": "\t",
+        "subject_col": 1,
+        "object_col": 3,
+        "weight_col": null,
+        "rows_to_skip": 1,
+        "extraction_path": "",
+        "edge_file": "merged-kg_edges.tsv"
     },
     {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
-        "extraction_path": "twitter",
-        "name": "Twitter"
+        "folder_name": "twitter",
+        "name": "Twitter",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 1,
+        "extraction_path": "",
+        "edge_file": "soc-twitter-konect.edges"
     },
     {
         "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
-        "extraction_path": "friendster",
-        "name": "Friendster"
+        "folder_name": "friendster",
+        "name": "Friendster",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 2,
+        "extraction_path": "",
+        "edge_file": "soc-friendster.mtx"
     },
     {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
-        "extraction_path": "flickr",
-        "name": "Flikr"
+        "folder_name": "flickr",
+        "name": "Flikr",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 0,
+        "extraction_path": "",
+        "edge_file": "flickr.edges"
     },
     {
         "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
-        "extraction_path": "IMDB",
-        "name": "IMDB"
+        "folder_name": "IMDB",
+        "name": "IMDB",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 56,
+        "extraction_path": "",
+        "edge_file": "IMDB.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
-        "extraction_path": "bn-human-Jung",
-        "name": "bn-human-Jung"
+        "folder_name": "bn-human-Jung",
+        "name": "bn-human-Jung",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 0,
+        "extraction_path": "",
+        "edge_file": "bn-human-Jung/bn-human-Jung2015_M87126525.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
-        "extraction_path": "bn-fly-drosophila-medulla-1",
-        "name": "bn-fly-drosophila-medulla-1"
+        "folder_name": "bn-fly-drosophila-medulla-1",
+        "name": "bn-fly-drosophila-medulla-1",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 0,
+        "extraction_path": "",
+        "edge_file": "bn/bn-fly-drosophila_medulla_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
-        "extraction_path": "bn-mouse_retina-1",
-        "name": "bn-mouse_retina-1"
+        "folder_name": "bn-mouse_retina-1",
+        "name": "bn-mouse_retina-1",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 0,
+        "extraction_path": "",
+        "edge_file": "bn/bn-mouse_retina_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
-        "extraction_path": "bn-macaque-rhesus-brain-1",
-        "name": "bn-macaque-rhesus-brain-1"
+        "folder_name": "bn-macaque-rhesus-brain-1",
+        "name": "bn-macaque-rhesus-brain-1",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 0,
+        "extraction_path": "",
+        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
-        "extraction_path": "bio-mouse-gene",
-        "name": "bio-mouse-gene"
+        "folder_name": "bio-mouse-gene",
+        "name": "bio-mouse-gene",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 3,
+        "extraction_path": "",
+        "edge_file": "bio-mouse-gene.edges"
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
-        "extraction_path": "bio-human-gene",
-        "name": "bio-human-gene"
+        "folder_name": "bio-human-gene",
+        "name": "bio-human-gene",
+        "separator": "\t",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 3,
+        "extraction_path": "",
+        "edge_file": "bio-human-gene1.edges"
     }
 ]

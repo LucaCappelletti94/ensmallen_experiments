@@ -2,13 +2,14 @@ import os
 import pandas as pd
 from tqdm.auto import tqdm
 
+
 def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t"):
     with open(src_file, "r") as src:
         with open(dst_file, "w") as dst:
             # Skip the first rows (THIS MUST SKIP THE HEADER TOO)
             for _ in range(row.rows_to_skip):
                 src.readline()
-            
+
             # Write the header to the dst file
             columns = ["subject", "object"]
 
@@ -16,8 +17,8 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
                 columns += ["weight"]
 
             dst.write(sep.join(columns) + "\n")
-            
-            for line in tqdm(src, desc="Copying the sanitized file"):
+
+            for line in tqdm(src, desc="Copying the sanitized file", leave=True):
                 values = line.strip().split(row.separator)
 
                 dst_values = [
@@ -26,8 +27,6 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
                 ]
 
                 if not pd.isna(row.weight_col):
-                   dst_values += [values[row.weight_col].strip()]
+                    dst_values += [values[int(row.weight_col)].strip()]
 
                 dst.write(sep.join(dst_values) + "\n")
-
-    
