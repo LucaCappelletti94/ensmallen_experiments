@@ -7,7 +7,7 @@
         "subject_col": 0,
         "object_col": 1,
         "weight_col": 6,
-        "rows_to_skip": 0,
+        "rows_to_skip": 1,
         "extraction_path": "string.tsv",
         "edge_file": "string.tsv"
     },
