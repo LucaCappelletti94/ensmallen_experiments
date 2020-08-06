@@ -58,6 +58,6 @@ def download_monarch(filename: str, dir_url: str = """https://archive.monarchini
     if directory:
         os.makedirs(directory, exist_ok=True)
     with open(filename, "wb") as f:
-        f.write("\t".join(["subject", "object", "weight"]))
+        f.write(bytes("\t".join(["subject", "object", "weight"])))
         for url in tqdm(urls):
             download_file(f, url)
