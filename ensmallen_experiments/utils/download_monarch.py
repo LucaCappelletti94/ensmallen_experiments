@@ -1,4 +1,5 @@
 import re
+import os
 import bs4
 import requests
 from tqdm.auto import tqdm
@@ -53,6 +54,9 @@ def download_monarch(filename: str, dir_url: str = """https://archive.monarchini
         The url from where to retreive the files urls
     """
     urls = get_files_from_url(dir_url)
+    directory = os.path.dirname(filename)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
     with open(filename, "wb") as f:
         f.write("\t".join(["subject", "object", "weight"]))
         for url in tqdm(urls):
