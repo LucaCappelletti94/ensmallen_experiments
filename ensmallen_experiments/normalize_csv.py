@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from .utils import logger
 from tqdm.auto import tqdm
 
 
@@ -32,7 +33,8 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
 
                     dst.write(sep.join(dst_values) + "\n")
     except Exception as e:
-        logger.error("Error while normalizing file at path {}.".format(src_file))
+        logger.error(
+            "Error while normalizing file at path {}.".format(src_file))
         if os.path.exists(dst_file):
             os.remove(dst_file)
         raise e

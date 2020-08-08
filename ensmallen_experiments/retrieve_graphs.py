@@ -6,7 +6,6 @@ from tqdm.auto import tqdm
 from encodeproject import download
 from .sanitize_csv import sanitize_csv
 from .normalize_csv import normalize_csv
-from .utils import download_monarch
 from multiprocessing import Pool, cpu_count
 
 
