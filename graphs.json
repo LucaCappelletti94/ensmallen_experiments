@@ -75,7 +75,7 @@
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
         "graph": "Flikr",
-        "separator": " ",
+        "separator": ",",
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,
