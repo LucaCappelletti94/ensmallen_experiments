@@ -6,6 +6,7 @@ from tqdm.auto import tqdm
 from encodeproject import download
 from .sanitize_csv import sanitize_csv
 from .normalize_csv import normalize_csv
+from .utils import download_monarch
 from multiprocessing import Pool, cpu_count
 
 
@@ -26,6 +27,10 @@ def retrieve_graph(
         if not os.path.exists(extracted_folder):
             logger.info("Extracting %s -> %s", path, extracted_folder)
             extract(path, extracted_folder)
+
+    # To automatically download monarch using the custom pipeline
+    if row.graph == "Monarch":
+        download_monarch(os.path.join(root, "monarch/monarch.tsv"))
 
     extracted_file = os.path.join(folder, row.edge_file)
     normalized_file = os.path.join(folder, normalized_filename)
