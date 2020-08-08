@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from .utils import logger
 from ensmallen_graph import EnsmallenGraph  # pylint: disable=no-name-in-module
 from .utils import logger
 
@@ -19,7 +20,8 @@ def sanitize_csv(src_file: str, dst_file: str, row: pd.Series):
         EnsmallenGraph.from_csv(**kwargs).to_edges_csv(dst_file)
 
     except Exception as e:
-        logger.error("Error while handling file at path {}.".format(src_file))
+        logger.error(
+            "Error while sanitizing file at path {}.".format(src_file))
         if os.path.exists(dst_file):
             os.remove(dst_file)
         raise e
