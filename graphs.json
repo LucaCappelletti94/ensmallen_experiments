@@ -12,18 +12,6 @@
         "edge_file": "string.tsv"
     },
     {
-        "url": null,
-        "folder_name": "monarch",
-        "graph": "Monarch",
-        "separator": "\t",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 1,
-        "extraction_path": "monarch.tsv",
-        "edge_file": "monarch.tsv"
-    },
-    {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
         "folder_name": "blog_catalog",
         "graph": "BlogCatalog",
@@ -87,7 +75,7 @@
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
         "graph": "Flikr",
-        "separator": " ",
+        "separator": ",",
         "subject_col": 0,
         "object_col": 1,
         "weight_col": null,

@@ -16,16 +16,15 @@ def retrieve_graph(
     sanitized_filename: str = "sanitized_graph.tsv"
 ):
     folder = os.path.join(root, row.folder_name)
-    if row.url is not None:
-        path = os.path.join(root, row.url.split("/")[-1])
-        if not os.path.exists(path):
-            logger.info("Downloading %s -> %s", row.url, path)
-            download(row.url, path, cache=True)
+    path = os.path.join(root, row.url.split("/")[-1])
+    if not os.path.exists(path):
+        logger.info("Downloading %s -> %s", row.url, path)
+        download(row.url, path, cache=True)
 
-        extracted_folder = os.path.join(folder, row.extraction_path).strip("/")
-        if not os.path.exists(extracted_folder):
-            logger.info("Extracting %s -> %s", path, extracted_folder)
-            extract(path, extracted_folder)
+    extracted_folder = os.path.join(folder, row.extraction_path).strip("/")
+    if not os.path.exists(extracted_folder):
+        logger.info("Extracting %s -> %s", path, extracted_folder)
+        extract(path, extracted_folder)
 
     extracted_file = os.path.join(folder, row.edge_file)
     normalized_file = os.path.join(folder, normalized_filename)
