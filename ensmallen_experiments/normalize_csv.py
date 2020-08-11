@@ -5,7 +5,7 @@ from .utils import logger
 from tqdm.auto import tqdm
 
 
-def parse_line(row, line, dst):
+def parse_line(row, line, dst, sep):
     values = line.strip().split(row.separator)
 
     dst_values = [
@@ -36,7 +36,7 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
                 dst.write(sep.join(columns) + "\n")
 
             for line in tqdm(src, desc="Copying the normalize file", leave=True):
-                parse_line(row, line, dst)  
+                parse_line(row, line, dst, sep)  
                 gc.collect()
     except Exception as e:
         logger.error(
