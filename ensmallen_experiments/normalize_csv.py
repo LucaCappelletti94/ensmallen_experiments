@@ -35,9 +35,9 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
 
                 dst.write(sep.join(columns) + "\n")
 
-            for line in tqdm(src, desc="Copying the normalize file", leave=True):
-                parse_line(row, line, dst, sep)  
-                gc.collect()
+                for line in tqdm(src, desc="Copying the normalize file", leave=True):
+                    parse_line(row, line, dst, sep)  
+                    gc.collect()
     except Exception as e:
         logger.error(
             "Error while normalizing file at path {}.".format(src_file))
