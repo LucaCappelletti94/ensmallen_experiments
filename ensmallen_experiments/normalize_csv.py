@@ -1,6 +1,21 @@
 import os
+import gc
 import pandas as pd
 from tqdm.auto import tqdm
+
+
+def parse_line(row, line, dst):
+    values = line.strip().split(row.separator)
+
+    dst_values = [
+        values[row.subject_col].strip(),
+        values[row.object_col].strip()
+    ]
+
+    if not pd.isna(row.weight_col):
+        dst_values += [values[int(row.weight_col)].strip()]
+
+    dst.write(sep.join(dst_values) + "\n")
 
 
 def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t"):
@@ -18,15 +33,6 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t")
 
             dst.write(sep.join(columns) + "\n")
 
-            for line in tqdm(src, desc="Copying the sanitized file", leave=True):
-                values = line.strip().split(row.separator)
-
-                dst_values = [
-                    values[row.subject_col].strip(),
-                    values[row.object_col].strip()
-                ]
-
-                if not pd.isna(row.weight_col):
-                    dst_values += [values[int(row.weight_col)].strip()]
-
-                dst.write(sep.join(dst_values) + "\n")
+            for line in tqdm(src, desc="Copying the normalize file", leave=True):
+                parse_line(row, line, dst)  
+                gc.collect()
