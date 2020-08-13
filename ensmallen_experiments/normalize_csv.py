@@ -44,6 +44,7 @@ def normalize_csv(row: pd.Series, src_file: str, dst_file: str, sep: str = "\t",
                     if number % garbage_collecting_interval == 0:
                         gc.collect()
                     parse_line(row, line, dst, sep)
+                    del line
 
     except Exception as e:
         logger.error(
