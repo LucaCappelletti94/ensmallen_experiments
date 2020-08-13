@@ -60,18 +60,6 @@
         "edge_file": "soc-twitter-konect.edges"
     },
     {
-        "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
-        "folder_name": "friendster",
-        "graph": "Friendster",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 2,
-        "extraction_path": "",
-        "edge_file": "soc-friendster.mtx"
-    },
-    {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
         "graph": "Flikr",
