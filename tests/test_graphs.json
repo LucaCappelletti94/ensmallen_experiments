@@ -5,11 +5,15 @@
         "extraction_path": "string.tsv",
         "edge_file": "string.tsv",
         "name": "String PPI",
-        "separator":"\t",
-        "subject_col":0,
-        "object_col":1,
-        "weight_col":6,
-        "rows_to_skip": 1
+        "loading_settings":{
+            "directed":false,
+            "egde_header":true,
+            "edge_separator":"\t",
+            "sources_column":"item_id_a",
+            "destinations_column":"item_id_b",
+            "weights_column":"score",
+            "edge_max_rows_number": 1000
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
@@ -17,10 +21,15 @@
         "extraction_path": "",
         "edge_file": "bio-mouse-gene.edges",
         "name": "bio-mouse-gene",
-        "separator":" ",
-        "subject_col":0,
-        "object_col":1,
-        "weight_col":2,
-        "rows_to_skip": 3
+        "loading_settings":{
+            "directed":false,
+            "egde_header": false,
+            "edge_rows_to_skip": 3,
+            "edge_separator":" ",
+            "sources_column_number":0,
+            "destinations_column_number":1,
+            "weights_column_number":2,
+            "edge_max_rows_number": 1000
+        }
     }
 ]
