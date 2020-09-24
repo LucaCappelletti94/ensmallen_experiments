@@ -3,156 +3,161 @@
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
         "folder_name": "string",
         "graph": "String PPI",
-        "separator": "\t",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": 6,
-        "rows_to_skip": 1,
         "extraction_path": "string.tsv",
-        "edge_file": "string.tsv"
+        "edge_file": "string.tsv",
+        "loading_settings": {
+            "sources_column": "item_id_a",
+            "destinations_column": "item_id_b",
+            "weights_column_number": "score"
+        }
     },
     {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
         "folder_name": "blog_catalog",
         "graph": "BlogCatalog",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 2,
-        "extraction_path": "",
-        "edge_file": "soc-BlogCatalog.mtx"
+        "edge_file": "soc-BlogCatalog.mtx",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "egde_rows_to_skip": 2
+        }
     },
     {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
         "folder_name": "wikipedia",
         "graph": "Wikipedia",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 2,
-        "extraction_path": "",
-        "edge_file": "web-wikipedia2009.mtx"
+        "edge_file": "web-wikipedia2009.mtx",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "egde_rows_to_skip": 2
+        }
     },
     {
         "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
         "folder_name": "kg_covid_19",
         "graph": "KG-COVID-19",
-        "separator": "\t",
-        "subject_col": 1,
-        "object_col": 3,
-        "weight_col": null,
-        "rows_to_skip": 1,
-        "extraction_path": "",
-        "edge_file": "merged-kg_edges.tsv"
+        "edge_file": "merged-kg_edges.tsv",
+        "loading_settings": {
+            "edge_separator": "\t",
+            "sources_column": "subject",
+            "destinations_column": "object"
+        }
     },
     {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
         "folder_name": "twitter",
         "graph": "Twitter",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 1,
-        "extraction_path": "",
-        "edge_file": "soc-twitter-konect.edges"
+        "edge_file": "soc-twitter-konect.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "egde_rows_to_skip": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
         "graph": "Flikr",
-        "separator": ",",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 0,
-        "extraction_path": "",
-        "edge_file": "flickr.edges"
+        "edge_file": "flickr.edges",
+        "loading_settings": {
+            "edge_separator": ",",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
         "folder_name": "IMDB",
         "graph": "IMDB",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 56,
-        "extraction_path": "",
-        "edge_file": "IMDB.edges"
+        "edge_file": "IMDB.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "egde_rows_to_skip": 56
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
         "folder_name": "bn-human-Jung",
         "graph": "bn-human-Jung",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 0,
-        "extraction_path": "",
-        "edge_file": "bn-human-Jung2015_M87126525.edges"
+        "edge_file": "bn-human-Jung2015_M87126525.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
         "folder_name": "bn-fly-drosophila-medulla-1",
         "graph": "bn-fly-drosophila-medulla-1",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 0,
-        "extraction_path": "",
-        "edge_file": "bn/bn-fly-drosophila_medulla_1.edges"
+        "edge_file": "bn/bn-fly-drosophila_medulla_1.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
         "folder_name": "bn-mouse_retina-1",
         "graph": "bn-mouse_retina-1",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 0,
-        "extraction_path": "",
-        "edge_file": "bn/bn-mouse_retina_1.edges"
+        "edge_file": "bn/bn-mouse_retina_1.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
         "folder_name": "bn-macaque-rhesus-brain-1",
         "graph": "bn-macaque-rhesus-brain-1",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 0,
-        "extraction_path": "",
-        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges"
+        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
         "folder_name": "bio-mouse-gene",
         "graph": "bio-mouse-gene",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 3,
-        "extraction_path": "",
-        "edge_file": "bio-mouse-gene.edges"
+        "edge_file": "bio-mouse-gene.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "edge_rows_to_skip": 3
+        }
     },
     {
         "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
         "folder_name": "bio-human-gene",
         "graph": "bio-human-gene",
-        "separator": " ",
-        "subject_col": 0,
-        "object_col": 1,
-        "weight_col": null,
-        "rows_to_skip": 3,
-        "extraction_path": "",
-        "edge_file": "bio-human-gene1.edges"
+        "edge_file": "bio-human-gene1.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "edge_rows_to_skip": 3
+        }
     }
 ]

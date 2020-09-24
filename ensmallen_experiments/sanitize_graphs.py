@@ -27,6 +27,8 @@ def sanitize_graph(graph_data: str, root: str):
         graph_data["edge_file"]
     )
 
+    kwargs.setdefault("directed", False)
+
     logger.info("Loading the file %s"%kwargs["edge_path"])
     graph: EnsmallenGraph = EnsmallenGraph.from_csv(**kwargs)
     dst_path = os.path.join(

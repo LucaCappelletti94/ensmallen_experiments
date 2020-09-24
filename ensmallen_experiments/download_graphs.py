@@ -34,7 +34,7 @@ def download_graph(graph_data: Dict, root: str):
             raise e
 
     extracted_folder = os.path.join(
-        folder, graph_data["extraction_path"]).strip("/")
+        folder, graph_data.get("extraction_path", "")).strip("/")
     if not os.path.exists(extracted_folder):
         logger.info("Extracting %s -> %s", path, extracted_folder)
         extract(path, extracted_folder)

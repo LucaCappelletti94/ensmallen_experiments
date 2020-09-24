@@ -6,9 +6,6 @@
         "edge_file": "string.tsv",
         "name": "String PPI",
         "loading_settings":{
-            "directed":false,
-            "egde_header":true,
-            "edge_separator":"\t",
             "sources_column":"item_id_a",
             "destinations_column":"item_id_b",
             "weights_column":"score",
@@ -18,11 +15,9 @@
     {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
         "folder_name":"bio-mouse-gene",
-        "extraction_path": "",
         "edge_file": "bio-mouse-gene.edges",
         "name": "bio-mouse-gene",
         "loading_settings":{
-            "directed":false,
             "egde_header": false,
             "edge_rows_to_skip": 3,
             "edge_separator":" ",
