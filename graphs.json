@@ -18,7 +18,7 @@
         "edge_file": "soc-BlogCatalog.mtx",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 2
@@ -31,7 +31,7 @@
         "edge_file": "web-wikipedia2009.mtx",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 2
@@ -55,7 +55,7 @@
         "edge_file": "soc-twitter-konect.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 1
@@ -68,7 +68,7 @@
         "edge_file": "flickr.edges",
         "loading_settings": {
             "edge_separator": ",",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1
         }
@@ -80,7 +80,7 @@
         "edge_file": "IMDB.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 56
@@ -93,7 +93,7 @@
         "edge_file": "bn-human-Jung2015_M87126525.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1
         }
@@ -105,7 +105,7 @@
         "edge_file": "bn/bn-fly-drosophila_medulla_1.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1
         }
@@ -117,7 +117,7 @@
         "edge_file": "bn/bn-mouse_retina_1.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1
         }
@@ -129,7 +129,7 @@
         "edge_file": "bn/bn-macaque-rhesus_brain_1.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1
         }
@@ -141,7 +141,7 @@
         "edge_file": "bio-mouse-gene.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 3
@@ -154,7 +154,7 @@
         "edge_file": "bio-human-gene1.edges",
         "loading_settings": {
             "edge_separator": " ",
-            "header": false,
+            "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
             "edge_rows_to_skip": 3
