@@ -21,7 +21,7 @@
             "header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "egde_rows_to_skip": 2
+            "edge_rows_to_skip": 2
         }
     },
     {
@@ -34,7 +34,7 @@
             "header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "egde_rows_to_skip": 2
+            "edge_rows_to_skip": 2
         }
     },
     {
@@ -58,7 +58,7 @@
             "header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "egde_rows_to_skip": 1
+            "edge_rows_to_skip": 1
         }
     },
     {
@@ -83,7 +83,7 @@
             "header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "egde_rows_to_skip": 56
+            "edge_rows_to_skip": 56
         }
     },
     {
