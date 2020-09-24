@@ -8,7 +8,7 @@
         "loading_settings": {
             "sources_column": "item_id_a",
             "destinations_column": "item_id_b",
-            "weights_column_number": "score"
+            "weights_column": "score"
         }
     },
     {
