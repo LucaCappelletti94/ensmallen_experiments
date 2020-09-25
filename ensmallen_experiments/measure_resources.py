@@ -91,9 +91,11 @@ class MeasureResources(object):
             calibration_seconds: float = 2,
                 How much time, in seconds, the calibration step will take.
         """
+        self.refresh_delay = refresh_delay
+        self.end_delay = end_delay
         self.stop = mp.Event()
 
-        args = [self.stop, file_name, calibration_offset, refresh_delay]
+        args = [self.stop, file_name, refresh_delay]
         if calibrate:
             args.append(self._calibrate(calibration_seconds))
 
@@ -122,7 +124,7 @@ class MeasureResources(object):
             number_of_seconds: float,
                 For how many seconds the function will measure the ram used
         """
-        measurements = self._measure_ram(calibration_seconds)
+        measurements = self._measure_ram(number_of_seconds)
         return sum(measurements) / len(measurements)
 
     def _calibrate(self, calibration_seconds: float) -> float:
@@ -136,6 +138,7 @@ class MeasureResources(object):
             number_of_seconds: float,
                 For how many seconds the function will measure the ram used
         """
+        print("Starting calibration")
         calibration_offset = self._measure_mean_ram_usage(calibration_seconds)
         print("Calibration done, the mean ram used by the system is {} Gb".format(calibration_offset))
         return calibration_offset
@@ -149,6 +152,6 @@ class MeasureResources(object):
         self.stop.set()
         self.process.join()
         end_ram = self._measure_mean_ram_usage(self.end_delay)
-        print("The ram used one che process finished is {}Gb".format(end_ram))
+        print("The ram used one che process finished is {} Gb".format(end_ram))
         print("The process took {} seconds".format(self.end_time - self.start_time))
         
