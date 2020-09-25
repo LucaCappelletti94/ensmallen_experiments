@@ -96,6 +96,7 @@ class MeasureResources(object):
         self.end_delay = end_delay
         self.stop = mp.Event()
 
+        gc.collect()
         if calibrate:
             self.calibration_offset = self._calibrate(calibration_seconds)
         else:
