@@ -1,7 +1,7 @@
 """Test suite to check that the retrieval and sanitization of the graphs works."""
 import os
 from time import sleep
-from ensmallen_experiments import retrieve_graphs
+from ensmallen_experiments import MeasureResources
 
 TEST_FILE = "test_file.csv"
 
