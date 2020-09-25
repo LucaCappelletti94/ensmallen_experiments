@@ -62,14 +62,14 @@ def resources_logger(stop: mp.Event, path: str, refresh_delay: float, calibratio
         start = perf_counter()
         while not stop.is_set():
             f.write("{},{}\n".format(
-                get_used_ram() - calibration_offset, 
-                perf_counter() - start
+                perf_counter() - start,
+                get_used_ram() - calibration_offset
             ))
             sleep(refresh_delay)
 
         f.write("{},{}\n".format(
-            get_used_ram() - calibration_offset, 
-            perf_counter() - start
+            perf_counter() - start,
+            get_used_ram() - calibration_offset
         ))
 
 
