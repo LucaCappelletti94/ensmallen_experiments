@@ -1,3 +1,4 @@
+import gc
 import multiprocessing as mp
 from time import sleep, perf_counter
 from typing import List
@@ -95,11 +96,12 @@ class MeasureResources(object):
         self.end_delay = end_delay
         self.stop = mp.Event()
 
-        args = [self.stop, file_name, refresh_delay]
         if calibrate:
-            args.append(self._calibrate(calibration_seconds))
+            self.calibration_offset = self._calibrate(calibration_seconds)
+        else:
+            self.calibration_offset = 0
 
-        self.process = mp.Process(target=resources_logger, args=args)
+        self.process = mp.Process(target=resources_logger, args=[self.stop, file_name, refresh_delay, self.calibration_offset])
         
     def _measure_ram(self, number_of_seconds: float) -> List[int]:
         """Returns a list of measurements
@@ -144,6 +146,7 @@ class MeasureResources(object):
         return calibration_offset
 
     def __enter__(self):
+        gc.collect()
         self.process.start()
         self.start_time = perf_counter()
     
@@ -152,6 +155,7 @@ class MeasureResources(object):
         self.stop.set()
         self.process.join()
         end_ram = self._measure_mean_ram_usage(self.end_delay)
-        print("The ram used one che process finished is {} Gb".format(end_ram))
+        print("The ram used one che process finished is {} Gb".format(end_ram - self.calibration_offset))
         print("The process took {} seconds".format(self.end_time - self.start_time))
+        gc.collect()
         
