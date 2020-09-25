@@ -26,6 +26,7 @@ def resources_logger(stop, path, refresh_delay=0.1):
         f.write("ram_used,timestamp\n")
         while not stop.is_set():
             ram_used = get_used_ram()
+            # TODO: set an initial time and write out deltas
             timestamp = perf_counter()
             f.write("{},{}\n".format(ram_used, timestamp))
             sleep(refresh_delay)
