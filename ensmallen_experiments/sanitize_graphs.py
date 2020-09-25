@@ -39,6 +39,7 @@ def sanitize_graph(graph_data: str, root: str):
     logger.info("Writing the file %s"%dst_path)
     graph.dump_edges(
         path=dst_path,
+        header=False,
         sources_column_number=0,
         destinations_column_number=1,
         weights_column_number=2,
