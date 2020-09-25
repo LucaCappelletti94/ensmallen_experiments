@@ -67,9 +67,10 @@ def resources_logger(stop: mp.Event, path: str, refresh_delay: float, calibratio
             ))
             sleep(refresh_delay)
 
-        ram_used = get_used_ram()
-        timestamp = perf_counter()
-        f.write("{},{}\n".format(ram_used, timestamp))
+        f.write("{},{}\n".format(
+            get_used_ram() - calibration_offset, 
+            perf_counter() - start
+        ))
 
 
 class MeasureResources(object):
