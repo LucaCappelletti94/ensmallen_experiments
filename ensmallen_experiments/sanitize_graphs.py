@@ -29,16 +29,21 @@ def sanitize_graph(graph_data: str, root: str):
 
     kwargs.setdefault("directed", True)
 
+    dst_path = os.path.join(
+        root,
+        graph_data["folder_name"],
+        "sanitized.tsv"
+    )
+
+    if os.path.exists(dst_path):
+        return
+
     logger.info("Loading the file %s"%kwargs["edge_path"])
     graph: EnsmallenGraph = EnsmallenGraph.from_csv(**kwargs)
-    dst_path = os.path.join(
-            root,
-            graph_data["folder_name"],
-            "sanitized.tsv"
-        )
     logger.info("Writing the file %s"%dst_path)
     graph.dump_edges(
         path=dst_path,
+        header=False,
         sources_column_number=0,
         destinations_column_number=1,
         weights_column_number=2,
