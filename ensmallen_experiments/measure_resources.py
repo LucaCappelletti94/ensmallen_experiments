@@ -193,14 +193,17 @@ class Tracker(object):
             number_of_seconds: float,
                 For how many seconds the function will measure the ram used
         """
-        print("Starting calibration")
+        if self.verbose:
+            print("Starting calibration")
         calibration_offset, calibration_std = self._measure_mean_ram_usage(calibration_seconds)
-        print("Calibration done, the mean ram used by the system is {} ± {} Gb ".format(calibration_offset, calibration_std))
+        if self.verbose:
+            print("Calibration done, the mean ram used by the system is {} ± {} Gb ".format(calibration_offset, calibration_std))
         return calibration_offset
 
 
     def __enter__(self):
         gc.collect()
+        self.stop.clear()
         self.process.start()
         self.start_time = perf_counter()
     
@@ -209,7 +212,8 @@ class Tracker(object):
         self.stop.set()
         self.process.join()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
-        print("The ram used one che process finished is {} ± {} Gb".format(end_ram - self.calibration_offset, end_std))
-        print("The process took {} seconds".format(self.end_time - self.start_time))
+        if self.verbose:
+            print("The ram used one che process finished is {} ± {} Gb".format(end_ram - self.calibration_offset, end_std))
+            print("The process took {} seconds".format(self.end_time - self.start_time))
         gc.collect()
         
