@@ -146,6 +146,7 @@ class Tracker(object):
         """
         self.refresh_delay = refresh_delay
         self.end_delay = end_delay
+        self.verbose = verbose
         self.stop = mp.Event()
 
         gc.collect()
