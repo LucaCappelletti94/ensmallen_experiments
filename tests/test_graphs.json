@@ -18,7 +18,7 @@
         "edge_file": "bio-mouse-gene.edges",
         "name": "bio-mouse-gene",
         "loading_settings":{
-            "egde_header": false,
+            "edge_header": false,
             "edge_rows_to_skip": 3,
             "edge_separator":" ",
             "sources_column_number":0,
