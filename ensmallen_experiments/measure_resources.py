@@ -3,6 +3,7 @@ import gc
 import pandas as pd
 import numpy as np
 import multiprocessing as mp
+import queue
 from time import sleep, perf_counter
 from typing import List, Tuple
 
@@ -108,8 +109,11 @@ class MeasureResources(object):
     def get_results(self) -> pd.DataFrame:
         """Return a dataframe with all the data obtained from all the trackings."""
         values = []
-        while not self.results_queue.empty():
-            values.append(self.results_queue.get())
+        while True:
+            try:
+                values.append(self.results_queue.get())
+            except queue.Empty:
+                break
         return pd.DataFrame(values)
 
     def __call__(self, **metadata):
