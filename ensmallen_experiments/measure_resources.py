@@ -78,30 +78,41 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
 
 
 class MeasureResources(object):
-    def __init__(self, refresh_delay: float = 0.1, end_delay: float = 4, calibrate: bool = True, calibration_seconds: float = 2, verbose=True):
+    def __init__(
+        self,
+        refresh_delay: float = 0.1,
+        end_delay: float = 4,
+        calibrate: bool = True,
+        calibration_seconds: float = 2,
+        verbose: bool = True,
+        start_delay: int = 5
+    ):
         """Context manager that measure the time and ram a snipped of code use.
 
         Parameters
         ----------
-            refresh_delay: float = 0.1,
-                How much time (in seconds) to wait between measurements of ram.
-            end_delay: float = 4,
-                How much time the context manager will wait before exiting once
-                the snipped has ended. This is used to measure the final ammount
-                of ram used.
-            calibrate: bool = True,
-                If the context manager should do a calibration measurement before
-                starting the code.
-            calibration_seconds: float = 2,
-                How much time, in seconds, the calibration step will take.
-            verbose: bool = True,
-                If the program should be verbose and print info or not.
+        refresh_delay: float = 0.1,
+            How much time (in seconds) to wait between measurements of ram.
+        end_delay: float = 4,
+            How much time the context manager will wait before exiting once
+            the snipped has ended. This is used to measure the final ammount
+            of ram used.
+        calibrate: bool = True,
+            If the context manager should do a calibration measurement before
+            starting the code.
+        calibration_seconds: float = 2,
+            How much time, in seconds, the calibration step will take.
+        verbose: bool = True,
+            If the program should be verbose and print info or not.
+        start_delay: int = 5,
+            How much to wait before starting the tracker to let the process start.
         """
         self.refresh_delay = refresh_delay
         self.end_delay = end_delay
         self.calibrate = calibrate
         self.calibration_seconds = calibration_seconds
         self.verbose = verbose
+        self.start_delay = start_delay
 
         self.stop = mp.Event()
         self.manager = mp.Manager()
@@ -126,21 +137,24 @@ class MeasureResources(object):
             self.end_delay,
             self.calibrate,
             self.calibration_seconds,
-            self.verbose
+            self.verbose,
+            self.start_delay
         )
 
 
 class Tracker(object):
-    def __init__(self,
-                 results_queue: mp.Queue,
-                 stop: mp.Event,
-                 metadata: dict,
-                 refresh_delay: float = 0.1,
-                 end_delay: float = 4,
-                 calibrate: bool = True,
-                 calibration_seconds: float = 2,
-                 verbose: bool = True
-                 ):
+    def __init__(
+        self,
+        results_queue: mp.Queue,
+        stop: mp.Event,
+        metadata: dict,
+        refresh_delay: float = 0.1,
+        end_delay: float = 4,
+        calibrate: bool = True,
+        calibration_seconds: float = 2,
+        verbose: bool = True,
+        start_delay: int = 5
+    ):
         """Context manager that measure the time and ram a snipped of code use.
 
         Parameters
@@ -160,11 +174,14 @@ class Tracker(object):
             How much time, in seconds, the calibration step will take.
         verbose: bool = True,
             If the program should be verbose and print info or not.
+        start_delay: int = 5,
+            How much to wait before starting the tracker to let the process start.
         """
         self.refresh_delay = refresh_delay
         self.end_delay = end_delay
         self.verbose = verbose
         self.stop = mp.Event()
+        self.start_delay = start_delay
 
         gc.collect()
         if calibrate:
@@ -233,6 +250,7 @@ class Tracker(object):
         gc.collect()
         self.stop.clear()
         self.process.start()
+        sleep(self.start_delay)
         self.start_time = perf_counter()
 
     def __exit__(self, type, value, traceback):
