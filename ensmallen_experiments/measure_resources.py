@@ -64,17 +64,17 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
     """
     while stop.is_set():
         pass
-    start = perf_counter()
     tracked = []
     tracked.append({
-        "delta": 0,
-        "ram": get_used_ram() - calibration_offset
+        "required_seconds": 0,
+        "required_ram": get_used_ram() - calibration_offset
     })
+    start = perf_counter()
     while not stop.is_set():
         sleep(refresh_delay)
         tracked.append({
-            "delta": perf_counter() - start,
-            "ram": get_used_ram() - calibration_offset
+            "required_seconds": perf_counter() - start,
+            "required_ram": get_used_ram() - calibration_offset
         })
 
     for value in tracked:
