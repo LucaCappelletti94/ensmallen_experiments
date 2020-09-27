@@ -106,7 +106,8 @@ class MeasureResources(object):
         self.verbose = verbose
 
         self.stop = mp.Event()
-        self.results_queue = mp.Queue()
+        self.manager = mp.Manager()
+        self.results_queue = self.manager.Queue()
 
     def get_results(self) -> pd.DataFrame:
         """Return a dataframe with all the data obtained from all the trackings."""
