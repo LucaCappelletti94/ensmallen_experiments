@@ -3,7 +3,7 @@ import gc
 import pandas as pd
 import numpy as np
 import multiprocessing as mp
-from queue import Queue, Empty
+from queue import Empty
 from time import sleep, perf_counter
 from typing import List, Tuple
 
@@ -48,7 +48,7 @@ def get_used_ram():
     return (data["MemTotal"] - data["MemFree"] - data["Buffers"] - data["Cached"] - data["Slab"]) / (1024**2)
 
 
-def resources_logger(stop: mp.Event, queue: Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
+def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
     """Worker that logs memory usage in a csv file until the stop event is set.
 
     Parameters
@@ -70,11 +70,13 @@ def resources_logger(stop: mp.Event, queue: Queue, metadata: dict, refresh_delay
             **metadata
         })
         sleep(refresh_delay)
+        print("Updated")
     queue.put_nowait({
         "delta": perf_counter() - start,
         "ram": get_used_ram() - calibration_offset,
         **metadata
     })
+    print("Killing process")
 
 
 class MeasureResources(object):
@@ -104,13 +106,14 @@ class MeasureResources(object):
         self.verbose = verbose
 
         self.stop = mp.Event()
-        self.results_queue = Queue()
+        self.results_queue = mp.Queue()
 
     def get_results(self) -> pd.DataFrame:
         """Return a dataframe with all the data obtained from all the trackings."""
         values = []
         while True:
             try:
+                print("Building results")
                 values.append(self.results_queue.get_nowait())
             except Empty:
                 break
@@ -131,7 +134,7 @@ class MeasureResources(object):
 
 class Tracker(object):
     def __init__(self,
-                 results_queue: Queue,
+                 results_queue: mp.Queue,
                  stop: mp.Event,
                  metadata: dict,
                  refresh_delay: float = 0.1,
@@ -236,7 +239,9 @@ class Tracker(object):
 
     def __exit__(self, type, value, traceback):
         self.end_time = perf_counter()
+        print("Setting stop")
         self.stop.set()
+        print("Waiting for JOIN")
         self.process.join()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
