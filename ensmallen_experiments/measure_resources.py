@@ -112,7 +112,6 @@ class MeasureResources(object):
         values = []
         while True:
             try:
-                print("Building results")
                 values.append(self.results_queue.get_nowait())
             except Empty:
                 break
