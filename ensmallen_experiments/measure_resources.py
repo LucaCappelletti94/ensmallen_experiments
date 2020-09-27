@@ -211,8 +211,8 @@ class Tracker(object):
     def __exit__(self, type, value, traceback):
         self.end_time = perf_counter()
         self.stop.set()
-        self.process.close()
         self.process.join()
+        self.process.close()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
             print("The ram used one che process finished is {} ± {} Gb".format(end_ram - self.calibration_offset, end_std))
