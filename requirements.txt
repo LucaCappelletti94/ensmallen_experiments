@@ -3,3 +3,4 @@ encodeproject>=1.0.22
 tqdm
 ensmallen_graph==0.4.1
 node2vec
+barplots
