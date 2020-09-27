@@ -103,7 +103,8 @@ class MeasureResources(object):
         self.stop = mp.Event()
         self.results_queue = mp.Queue()
         
-    def get_results(self):
+    def get_results(self) -> pd.DataFrame:
+        """Return a dataframe with all the data obtained from all the trackings."""
         values = []
         while not self.results_queue.empty():
             values.append(self.results_queue.get())
