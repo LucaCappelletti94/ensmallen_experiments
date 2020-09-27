@@ -68,6 +68,7 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
             "ram": get_used_ram() - calibration_offset,
             **metadata
         })
+        print("Still here!")
         sleep(refresh_delay)
     queue.put({
         "delta": perf_counter() - start,
