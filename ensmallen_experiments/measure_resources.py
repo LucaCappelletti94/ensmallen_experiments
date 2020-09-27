@@ -65,18 +65,23 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
     while stop.is_set():
         pass
     start = perf_counter()
+    tracked = []
+    tracked.append({
+        "delta": 0,
+        "ram": get_used_ram() - calibration_offset
+    })
     while not stop.is_set():
-        queue.put_nowait({
+        sleep(refresh_delay)
+        tracked.append({
             "delta": perf_counter() - start,
-            "ram": get_used_ram() - calibration_offset,
+            "ram": get_used_ram() - calibration_offset
+        })
+
+    for value in tracked:
+        queue.put_nowait({
+            **value,
             **metadata
         })
-        sleep(refresh_delay)
-    queue.put_nowait({
-        "delta": perf_counter() - start,
-        "ram": get_used_ram() - calibration_offset,
-        **metadata
-    })
 
 
 class MeasureResources(object):
