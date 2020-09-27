@@ -12,5 +12,12 @@ def test_retrieve_graphs():
         sleep(0.5)
         del a
         sleep(0.5)
+        
+    with tracker(name="test2"):
+        sleep(0.5)
+        a = list(range(int(1e6)))
+        sleep(0.5)
+        del a
+        sleep(0.5)
 
     df = tracker.get_results()
