@@ -240,9 +240,7 @@ class Tracker(object):
 
     def __exit__(self, type, value, traceback):
         self.end_time = perf_counter()
-        print("Setting stop")
         self.stop.set()
-        print("Waiting for JOIN")
         self.process.join()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
