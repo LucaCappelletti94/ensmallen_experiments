@@ -111,7 +111,7 @@ class MeasureResources(object):
         values = []
         while True:
             try:
-                values.append(self.results_queue.get())
+                values.append(self.results_queue.get_nowait())
             except Empty:
                 break
         return pd.DataFrame(values)
