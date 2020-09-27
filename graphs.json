@@ -38,7 +38,7 @@
         }
     },
     {
-        "url": "http://kg-hub.berkeleybop.io/kg-covid-19.tar.gz",
+        "url": "https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz",
         "folder_name": "kg_covid_19",
         "graph": "KG-COVID-19",
         "edge_file": "merged-kg_edges.tsv",
