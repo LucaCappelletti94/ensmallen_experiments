@@ -62,6 +62,8 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
         calibration_offset: int = 0,
             The optional system offsets to remove from the data that will be logged.
     """
+    while stop.is_set():
+        pass
     start = perf_counter()
     while not stop.is_set():
         queue.put_nowait({
@@ -248,9 +250,10 @@ class Tracker(object):
 
     def __enter__(self):
         gc.collect()
-        self.stop.clear()
+        self.stop.set()
         self.process.start()
         sleep(self.start_delay)
+        self.stop.clear()
         self.start_time = perf_counter()
 
     def __exit__(self, type, value, traceback):
