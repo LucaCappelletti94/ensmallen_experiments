@@ -35,11 +35,20 @@ def sanitize_graph(graph_data: str, root: str):
         "sanitized.tsv"
     )
 
+    report_path = os.path.join(
+        root,
+        graph_data["folder_name"],
+        "report.json"
+    )
+
     if os.path.exists(dst_path):
         return
 
     logger.info("Loading the file %s"%kwargs["edge_path"])
     graph: EnsmallenGraph = EnsmallenGraph.from_csv(**kwargs)
+    logger.info("Computing metadata")
+    report = graph.report()
+    compress_json.dump(report, report_path)
     logger.info("Writing the file %s"%dst_path)
     graph.dump_edges(
         path=dst_path,
