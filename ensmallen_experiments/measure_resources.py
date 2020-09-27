@@ -9,10 +9,10 @@ from typing import List, Tuple
 
 def get_used_ram():
     """Return the ammout of ram used **BY THE SYSTEM**.
-    
+
     The values are read from /proc/meminfo (LINUX ONLY) to be as close as precise
     as possible. Moreover, the ram used is computed by:
-    
+
     MemTotal - MemFree - Buffers - Cached - Slab
 
     Where:
@@ -25,7 +25,7 @@ def get_used_ram():
             and for the ramdisks.
         - Slab is the total ammount of ram used by the kernel.
     More infos at https://man7.org/linux/man-pages/man5/proc.5.html
-    
+
     All of this is done to try to remove as much as possibles any system bias.
     """
     # Read the memory statistics
@@ -34,9 +34,9 @@ def get_used_ram():
 
     # Convert the file into a dictionary with all the metrics
     data = {
-        k: int(v.strip()[:-2]) 
-            if v.lower().endswith("b") 
-            else int(v.strip())
+        k: int(v.strip()[:-2])
+        if v.lower().endswith("b")
+        else int(v.strip())
         for (k, v) in [
             x.split(":")
             for x in txt.split("\n")
@@ -46,9 +46,10 @@ def get_used_ram():
     # Total ram - Free Ram - Disks and sockets buffers - cache - kernel used memory
     return (data["MemTotal"] - data["MemFree"] - data["Buffers"] - data["Cached"] - data["Slab"]) / (1024**2)
 
+
 def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
     """Worker that logs memory usage in a csv file until the stop event is set.
-    
+
     Parameters
     ----------
         stop: mp.Event,
@@ -63,19 +64,20 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
     start = perf_counter()
     while not stop.is_set():
         queue.put({
-            "delta":perf_counter() - start,
-            "ram":get_used_ram() - calibration_offset,
+            "delta": perf_counter() - start,
+            "ram": get_used_ram() - calibration_offset,
             **metadata
         })
         sleep(refresh_delay)
     queue.put({
-        "delta":perf_counter() - start,
-        "ram":get_used_ram() - calibration_offset,
+        "delta": perf_counter() - start,
+        "ram": get_used_ram() - calibration_offset,
         **metadata
     })
 
+
 class MeasureResources(object):
-    def __init__(self, refresh_delay: float = 0.1, end_delay: float = 4, calibrate: bool=True, calibration_seconds: float=2, verbose=True):
+    def __init__(self, refresh_delay: float = 0.1, end_delay: float = 4, calibrate: bool = True, calibration_seconds: float = 2, verbose=True):
         """Context manager that measure the time and ram a snipped of code use.
 
         Parameters
@@ -102,7 +104,7 @@ class MeasureResources(object):
 
         self.stop = mp.Event()
         self.results_queue = mp.Queue()
-        
+
     def get_results(self) -> pd.DataFrame:
         """Return a dataframe with all the data obtained from all the trackings."""
         values = []
@@ -111,19 +113,29 @@ class MeasureResources(object):
         return pd.DataFrame(values)
 
     def __call__(self, **metadata):
-        return Tracker(self.results_queue, self.stop, metadata, self.refresh_delay, self.end_delay, self.calibrate, self.calibration_seconds, self.verbose)
+        return Tracker(
+            self.results_queue,
+            self.stop,
+            metadata,
+            self.refresh_delay,
+            self.end_delay,
+            self.calibrate,
+            self.calibration_seconds,
+            self.verbose
+        )
+
 
 class Tracker(object):
-    def __init__(self, 
-        results_queue: mp.Queue, 
-        stop: mp.Event, 
-        metadata: dict, 
-        refresh_delay: float = 0.1, 
-        end_delay: float = 4, 
-        calibrate: bool=True, 
-        calibration_seconds: float=2,
-        verbose: bool = True
-        ):
+    def __init__(self,
+                 results_queue: mp.Queue,
+                 stop: mp.Event,
+                 metadata: dict,
+                 refresh_delay: float = 0.1,
+                 end_delay: float = 4,
+                 calibrate: bool = True,
+                 calibration_seconds: float = 2,
+                 verbose: bool = True
+                 ):
         """Context manager that measure the time and ram a snipped of code use.
 
         Parameters
@@ -155,8 +167,9 @@ class Tracker(object):
         else:
             self.calibration_offset = 0
 
-        self.process = mp.Process(target=resources_logger, args=[self.stop, results_queue, metadata, refresh_delay, self.calibration_offset])
-        
+        self.process = mp.Process(target=resources_logger, args=[
+                                  self.stop, results_queue, metadata, refresh_delay, self.calibration_offset])
+
     def _measure_ram(self, number_of_seconds: float) -> List[int]:
         """Returns a list of measurements
 
@@ -174,7 +187,7 @@ class Tracker(object):
 
     def _measure_mean_ram_usage(self, number_of_seconds: float) -> Tuple[float, float]:
         """Return the mean ram used in an interval of time.
-        
+
         Parameters
         ----------
             number_of_seconds: float,
@@ -196,18 +209,19 @@ class Tracker(object):
         """
         if self.verbose:
             print("Starting calibration")
-        calibration_offset, calibration_std = self._measure_mean_ram_usage(calibration_seconds)
+        calibration_offset, calibration_std = self._measure_mean_ram_usage(
+            calibration_seconds)
         if self.verbose:
-            print("Calibration done, the mean ram used by the system is {} ± {} Gb ".format(calibration_offset, calibration_std))
+            print("Calibration done, the mean ram used by the system is {} ± {} Gb ".format(
+                calibration_offset, calibration_std))
         return calibration_offset
-
 
     def __enter__(self):
         gc.collect()
         self.stop.clear()
         self.process.start()
         self.start_time = perf_counter()
-    
+
     def __exit__(self, type, value, traceback):
         self.end_time = perf_counter()
         self.stop.set()
@@ -215,7 +229,8 @@ class Tracker(object):
         self.process.close()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
-            print("The ram used one che process finished is {} ± {} Gb".format(end_ram - self.calibration_offset, end_std))
-            print("The process took {} seconds".format(self.end_time - self.start_time))
+            print("The ram used one che process finished is {} ± {} Gb".format(
+                end_ram - self.calibration_offset, end_std))
+            print("The process took {} seconds".format(
+                self.end_time - self.start_time))
         gc.collect()
-        

@@ -20,4 +20,11 @@ def test_retrieve_graphs():
         del a
         sleep(0.5)
 
-    df = tracker.get_results()
+    with tracker(name="test3"):
+        sleep(0.5)
+        a = list(range(int(1e6)))
+        sleep(0.5)
+        del a
+        sleep(0.5)
+
+    tracker.get_results()
