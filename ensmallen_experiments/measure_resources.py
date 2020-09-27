@@ -70,13 +70,11 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
             **metadata
         })
         sleep(refresh_delay)
-        print("Updated")
     queue.put_nowait({
         "delta": perf_counter() - start,
         "ram": get_used_ram() - calibration_offset,
         **metadata
     })
-    print("Killing process")
 
 
 class MeasureResources(object):
