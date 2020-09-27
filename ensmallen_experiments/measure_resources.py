@@ -3,7 +3,7 @@ import gc
 import pandas as pd
 import numpy as np
 import multiprocessing as mp
-import queue
+from queue import Queue, Empty
 from time import sleep, perf_counter
 from typing import List, Tuple
 
@@ -48,7 +48,7 @@ def get_used_ram():
     return (data["MemTotal"] - data["MemFree"] - data["Buffers"] - data["Cached"] - data["Slab"]) / (1024**2)
 
 
-def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
+def resources_logger(stop: mp.Event, queue: Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
     """Worker that logs memory usage in a csv file until the stop event is set.
 
     Parameters
@@ -104,7 +104,7 @@ class MeasureResources(object):
         self.verbose = verbose
 
         self.stop = mp.Event()
-        self.results_queue = mp.Queue()
+        self.results_queue = Queue()
 
     def get_results(self) -> pd.DataFrame:
         """Return a dataframe with all the data obtained from all the trackings."""
@@ -112,7 +112,7 @@ class MeasureResources(object):
         while True:
             try:
                 values.append(self.results_queue.get())
-            except queue.Empty:
+            except Empty:
                 break
         return pd.DataFrame(values)
 
@@ -131,7 +131,7 @@ class MeasureResources(object):
 
 class Tracker(object):
     def __init__(self,
-                 results_queue: mp.Queue,
+                 results_queue: Queue,
                  stop: mp.Event,
                  metadata: dict,
                  refresh_delay: float = 0.1,
