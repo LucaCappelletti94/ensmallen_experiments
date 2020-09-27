@@ -144,21 +144,21 @@ class Tracker(object):
 
         Parameters
         ----------
-            file_name: str,
-                The csv file where the ram measurements will be logged.
-            refresh_delay: float = 0.1,
-                How much time (in seconds) to wait between measurements of ram.
-            end_delay: float = 4,
-                How much time the context manager will wait before exiting once
-                the snipped has ended. This is used to measure the final ammount
-                of ram used.
-            calibrate: bool = True,
-                If the context manager should do a calibration measurement before
-                starting the code.
-            calibration_seconds: float = 2,
-                How much time, in seconds, the calibration step will take.
-            verbose: bool = True,
-                If the program should be verbose and print info or not.
+        file_name: str,
+            The csv file where the ram measurements will be logged.
+        refresh_delay: float = 0.1,
+            How much time (in seconds) to wait between measurements of ram.
+        end_delay: float = 4,
+            How much time the context manager will wait before exiting once
+            the snipped has ended. This is used to measure the final ammount
+            of ram used.
+        calibrate: bool = True,
+            If the context manager should do a calibration measurement before
+            starting the code.
+        calibration_seconds: float = 2,
+            How much time, in seconds, the calibration step will take.
+        verbose: bool = True,
+            If the program should be verbose and print info or not.
         """
         self.refresh_delay = refresh_delay
         self.end_delay = end_delay
@@ -171,8 +171,16 @@ class Tracker(object):
         else:
             self.calibration_offset = 0
 
-        self.process = mp.Process(target=resources_logger, args=[
-                                  self.stop, results_queue, metadata, refresh_delay, self.calibration_offset])
+        self.process = mp.Process(
+            target=resources_logger,
+            args=[
+                self.stop,
+                results_queue,
+                metadata,
+                refresh_delay,
+                self.calibration_offset
+            ]
+        )
 
     def _measure_ram(self, number_of_seconds: float) -> List[int]:
         """Returns a list of measurements
@@ -230,7 +238,6 @@ class Tracker(object):
         self.end_time = perf_counter()
         self.stop.set()
         self.process.join()
-        self.process.close()
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
             print("The ram used one che process finished is {} ± {} Gb".format(
