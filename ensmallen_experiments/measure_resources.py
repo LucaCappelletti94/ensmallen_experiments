@@ -71,7 +71,7 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
     })
     start = perf_counter()
     while not stop.is_set():
-        sleep(refresh_delay)
+        sleep(refresh_delay*len(tracked))
         tracked.append({
             "required_seconds": perf_counter() - start,
             "required_ram": get_used_ram() - calibration_offset
