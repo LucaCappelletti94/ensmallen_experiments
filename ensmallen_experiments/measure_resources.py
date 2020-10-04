@@ -6,6 +6,7 @@ import multiprocessing as mp
 from queue import Empty
 from time import sleep, perf_counter
 from typing import List, Tuple
+from tqdm.auto import tqdm
 
 
 def get_used_ram():
@@ -48,7 +49,7 @@ def get_used_ram():
     return (data["MemTotal"] - data["MemFree"] - data["Buffers"] - data["Cached"] - data["Slab"]) / (1024**2)
 
 
-def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_delay: float, calibration_offset: int = 0):
+def resources_logger(stop: mp.Event, queue: mp.Queue, refresh_delay: float, calibration_offset: int = 0):
     """Worker that logs memory usage in a csv file until the stop event is set.
 
     Parameters
@@ -68,26 +69,23 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, metadata: dict, refresh_de
     tracked.append((0, get_used_ram() - calibration_offset))
     start = perf_counter()
     while not stop.is_set():
-        sleep(refresh_delay + refresh_delay*np.log(len(tracked)))
-        tracked.append((perf_counter() - start, get_used_ram() - calibration_offset))
+        sleep(refresh_delay + refresh_delay*np.sqrt(len(tracked)))
+        tracked.append(
+            (perf_counter() - start, get_used_ram() - calibration_offset))
 
-    for required_seconds, required_ram in tracked:
-        queue.put_nowait({
-            "required_seconds": required_seconds,
-            "required_ram": required_ram,
-            **metadata
-        })
+    for data in tracked:
+        queue.put_nowait(data)
 
 
 class MeasureResources(object):
     def __init__(
         self,
-        refresh_delay: float=0.1,
-        end_delay: float=4,
-        calibrate: bool=True,
-        calibration_seconds: float=2,
-        verbose: bool=True,
-        start_delay: int=5
+        refresh_delay: float = 0.1,
+        end_delay: float = 4,
+        calibrate: bool = True,
+        calibration_seconds: float = 2,
+        verbose: bool = True,
+        start_delay: int = 5
     ):
         """Context manager that measure the time and ram a snipped of code use.
 
@@ -109,32 +107,34 @@ class MeasureResources(object):
         start_delay: int = 5,
             How much to wait before starting the tracker to let the process start.
         """
-        self.refresh_delay=refresh_delay
-        self.end_delay=end_delay
-        self.calibrate=calibrate
-        self.calibration_seconds=calibration_seconds
-        self.verbose=verbose
-        self.start_delay=start_delay
+        self.refresh_delay = refresh_delay
+        self.end_delay = end_delay
+        self.calibrate = calibrate
+        self.calibration_seconds = calibration_seconds
+        self.verbose = verbose
+        self.start_delay = start_delay
 
-        self.stop=mp.Event()
-        self.manager=mp.Manager()
-        self.results_queue=self.manager.Queue()
+        self.stop = mp.Event()
+        self.manager = mp.Manager()
+        self.results_queue = self.manager.Queue()
 
-    def get_results(self) -> pd.DataFrame:
+    def get_results(self) -> np.array:
         """Return a dataframe with all the data obtained from all the trackings."""
-        values=[]
+        values = []
+        bar = tqdm(desc="Retrieving logged results",
+                   total=self.results_queue.qsize())
         while True:
             try:
                 values.append(self.results_queue.get_nowait())
+                bar.update()
             except Empty:
                 break
-        return pd.DataFrame(values)
+        return np.array(values)
 
     def __call__(self, **metadata):
         return Tracker(
             self.results_queue,
             self.stop,
-            metadata,
             self.refresh_delay,
             self.end_delay,
             self.calibrate,
@@ -149,13 +149,12 @@ class Tracker(object):
         self,
         results_queue: mp.Queue,
         stop: mp.Event,
-        metadata: dict,
-        refresh_delay: float=0.1,
-        end_delay: float=4,
-        calibrate: bool=True,
-        calibration_seconds: float=2,
-        verbose: bool=True,
-        start_delay: int=5
+        refresh_delay: float = 0.1,
+        end_delay: float = 4,
+        calibrate: bool = True,
+        calibration_seconds: float = 2,
+        verbose: bool = True,
+        start_delay: int = 5
     ):
         """Context manager that measure the time and ram a snipped of code use.
 
@@ -179,24 +178,23 @@ class Tracker(object):
         start_delay: int = 5,
             How much to wait before starting the tracker to let the process start.
         """
-        self.refresh_delay=refresh_delay
-        self.end_delay=end_delay
-        self.verbose=verbose
-        self.stop=mp.Event()
-        self.start_delay=start_delay
+        self.refresh_delay = refresh_delay
+        self.end_delay = end_delay
+        self.verbose = verbose
+        self.stop = mp.Event()
+        self.start_delay = start_delay
 
         gc.collect()
         if calibrate:
-            self.calibration_offset=self._calibrate(calibration_seconds)
+            self.calibration_offset = self._calibrate(calibration_seconds)
         else:
-            self.calibration_offset=0
+            self.calibration_offset = 0
 
-        self.process=mp.Process(
+        self.process = mp.Process(
             target=resources_logger,
             args=[
                 self.stop,
                 results_queue,
-                metadata,
                 refresh_delay,
                 self.calibration_offset
             ]
@@ -210,8 +208,8 @@ class Tracker(object):
             number_of_seconds: float,
                 For how many seconds the function will measure the ram used
         """
-        measurements=[]
-        start=perf_counter()
+        measurements = []
+        start = perf_counter()
         while (perf_counter() - start) < number_of_seconds:
             measurements.append(get_used_ram())
             sleep(self.refresh_delay)
@@ -225,7 +223,7 @@ class Tracker(object):
             number_of_seconds: float,
                 For how many seconds the function will measure the ram used
         """
-        measurements=self._measure_ram(number_of_seconds)
+        measurements = self._measure_ram(number_of_seconds)
         return np.mean(measurements), np.std(measurements)
 
     def _calibrate(self, calibration_seconds: float) -> float:
@@ -241,7 +239,7 @@ class Tracker(object):
         """
         if self.verbose:
             print("Starting calibration")
-        calibration_offset, calibration_std=self._measure_mean_ram_usage(
+        calibration_offset, calibration_std = self._measure_mean_ram_usage(
             calibration_seconds)
         if self.verbose:
             print("Calibration done, the mean ram used by the system is {} ± {} Gb ".format(
@@ -254,13 +252,13 @@ class Tracker(object):
         self.process.start()
         sleep(self.start_delay)
         self.stop.clear()
-        self.start_time=perf_counter()
+        self.start_time = perf_counter()
 
     def __exit__(self, type, value, traceback):
-        self.end_time=perf_counter()
+        self.end_time = perf_counter()
         self.stop.set()
         self.process.join()
-        end_ram, end_std=self._measure_mean_ram_usage(self.end_delay)
+        end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
             print("The ram used one che process finished is {} ± {} Gb".format(
                 end_ram - self.calibration_offset, end_std))
