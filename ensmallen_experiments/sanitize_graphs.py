@@ -11,7 +11,7 @@ from .utils import logger
 
 def sanitize_graph(graph_data: str, root: str):
     """Convert all the graphs to a standard format.
-    
+
     Parameters
     ----------
     graph_data: List[Dict],
@@ -29,10 +29,16 @@ def sanitize_graph(graph_data: str, root: str):
 
     kwargs.setdefault("directed", True)
 
-    dst_path = os.path.join(
+    directed_dst_path = os.path.join(
         root,
         graph_data["folder_name"],
-        "sanitized.tsv"
+        "directed_sanitized.tsv"
+    )
+
+    undirected_dst_path = os.path.join(
+        root,
+        graph_data["folder_name"],
+        "undirected_sanitized.tsv"
     )
 
     report_path = os.path.join(
@@ -41,27 +47,46 @@ def sanitize_graph(graph_data: str, root: str):
         "report.json"
     )
 
-    if os.path.exists(dst_path):
+    if all(
+        os.path.exists(p)
+        for p in (directed_dst_path, undirected_dst_path)
+    ):
         return
 
-    logger.info("Loading the file %s"%kwargs["edge_path"])
+    logger.info("Loading the file %s" % kwargs["edge_path"])
     graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(**kwargs)
     logger.info("Computing metadata")
     report = graph.report()
     compress_json.dump(report, report_path)
-    logger.info("Writing the file %s"%dst_path)
-    graph.dump_edges(
-        path=dst_path,
-        header=False,
-        sources_column_number=0,
-        destinations_column_number=1,
-        weights_column_number=2,
-        numeric_node_ids=True
-    )
+
+    if not os.path.exists(undirected_dst_path):
+        logger.info("Writing the file {}".format(undirected_dst_path))
+        graph.dump_edges(
+            path=undirected_dst_path,
+            header=False,
+            sources_column_number=0,
+            destinations_column_number=1,
+            weights_column_number=2,
+            numeric_node_ids=True,
+            # We dump with directed=True for the undirected file to have in the file the bidirectional edges.
+            directed=True
+        )
+    if not os.path.exists(directed_dst_path):
+        logger.info("Writing the file {}".format(directed_dst_path))
+        graph.dump_edges(
+            path=directed_dst_path,
+            header=False,
+            sources_column_number=0,
+            destinations_column_number=1,
+            weights_column_number=2,
+            numeric_node_ids=True,
+            directed=False
+        )
+
 
 def sanitize_graphs(graphs_data: List[Dict], root: str):
     """Load all the graphs and convert them to a standard format.
-    
+
     Parameters
     ----------
     graphs_data: List[Dict],
