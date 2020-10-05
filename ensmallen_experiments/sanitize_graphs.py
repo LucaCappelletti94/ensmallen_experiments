@@ -27,7 +27,7 @@ def sanitize_graph(graph_data: str, root: str):
         graph_data["edge_file"]
     )
 
-    kwargs.setdefault("directed", True)
+    kwargs.setdefault("directed", False)
 
     directed_dst_path = os.path.join(
         root,
@@ -80,6 +80,7 @@ def sanitize_graph(graph_data: str, root: str):
             destinations_column_number=1,
             weights_column_number=2,
             numeric_node_ids=True,
+            # We dump with directed=False for the directed file to have no doubled bidirectional edge in the write out.
             directed=False
         )
 
