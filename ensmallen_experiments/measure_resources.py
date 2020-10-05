@@ -122,7 +122,8 @@ class MeasureResources(object):
         """Return a dataframe with all the data obtained from all the trackings."""
         values = []
         bar = tqdm(desc="Retrieving logged results",
-                   total=self.results_queue.qsize())
+                   total=self.results_queue.qsize(),
+                   disable=not self.verbose)
         while True:
             try:
                 values.append(self.results_queue.get_nowait())
