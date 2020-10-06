@@ -49,7 +49,23 @@ def get_used_ram():
     return (data["MemTotal"] - data["MemFree"] - data["Buffers"] - data["Cached"] - data["Slab"]) / (1024**2)
 
 
-def resources_logger(stop: mp.Event, queue: mp.Queue, refresh_delay: float, calibration_offset: int = 0):
+def get_refresh_delay(elapsed: float) -> float:
+    if elapsed < 0.1:
+        return 0.0001
+    if elapsed < 1:
+        return 0.01
+    if elapsed < 10:
+        return 0.1
+    if elapsed < 60:
+        return 1
+    if elapsed < 60*10:
+        return 30
+    if elapsed < 60*60:
+        return 60
+    return 60*3
+
+
+def resources_logger(stop: mp.Event, queue: mp.Queue, calibration_offset: int = 0):
     """Worker that logs memory usage in a csv file until the stop event is set.
 
     Parameters
@@ -58,8 +74,6 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, refresh_delay: float, cali
             The stop signal that must be set to stop the ram logging.
         path: str,
             The path of the csv where to log the data.
-        refresh_delay: float,
-            How many seconds to sleep between every read.
         calibration_offset: int = 0,
             The optional system offsets to remove from the data that will be logged.
     """
@@ -68,10 +82,14 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, refresh_delay: float, cali
     tracked = []
     tracked.append((0, get_used_ram() - calibration_offset))
     start = perf_counter()
+    last_delta = 0
     while not stop.is_set():
-        sleep(refresh_delay + refresh_delay*np.sqrt(len(tracked)))
-        tracked.append(
-            (perf_counter() - start, get_used_ram() - calibration_offset))
+        sleep(get_refresh_delay(last_delta))
+        last_delta = perf_counter() - start
+        tracked.append((
+            last_delta,
+            get_used_ram() - calibration_offset
+        ))
 
     for data in tracked:
         queue.put_nowait(data)
@@ -80,7 +98,6 @@ def resources_logger(stop: mp.Event, queue: mp.Queue, refresh_delay: float, cali
 class MeasureResources(object):
     def __init__(
         self,
-        refresh_delay: float = 0.1,
         end_delay: float = 4,
         calibrate: bool = True,
         calibration_seconds: float = 2,
@@ -91,8 +108,6 @@ class MeasureResources(object):
 
         Parameters
         ----------
-        refresh_delay: float = 0.1,
-            How much time (in seconds) to wait between measurements of ram.
         end_delay: float = 4,
             How much time the context manager will wait before exiting once
             the snipped has ended. This is used to measure the final ammount
@@ -107,7 +122,6 @@ class MeasureResources(object):
         start_delay: int = 5,
             How much to wait before starting the tracker to let the process start.
         """
-        self.refresh_delay = refresh_delay
         self.end_delay = end_delay
         self.calibrate = calibrate
         self.calibration_seconds = calibration_seconds
@@ -136,7 +150,6 @@ class MeasureResources(object):
         return Tracker(
             self.results_queue,
             self.stop,
-            self.refresh_delay,
             self.end_delay,
             self.calibrate,
             self.calibration_seconds,
@@ -150,7 +163,6 @@ class Tracker(object):
         self,
         results_queue: mp.Queue,
         stop: mp.Event,
-        refresh_delay: float = 0.1,
         end_delay: float = 4,
         calibrate: bool = True,
         calibration_seconds: float = 2,
@@ -163,8 +175,6 @@ class Tracker(object):
         ----------
         file_name: str,
             The csv file where the ram measurements will be logged.
-        refresh_delay: float = 0.1,
-            How much time (in seconds) to wait between measurements of ram.
         end_delay: float = 4,
             How much time the context manager will wait before exiting once
             the snipped has ended. This is used to measure the final ammount
@@ -179,7 +189,6 @@ class Tracker(object):
         start_delay: int = 5,
             How much to wait before starting the tracker to let the process start.
         """
-        self.refresh_delay = refresh_delay
         self.end_delay = end_delay
         self.verbose = verbose
         self.stop = mp.Event()
@@ -196,7 +205,6 @@ class Tracker(object):
             args=[
                 self.stop,
                 results_queue,
-                refresh_delay,
                 self.calibration_offset
             ]
         )
@@ -213,7 +221,7 @@ class Tracker(object):
         start = perf_counter()
         while (perf_counter() - start) < number_of_seconds:
             measurements.append(get_used_ram())
-            sleep(self.refresh_delay)
+            sleep(0.1)
         return measurements
 
     def _measure_mean_ram_usage(self, number_of_seconds: float) -> Tuple[float, float]:
