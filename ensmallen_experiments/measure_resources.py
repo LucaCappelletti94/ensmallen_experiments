@@ -50,6 +50,8 @@ def get_used_ram():
 
 
 def get_refresh_delay(elapsed: float) -> float:
+    if elapsed < 0.01:
+        return 0
     if elapsed < 0.1:
         return 0.0001
     if elapsed < 1:
