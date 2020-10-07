@@ -6,4 +6,3 @@ node2vec
 barplots
 sanitize_ml_labels>=1.0.13
 csrgraph
-nodevectors
