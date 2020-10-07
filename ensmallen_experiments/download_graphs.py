@@ -67,3 +67,5 @@ def download_graphs(graphs_data: Dict, root: str):
             desc="Retrieving graphs",
             total=len(graphs_data)
         ))
+        p.close()
+        p.join()

@@ -5,3 +5,4 @@ graphs
 _MACOSX
 .ipynb_checkpoints
 .coverage*
+htmlcov
