@@ -1,4 +1,4 @@
-#!/usr/local/anaconda3/bin/python
+#!~/anaconda3/bin/python
 import os
 import sys
 import json
@@ -26,10 +26,10 @@ LOG_LEVELS = {
 }
 
 def run_experiment(graph: str, library: str, task: str, executor_path: str, timeout_seconds:int = 3600):
-    command = "{executor_path}/run_experiment.py run {graph} {library} {task}".format(**locals())
+    command = "python {executor_path}/run_experiment.py run {graph} {library} {task}".format(**locals())
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
-        command,
+        shlex.split(command),
         shell=True
     )
     logger.info("Process spanwed with pid {}".format(p.pid))
@@ -42,24 +42,24 @@ def run_experiment(graph: str, library: str, task: str, executor_path: str, time
 
 
 def run_experiments(**kwargs):
-    graphs = json.loads(subprocess.check_output("{entrypoint} list graphs".format(**kwargs)))
-    tasks  = json.loads(subprocess.check_output("{entrypoint} list tasks".format(**kwargs)))
+    graphs = json.loads(subprocess.check_output("python {entrypoint} list graphs".format(**kwargs), shell=True))
+    tasks  = json.loads(subprocess.check_output("python {entrypoint} list tasks".format(**kwargs), shell=True))
     for graph in tqdm(graphs):
         for task in tqdm(tasks):
-            libraries = json.loads(subprocess.check_output("{entrypoint} list libraries {task}".format(**kwargs)))
+            libraries = json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(**kwargs), shell=True))
             for library in tqdm(libraries):
                 run_experiment(graph=graph, task=task, library=library, **kwargs)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--entrypoint", type=str, help="Path to the entrypoint to execute", default="./run_experiment.py")
+    parser.add_argument("-e", "--entrypoint", type=str, help="Path to the entrypoint to execute", default="run_experiment.py")
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
     parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default=os.path.abspath(os.path.dirname(__file__)))
     parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
 
-    values, arguments_left = parser.parse_known_args(sys.argv[1:])
-    values["metadata_path"] = os.path.join(values["root"], values["metadata_path"])
+    values= vars(parser.parse_args())
+    values["metadata"] = os.path.join(values["root"], values["metadata"])
     values["entrypoint"] = os.path.join(values["root"], values["entrypoint"])
 
     if values["verbosity"].lower() not in LOG_LEVELS:
