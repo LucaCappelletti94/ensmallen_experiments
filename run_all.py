@@ -10,9 +10,22 @@ from time import sleep
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+handler = logging.StreamHandler(sys.stderr)
+formatter = logging.Formatter("%(asctime)-15s[%(levelname)s]: %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+LOG_LEVELS = {
+    "debug": logging.DEBUG,
+    "info":logging.INFO,
+    "warn":logging.WARN,
+    "warning":logging.WARNING,
+    "error":logging.ERROR,
+    "critical":logging.CRITICAL
+}
 
 def run_experiment(graph: str, library: str, task: str, executor_path: str, timeout_seconds:int = 3600):
-    command = "{executor_path}/run_experiment.py {graph} {librar)y} {task}".format(**locals())
+    command = "{executor_path}/run_experiment.py run {graph} {library} {task}".format(**locals())
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
         command,
@@ -23,11 +36,8 @@ def run_experiment(graph: str, library: str, task: str, executor_path: str, time
         p.wait(timeout=timeout_seconds)
         logger.info("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
-        logger.info("Process with pid {} killed becasue it timedout".format(p.pid))
+        logger.warn("Process with pid {} killed becasue it timedout".format(p.pid))
         p.kill()
-
-def benchmark(**kwargs):
-    print("Benchmarking graph: {graph} - task: {task} - library: {library}".format(**kwargs))
 
 
 def run_experiments(**kwargs):
@@ -37,7 +47,7 @@ def run_experiments(**kwargs):
         for task in tqdm(tasks):
             libraries = json.loads(subprocess.check_output("{entrypoint} list libraries {task}".format(**kwargs)))
             for library in tqdm(libraries):
-                benchmark(graph=graph, task=task, library=library, **kwargs)
+                run_experiment(graph=graph, task=task, library=library, **kwargs)
 
 
 if __name__ == "__main__":
@@ -45,9 +55,16 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--entrypoint", type=str, help="Path to the entrypoint to execute", default="./run_experiment.py")
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
     parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default=os.path.abspath(os.path.dirname(__file__)))
+    parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
 
     values, arguments_left = parser.parse_known_args(sys.argv[1:])
     values["metadata_path"] = os.path.join(root, values["metadata_path"])
     values["entrypoint"] = os.path.join(root, values["entrypoint"])
+
+    if values["verbosity"].lower() not in LOG_LEVELS:
+        logger.error("The verbosity level {} not known. The available ones are {}".format(values["verbosity"], list(LOG_LEVELS.keys())))
+        sys.exit(1)
+
+    logger.setLevel(LOG_LEVELS[values.pop("verbosity").lower()])
 
     run_experiments(**values)
