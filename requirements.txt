@@ -6,3 +6,4 @@ node2vec
 barplots
 sanitize_ml_labels>=1.0.13
 csrgraph
+git+https://github.com/shenweichen/GraphEmbedding
