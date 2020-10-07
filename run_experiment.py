@@ -71,11 +71,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Main entrypoint for benchmarking")
     parser.add_argument("subcommand", type=str, help="Which subcommand to execute")
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
-    parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default=os.path.abspath(os.path.dirname(__file__)))
+    parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default="./graphs")
 
     values, arguments_left = parser.parse_known_args(sys.argv[1:])
     subcommand, metadata_path, root = values.subcommand, values.metadata, values.root
-    metadata_path = os.path.join(root, metadata_path)
 
     if subcommand not in SUB_COMMANDS:
         print("Subcommand {} not known. The available ones are : {}".format(subcommand, list(SUB_COMMANDS.keys())))
