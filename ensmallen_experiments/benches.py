@@ -1,6 +1,10 @@
-from .libraries import libraries
-from .utils import build_path_path, get_graph_report, get_graph_names
+import os
+
 import compress_json
+
+from .libraries import libraries
+from .tracker import Tracker
+from .utils import build_path_path, get_graph_names, get_graph_report
 
 
 def validate_graph_and_library(library: str, graph: str, metadata_path: str):
@@ -37,12 +41,22 @@ def bench_load_graph(library: str, graph: str, metadata_path: str, root: str):
     data = metadata[graph]
     report = get_graph_report(data, root)
 
-    libraries[library]["load_graph"](
-        edge_path=build_path_path(metadata[graph], root),
-        nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
+    log_path = "{root}/results/{graph}/{library}/load_graph.csv".format(
+        root=root,
+        graph=graph,
+        library=library
     )
+
+    if os.path.exists(log_path):
+        return
+
+    with Tracker(log_path):
+        libraries[library]["load_graph"](
+            edge_path=build_path_path(metadata[graph], root),
+            nodes_number=int(report["nodes_number"]),
+            edges_number=int(report["edges_number"]),
+            has_weights=report["has_weights"] == "true"
+        )
 
 
 def bench_random_walks(
@@ -86,10 +100,21 @@ def bench_random_walks(
         has_weights=report["has_weights"] == "true"
     )
 
-    walkers["walk"](
-        graph,
-        length=length,
-        iterations=iterations,
-        p=p,
-        q=q
+    log_path = "{root}/results/{graph}/{library}/execute_{type}_walks.csv".format(
+        root=root,
+        graph=graph,
+        library=library,
+        type="first_order" if p==q==1.0 else "second_order"
     )
+
+    if os.path.exists(log_path):
+        return
+
+    with Tracker(log_path):
+        walkers["walk"](
+            graph,
+            length=length,
+            iterations=iterations,
+            p=p,
+            q=q
+        )
