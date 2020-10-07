@@ -1,5 +1,6 @@
 #!/usr/local/anaconda3/bin/python
 import os
+import sys
 import json
 import shlex
 import logging
@@ -41,7 +42,7 @@ def run_experiment(graph: str, library: str, task: str, executor_path: str, time
 
 
 def run_experiments(**kwargs):
-    graphs = json.loads(subprocess.check_output("{entrypoint} list graphs".format(**kwargs))
+    graphs = json.loads(subprocess.check_output("{entrypoint} list graphs".format(**kwargs)))
     tasks  = json.loads(subprocess.check_output("{entrypoint} list tasks".format(**kwargs)))
     for graph in tqdm(graphs):
         for task in tqdm(tasks):
@@ -58,8 +59,8 @@ if __name__ == "__main__":
     parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
 
     values, arguments_left = parser.parse_known_args(sys.argv[1:])
-    values["metadata_path"] = os.path.join(root, values["metadata_path"])
-    values["entrypoint"] = os.path.join(root, values["entrypoint"])
+    values["metadata_path"] = os.path.join(values["root"], values["metadata_path"])
+    values["entrypoint"] = os.path.join(values["root"], values["entrypoint"])
 
     if values["verbosity"].lower() not in LOG_LEVELS:
         logger.error("The verbosity level {} not known. The available ones are {}".format(values["verbosity"], list(LOG_LEVELS.keys())))
