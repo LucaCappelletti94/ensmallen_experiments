@@ -1,5 +1,5 @@
-[
-    {
+{
+    "String PPI": {
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
         "folder_name": "string",
         "graph": "String PPI",
@@ -11,7 +11,7 @@
             "weights_column": "score"
         }
     },
-    {
+    "BlogCatalog": {
         "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
         "folder_name": "blog_catalog",
         "graph": "BlogCatalog",
@@ -24,7 +24,7 @@
             "edge_rows_to_skip": 2
         }
     },
-    {
+    "Wikipedia": {
         "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
         "folder_name": "wikipedia",
         "graph": "Wikipedia",
@@ -37,7 +37,7 @@
             "edge_rows_to_skip": 2
         }
     },
-    {
+    "KG-COVID-19": {
         "url": "https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz",
         "folder_name": "kg_covid_19",
         "graph": "KG-COVID-19",
@@ -48,7 +48,7 @@
             "destinations_column": "object"
         }
     },
-    {
+    "Twitter": {
         "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
         "folder_name": "twitter",
         "graph": "Twitter",
@@ -61,7 +61,7 @@
             "edge_rows_to_skip": 1
         }
     },
-    {
+    "Flikr": {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
         "graph": "Flikr",
@@ -73,7 +73,7 @@
             "destinations_column_number": 1
         }
     },
-    {
+    "IMDB": {
         "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
         "folder_name": "IMDB",
         "graph": "IMDB",
@@ -86,7 +86,7 @@
             "edge_rows_to_skip": 56
         }
     },
-    {
+    "bn-human-Jung": {
         "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
         "folder_name": "bn-human-Jung",
         "graph": "bn-human-Jung",
@@ -98,7 +98,7 @@
             "destinations_column_number": 1
         }
     },
-    {
+    "bn-fly-drosophila-medulla-1": {
         "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
         "folder_name": "bn-fly-drosophila-medulla-1",
         "graph": "bn-fly-drosophila-medulla-1",
@@ -110,7 +110,7 @@
             "destinations_column_number": 1
         }
     },
-    {
+    "bn-mouse_retina-1": {
         "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
         "folder_name": "bn-mouse_retina-1",
         "graph": "bn-mouse_retina-1",
@@ -122,7 +122,7 @@
             "destinations_column_number": 1
         }
     },
-    {
+    "bn-macaque-rhesus-brain-1": {
         "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
         "folder_name": "bn-macaque-rhesus-brain-1",
         "graph": "bn-macaque-rhesus-brain-1",
@@ -134,7 +134,7 @@
             "destinations_column_number": 1
         }
     },
-    {
+    "bio-mouse-gene": {
         "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
         "folder_name": "bio-mouse-gene",
         "graph": "bio-mouse-gene",
@@ -147,7 +147,7 @@
             "edge_rows_to_skip": 3
         }
     },
-    {
+    "bio-human-gene": {
         "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
         "folder_name": "bio-human-gene",
         "graph": "bio-human-gene",
@@ -160,4 +160,4 @@
             "edge_rows_to_skip": 3
         }
     }
-]
+}

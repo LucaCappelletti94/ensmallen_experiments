@@ -96,7 +96,7 @@ def sanitize_graphs(graphs_data: List[Dict], root: str):
         The working folder. All the files will be read and written from here.
     """
     for graph_data in tqdm(
-        graphs_data,
+        graphs_data.values(),
         desc="Retrieving graphs",
         total=len(graphs_data)
     ):

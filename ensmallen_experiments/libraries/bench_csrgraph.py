@@ -2,9 +2,10 @@
 from typing import Dict
 import csrgraph as cg
 import numpy as np
+from ..utils import build_directed_path
 
 
-def load_graph(
+def load_graph_csrgraph(
     edge_path: str,
     has_weights: bool,
     **kwargs: Dict
@@ -29,12 +30,12 @@ def load_graph(
     The loaded graph.
     """
     return cg.read_edgelist(
-        edge_path,
+        build_directed_path(edge_path, directed=False),
         sep="\t",
     )
 
 
-def execute_walks(
+def execute_walks_csrgraph(
     graph: cg.csrgraph,
     length: int,
     iterations: int,

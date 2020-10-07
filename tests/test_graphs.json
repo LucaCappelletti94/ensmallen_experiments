@@ -1,30 +1,14 @@
-[
-    {
-        "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
-        "folder_name":"string",
-        "extraction_path": "string.tsv",
-        "edge_file": "string.tsv",
-        "name": "String PPI",
-        "loading_settings":{
-            "sources_column":"item_id_a",
-            "destinations_column":"item_id_b",
-            "weights_column":"score",
-            "edge_max_rows_number": 1000
-        }
-    },
-    {
-        "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
-        "folder_name":"bio-mouse-gene",
-        "edge_file": "bio-mouse-gene.edges",
-        "name": "bio-mouse-gene",
-        "loading_settings":{
+{
+    "bn-macaque-rhesus-brain-1": {
+        "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
+        "folder_name": "bn-macaque-rhesus-brain-1",
+        "graph": "bn-macaque-rhesus-brain-1",
+        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges",
+        "loading_settings": {
+            "edge_separator": " ",
             "edge_header": false,
-            "edge_rows_to_skip": 3,
-            "edge_separator":" ",
-            "sources_column_number":0,
-            "destinations_column_number":1,
-            "weights_column_number":2,
-            "edge_max_rows_number": 1000
+            "sources_column_number": 0,
+            "destinations_column_number": 1
         }
     }
-]
+}

@@ -58,7 +58,7 @@ def download_graphs(graphs_data: Dict, root: str):
 
     tasks = [
         dict(graph_data=graph_data, root=root)
-        for graph_data in graphs_data
+        for graph_data in graphs_data.values()
     ]
 
     with Pool(min(cpu_count(), len(graphs_data))) as p:

@@ -2,9 +2,10 @@
 from typing import Dict
 from ensmallen_graph import EnsmallenGraph  # pylint: disable=no-name-in-module
 import numpy as np
+from ..utils import build_directed_path
 
 
-def load_graph(
+def load_graph_ensmallen(
     edge_path: str,
     nodes_number: int,
     edges_number: int,
@@ -42,7 +43,7 @@ def load_graph(
     The loaded graph.
     """
     return EnsmallenGraph.from_sorted_csv(
-        edge_path,
+        build_directed_path(edge_path, directed=True),
         directed=False,
         nodes_number=nodes_number,
         edges_number=edges_number,
@@ -58,7 +59,7 @@ def load_graph(
     )
 
 
-def execute_walks(
+def execute_walks_ensmallen(
     graph: EnsmallenGraph,
     length: int,
     iterations: int,

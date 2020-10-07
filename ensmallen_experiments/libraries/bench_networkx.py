@@ -1,9 +1,10 @@
 """Submodule with methods from Networkx to benchmark."""
 from typing import Dict
 import networkx as nx
+from ..utils import build_directed_path
 
 
-def load_graph(
+def load_graph_networkx(
     edge_path: str,
     has_weights: bool,
     **kwargs: Dict
@@ -32,12 +33,12 @@ def load_graph(
     """
     if has_weights:
         return nx.read_weighted_edgelist(
-            edge_path,
+            build_directed_path(edge_path, directed=True),
             delimiter="\t",
         )
 
     return nx.read_edgelist(
-        edge_path,
+        build_directed_path(edge_path, directed=True),
         data=False,
         delimiter="\t",
     )

@@ -1,18 +1,18 @@
-"""Submodule with methods from Node2Vec to benchmark."""
-from node2vec import Node2Vec
+"""Submodule with methods from GraphEmbedding to benchmark."""
+from ge import Node2Vec
 import networkx as nx
 import numpy as np
 from multiprocessing import cpu_count
 
 
-def execute_walks(
+def execute_walks_graph_embedding(
     graph: nx.Graph,
     length: int,
     iterations: int,
     p: float = 1.0,
     q: float = 1.0
 ) -> np.ndarray:
-    """Execute first/second order walks using Ensmallen walker.
+    """Execute first/second order walks using GraphEmbedding walker.
 
     Parameters
     --------------------------
@@ -35,10 +35,9 @@ def execute_walks(
     """
     return Node2Vec(
         graph,
-        quiet=True,
         walk_length=length,
         num_walks=iterations,
         workers=cpu_count(),
         p=p,
         q=q
-    ).walks
+    ).sentences
