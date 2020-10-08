@@ -27,15 +27,15 @@ LOG_LEVELS = {
 
 def run_experiment(graph: str, library: str, task: str, executor_path: str, timeout_seconds:int = 3600):
     command = "python {executor_path}/run_experiment.py run {graph} {task} {library}".format(**locals())
-    logger.info("Running {}".format(command))
+    print("Running {}".format(command))
     p = subprocess.Popen(
         shlex.split(command),
         shell=True
     )
-    logger.info("Process spanwed with pid {}".format(p.pid))
+    print("Process spanwed with pid {}".format(p.pid))
     try:
         p.wait(timeout=timeout_seconds)
-        logger.info("Process with pid {} terminated".format(p.pid))
+        print("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
         logger.warn("Process with pid {} killed becasue it timedout".format(p.pid))
         p.kill()
