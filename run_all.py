@@ -42,11 +42,11 @@ def run_experiment(graph: str, library: str, task: str, executor_path: str, time
 
 
 def run_experiments(**kwargs):
-    graphs = json.loads(subprocess.check_output("python {entrypoint} list graphs".format(**kwargs), shell=True))
-    tasks  = json.loads(subprocess.check_output("python {entrypoint} list tasks".format(**kwargs), shell=True))
+    graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {entrypoint} list graphs".format(**kwargs), shell=True))
+    tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {entrypoint} list tasks".format(**kwargs), shell=True))
     for graph in tqdm(graphs):
         for task in tqdm(tasks):
-            libraries = json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(**kwargs), shell=True))
+            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(**kwargs), shell=True))
             for library in tqdm(libraries):
                 run_experiment(graph=graph, task=task, library=library, **kwargs)
 
@@ -57,6 +57,9 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
     parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default=os.path.abspath(os.path.dirname(__file__)))
     parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
+    parser.add_argument("-g", "--graphs", type=str, help="Optional, Which graphs to execute", action='append')
+    parser.add_argument("-t", "--tasks", type=str, help="Option, Which tasks to execute", action='append')
+    parser.add_argument("-l", "--libraries", type=str, help="Option, Which libraries to execute", action='append')
 
     values= vars(parser.parse_args())
     values["metadata"] = os.path.join(values["root"], values["metadata"])
