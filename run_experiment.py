@@ -1,6 +1,7 @@
 #!/usr/local/anaconda3/bin/python
 import os
 import sys
+import json
 import argparse
 from ensmallen_experiments.utils import get_graph_libraries_names, get_walks_libraries_names, get_graph_names
 from ensmallen_experiments.benches import bench_load_graph, bench_random_walks
@@ -48,7 +49,7 @@ def list_entrypoint(root, metadata_path, args):
         print("The topic {} is not known. The available ones are {}".format(topic, list(LISTS.keys())))
         sys.exit(1)
 
-    print(LISTS[topic](metadata_path))
+    print(json.dumps(LISTS[topic](metadata_path)))
     sys.exit(0)
 
 TASKS = {
