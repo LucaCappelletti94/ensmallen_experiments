@@ -55,7 +55,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", "--entrypoint", type=str, help="Path to the entrypoint to execute", default="run_experiment.py")
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
-    parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default=os.path.abspath(os.path.dirname(__file__)))
+    parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default="./graphs")
     parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
     parser.add_argument("-g", "--graphs", type=str, help="Optional, Which graphs to execute", action='append')
     parser.add_argument("-t", "--tasks", type=str, help="Option, Which tasks to execute", action='append')
