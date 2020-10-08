@@ -47,7 +47,7 @@ def run_experiment(**kwargs):
         p.wait(timeout=kwargs["timeout"])
         logger.info("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
-        logger.warn("Process with pid {} killed becasue it timedout".format(p.pid))
+        logger.warning("Process with pid {} killed because it timeouted".format(p.pid))
         p.kill()
 
 
