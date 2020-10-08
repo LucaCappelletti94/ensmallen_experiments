@@ -42,6 +42,9 @@ class Tracker(object):
         self.verbose = verbose
         self.stop = mp.Event()
         self.start_delay = start_delay
+        directory = os.path.dirname(file_name)
+        if directory:
+            os.makedirs(directory, exist_ok=True)
 
         if calibrate:
             self.calibration_offset = self._calibrate(calibration_seconds)
@@ -52,6 +55,7 @@ class Tracker(object):
             target=resources_logger,
             args=[
                 self.stop,
+                file_name,
                 self.calibration_offset
             ]
         )
