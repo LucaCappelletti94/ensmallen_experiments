@@ -46,7 +46,7 @@ def run_experiments(**kwargs):
     tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {entrypoint} list tasks".format(**kwargs), shell=True))
     for graph in tqdm(graphs):
         for task in tqdm(tasks):
-            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(**kwargs), shell=True))
+            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(task=task, **kwargs), shell=True))
             for library in tqdm(libraries):
                 run_experiment(graph=graph, task=task, library=library, **kwargs)
 
