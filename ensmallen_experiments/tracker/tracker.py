@@ -42,6 +42,7 @@ class Tracker(object):
         self.verbose = verbose
         self.stop = mp.Event()
         self.start_delay = start_delay
+        self.file_name = file_name
         directory = os.path.dirname(file_name)
         if directory:
             os.makedirs(directory, exist_ok=True)
@@ -116,10 +117,17 @@ class Tracker(object):
         self.stop.clear()
         self.start_time = perf_counter()
 
-    def __exit__(self, type, value, traceback):
+    def __exit__(self, exc_type, exc_value, exc_traceback):
         self.end_time = perf_counter()
         self.stop.set()
         self.process.join()
+
+        if exc_type is not None:
+            if self.verbose:
+                print("The program had an exception %s"%str(exc_value))
+            with open(self.file_name, "a") as f:
+                f.write("-1,-1\n")
+
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
             print("The ram used one che process finished is {} ± {} Gb".format(
