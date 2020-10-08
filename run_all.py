@@ -50,13 +50,14 @@ def run_experiment(**kwargs):
 def run_experiments(**kwargs):
     graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {executor_path} list graphs".format(**kwargs), shell=True))
     tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {executor_path} list tasks".format(**kwargs), shell=True))
-    for graph in tqdm(graphs):
-        for task in tqdm(tasks):
+    for graph in tqdm(graphs, desc="Graphs"):
+        for task in tqdm(tasks, desc="Tasks"):
             libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
                 "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs)
             , shell=True))
-            for library in tqdm(libraries):
+            for library in tqdm(libraries, desc="Libraries"):
                 run_experiment(graph=graph, task=task, library=library, **kwargs)
+                sleep(30)
 
 
 if __name__ == "__main__":
