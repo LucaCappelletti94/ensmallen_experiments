@@ -39,7 +39,6 @@ def execute_walks_node2vec(
         walk_length=length,
         num_walks=iterations,
         workers=cpu_count(),
-        quiet=True,
         p=p,
         q=q
     ).walks
