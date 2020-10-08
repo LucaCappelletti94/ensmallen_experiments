@@ -1,3 +1,7 @@
+pytest
+pytest-cov
+coveralls
+validate_version_code
 pylint
 silence_tensorflow
 compress_json
