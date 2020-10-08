@@ -44,6 +44,6 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
     for time, ram in tracked:
         fp.write("{},{}\n".format(time, ram))
 
-    fp.write("0,0")
+    fp.write("0,0\n")
 
     fp.close()

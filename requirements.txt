@@ -1,3 +1,9 @@
+pytest
+pytest-cov
+coveralls
+validate_version_code
+pylint
+silence_tensorflow
 compress_json
 encodeproject>=1.0.22
 tqdm
@@ -8,3 +14,4 @@ sanitize_ml_labels>=1.0.13
 csrgraph
 python-igraph
 git+https://github.com/shenweichen/GraphEmbedding
+tensorflow

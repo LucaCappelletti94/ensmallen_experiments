@@ -22,28 +22,28 @@ def validate_graph_and_library(library: str, graph: str, metadata_path: str):
         )
 
 
-def bench_load_graph(library: str, graph: str, metadata_path: str, root: str):
+def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str):
     """Benches loading the given graph using given library.
 
     Parameters
     -----------------------
     library: str,
         Library to use for the benchmark.
-    graph: str,
+    graph_name: str,
         Graph to use for the benchmark.
     metadata_path: str,
         Path from where to load the graph metadata.
     root: str,
         Directory from where to load the graph.
     """
-    validate_graph_and_library(library, graph, metadata_path)
+    validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
-    data = metadata[graph]
+    data = metadata[graph_name]
     report = get_graph_report(data, root)
 
     log_path = "{root}/results/{graph}/{library}/load_graph.csv".format(
         root=root,
-        graph=graph,
+        graph=graph_name,
         library=library
     )
 
@@ -52,7 +52,7 @@ def bench_load_graph(library: str, graph: str, metadata_path: str, root: str):
 
     with Tracker(log_path):
         libraries[library]["load_graph"](
-            edge_path=build_path_path(metadata[graph], root),
+            edge_path=build_path_path(data, root),
             nodes_number=int(report["nodes_number"]),
             edges_number=int(report["edges_number"]),
             has_weights=report["has_weights"] == "true"
@@ -61,7 +61,7 @@ def bench_load_graph(library: str, graph: str, metadata_path: str, root: str):
 
 def bench_random_walks(
     library: str,
-    graph: str,
+    graph_name: str,
     metadata_path: str,
     root: str,
     length: int = 100,
@@ -75,7 +75,7 @@ def bench_random_walks(
     -----------------------
     library: str,
         Library to use for the benchmark.
-    graph: str,
+    graph_name: str,
         Graph to use for the benchmark.
     metadata_path: str,
         Path from where to load the graph metadata.
@@ -86,23 +86,23 @@ def bench_random_walks(
     q: float = 1.0,
         Invert of the explore weight.
     """
-    validate_graph_and_library(library, graph, metadata_path)
+    validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
-    data = metadata[graph]
+    data = metadata[graph_name]
     report = get_graph_report(data, root)
 
     walkers = libraries[library]["execute_walks"]
 
     graph = walkers["load_graph"](
-        edge_path=build_path_path(metadata[graph], root),
+        edge_path=build_path_path(data, root),
         nodes_number=int(report["nodes_number"]),
         edges_number=int(report["edges_number"]),
         has_weights=report["has_weights"] == "true"
     )
 
-    log_path = "{root}/results/{graph}/{library}/execute_{type}_walks.csv".format(
+    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_walks.csv".format(
         root=root,
-        graph=graph,
+        graph_name=graph_name,
         library=library,
         type="first_order" if p==q==1.0 else "second_order"
     )
