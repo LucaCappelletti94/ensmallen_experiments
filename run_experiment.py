@@ -60,7 +60,7 @@ LISTS = {
     "graphs":get_graph_names,
     "graph_libraries":lambda _: get_graph_libraries_names,
     "walks_libraries":lambda _: get_walks_libraries_names,
-    "tasks":list(TASKS.keys())
+    "tasks":lambda _: list(TASKS.keys())
 }
 SUB_COMMANDS = {
     "run":run_entrypoint,
