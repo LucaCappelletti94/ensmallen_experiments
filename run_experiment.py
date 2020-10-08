@@ -49,7 +49,9 @@ def list_entrypoint(root, metadata_path, args):
         print("The topic {} is not known. The available ones are {}".format(topic, list(LISTS.keys())))
         sys.exit(1)
 
-    print(json.dumps(LISTS[topic](metadata_path)))
+    values = LISTS[topic](metadata_path)
+    print(values)
+    print(json.dumps(values))
     sys.exit(0)
 
 TASKS = {
