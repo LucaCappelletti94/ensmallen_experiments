@@ -46,6 +46,8 @@ class Tracker(object):
         if directory:
             os.makedirs(directory, exist_ok=True)
 
+        print("Logging results into: {}".format(file_name))
+
         if calibrate:
             self.calibration_offset = self._calibrate(calibration_seconds)
         else:
