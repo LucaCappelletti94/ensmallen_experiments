@@ -6,8 +6,10 @@ import shlex
 import logging
 import argparse
 import subprocess
-from tqdm.auto import tqdm
 from time import sleep
+from tqdm.auto import tqdm
+from notipy_me import Notipy
+from ensmallen_experiments import retrieve_graphs
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -50,14 +52,16 @@ def run_experiment(**kwargs):
 def run_experiments(**kwargs):
     graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {executor_path} list graphs".format(**kwargs), shell=True))
     tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {executor_path} list tasks".format(**kwargs), shell=True))
-    for graph in tqdm(graphs, desc="Graphs"):
-        for task in tqdm(tasks, desc="Tasks"):
-            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
-                "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs)
-            , shell=True))
-            for library in tqdm(libraries, desc="Libraries"):
-                run_experiment(graph=graph, task=task, library=library, **kwargs)
-                sleep(30)
+    with Notipy() as ntp:
+        for graph in tqdm(graphs, desc="Graphs"):
+            for task in tqdm(tasks, desc="Tasks"):
+                libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
+                    "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs)
+                , shell=True))
+                for library in tqdm(libraries, desc="Libraries"):
+                    run_experiment(graph=graph, task=task, library=library, **kwargs)
+                    ntp.add_report({"graph":graph, "task":task, "library":library})
+                    sleep(30)
 
 
 if __name__ == "__main__":
@@ -79,4 +83,5 @@ if __name__ == "__main__":
 
     logger.setLevel(LOG_LEVELS[values.pop("verbosity").lower()])
 
+    retrieve_graphs(values["metadata"])
     run_experiments(**values)

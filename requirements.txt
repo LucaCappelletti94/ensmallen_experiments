@@ -15,3 +15,4 @@ csrgraph
 python-igraph
 git+https://github.com/shenweichen/GraphEmbedding
 tensorflow
+notipy_me
