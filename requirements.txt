@@ -1,3 +1,4 @@
+silence_tensorflow
 compress_json
 encodeproject>=1.0.22
 tqdm
