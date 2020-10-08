@@ -1,8 +1,8 @@
 {
-    "String PPI": {
+    "StringPPI": {
         "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
         "folder_name": "string",
-        "graph": "String PPI",
+        "graph": "StringPPI",
         "extraction_path": "string.tsv",
         "edge_file": "string.tsv",
         "loading_settings": {
