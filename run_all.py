@@ -62,8 +62,6 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--libraries", type=str, help="Option, Which libraries to execute", action='append')
 
     values= vars(parser.parse_args())
-    values["metadata"] = os.path.join(values["root"], values["metadata"])
-    values["entrypoint"] = os.path.join(values["root"], values["entrypoint"])
 
     if values["verbosity"].lower() not in LOG_LEVELS:
         logger.error("The verbosity level {} not known. The available ones are {}".format(values["verbosity"], list(LOG_LEVELS.keys())))
