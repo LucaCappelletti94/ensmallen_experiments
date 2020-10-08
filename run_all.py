@@ -1,14 +1,16 @@
 #!~/anaconda3/bin/python
-import os
-import sys
-import json
-import shlex
-import logging
 import argparse
+import json
+import logging
+import os
+import shlex
 import subprocess
+import sys
 from time import sleep
-from tqdm.auto import tqdm
+
 from notipy_me import Notipy
+from tqdm.auto import tqdm
+
 from ensmallen_experiments import retrieve_graphs
 
 logger = logging.getLogger(__name__)
