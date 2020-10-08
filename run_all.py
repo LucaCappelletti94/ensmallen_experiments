@@ -25,16 +25,22 @@ LOG_LEVELS = {
     "critical":logging.CRITICAL
 }
 
-def run_experiment(graph: str, library: str, task: str, executor_path: str, timeout_seconds:int = 3600):
-    command = "python {executor_path}/run_experiment.py run {graph} {task} {library}".format(**locals())
+LIBRARY_TAKS_LIST = {
+    "load":"graph_libraries",
+    "first_order_walk":"walks_libraries",
+    "second_order_walk":"walks_libraries",
+}
+
+def run_experiment(**kwargs):
+    command = "python {executor_path} run {graph} {task} {library}".format(**kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
-        shlex.split(command),
+        command,
         shell=True
     )
     logger.info("Process spanwed with pid {}".format(p.pid))
     try:
-        p.wait(timeout=timeout_seconds)
+        p.wait(timeout=kwargs["timeout"])
         logger.info("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
         logger.warn("Process with pid {} killed becasue it timedout".format(p.pid))
@@ -42,24 +48,28 @@ def run_experiment(graph: str, library: str, task: str, executor_path: str, time
 
 
 def run_experiments(**kwargs):
-    graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {entrypoint} list graphs".format(**kwargs), shell=True))
-    tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {entrypoint} list tasks".format(**kwargs), shell=True))
-    for graph in tqdm(graphs):
-        for task in tqdm(tasks):
-            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output("python {entrypoint} list libraries {task}".format(task=task, **kwargs), shell=True))
-            for library in tqdm(libraries):
+    graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {executor_path} list graphs".format(**kwargs), shell=True))
+    tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {executor_path} list tasks".format(**kwargs), shell=True))
+    for graph in tqdm(graphs, desc="Graphs"):
+        for task in tqdm(tasks, desc="Tasks"):
+            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
+                "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs)
+            , shell=True))
+            for library in tqdm(libraries, desc="Libraries"):
                 run_experiment(graph=graph, task=task, library=library, **kwargs)
+                sleep(30)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--entrypoint", type=str, help="Path to the entrypoint to execute", default="run_experiment.py")
+    parser.add_argument("-e", "--executor_path", type=str, help="Path to the entrypoint to execute", default="run_experiment.py")
     parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
     parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default="./graphs")
     parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
     parser.add_argument("-g", "--graphs", type=str, help="Optional, Which graphs to execute", action='append')
     parser.add_argument("-t", "--tasks", type=str, help="Option, Which tasks to execute", action='append')
     parser.add_argument("-l", "--libraries", type=str, help="Option, Which libraries to execute", action='append')
+    parser.add_argument("-to", "--timeout", type=int, help="After how many seconds to kill the experiment", default=3600)
 
     values= vars(parser.parse_args())
 

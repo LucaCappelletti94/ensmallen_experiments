@@ -49,7 +49,8 @@ def list_entrypoint(root, metadata_path, args):
         print("The topic {} is not known. The available ones are {}".format(topic, list(LISTS.keys())))
         sys.exit(1)
 
-    print(json.dumps(LISTS[topic](metadata_path)))
+    values = LISTS[topic](metadata_path)
+    print(json.dumps(values))
     sys.exit(0)
 
 TASKS = {
@@ -59,8 +60,9 @@ TASKS = {
 }
 LISTS = {
     "graphs":get_graph_names,
-    "graph_libraries":lambda _: get_graph_libraries_names,
-    "walks_libraries":lambda _: get_walks_libraries_names,
+    "graph_libraries":lambda _: get_graph_libraries_names(),
+    "walks_libraries":lambda _: get_walks_libraries_names(),
+    "libraries": lambda _: list(set(get_graph_libraries_names()) | set(get_walks_libraries_names())),
     "tasks":lambda _: list(TASKS.keys())
 }
 SUB_COMMANDS = {
