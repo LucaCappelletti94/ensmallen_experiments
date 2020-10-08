@@ -15,7 +15,7 @@ class Tracker(object):
         end_delay: float = 4,
         calibrate: bool = True,
         calibration_seconds: float = 2,
-        verbose: bool = True,
+        verbose: bool = False,
         start_delay: int = 5
     ):
         """Context manager that measure the time and ram a snipped of code use.
@@ -33,7 +33,7 @@ class Tracker(object):
             starting the code.
         calibration_seconds: float = 2,
             How much time, in seconds, the calibration step will take.
-        verbose: bool = True,
+        verbose: bool = False,
             If the program should be verbose and print info or not.
         start_delay: int = 5,
             How much to wait before starting the tracker to let the process start.
@@ -46,7 +46,8 @@ class Tracker(object):
         if directory:
             os.makedirs(directory, exist_ok=True)
 
-        print("Logging results into: {}".format(file_name))
+        if verbose:
+            print("Logging results into: {}".format(file_name))
 
         if calibrate:
             self.calibration_offset = self._calibrate(calibration_seconds)

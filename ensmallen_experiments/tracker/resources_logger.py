@@ -39,7 +39,7 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
         # writing to file won't be a significant overhead.
         if refresh_rate > 5:
             while len(tracked):
-                fp.write("{},{}\n".format(**tracked.pop(0)))
+                fp.write("{},{}\n".format(*tracked.pop(0)))
 
     for time, ram in tracked:
         fp.write("{},{}\n".format(time, ram))
