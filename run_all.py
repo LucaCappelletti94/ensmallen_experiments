@@ -29,7 +29,7 @@ def run_experiment(**kwargs):
     command = "python {executor_path} run {graph} {task} {library}".format(**kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
-        shlex.split(command),
+        command,
         shell=True
     )
     logger.info("Process spanwed with pid {}".format(p.pid))
