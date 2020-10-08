@@ -50,7 +50,6 @@ def list_entrypoint(root, metadata_path, args):
         sys.exit(1)
 
     values = LISTS[topic](metadata_path)
-    print(values)
     print(json.dumps(values))
     sys.exit(0)
 
