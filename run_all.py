@@ -34,7 +34,7 @@ def run_experiment(**kwargs):
     )
     logger.info("Process spanwed with pid {}".format(p.pid))
     try:
-        p.wait(timeout=kwargs["timeout_seconds"])
+        p.wait(timeout=kwargs["timeout"])
         logger.info("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
         logger.warn("Process with pid {} killed becasue it timedout".format(p.pid))
@@ -60,6 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("-g", "--graphs", type=str, help="Optional, Which graphs to execute", action='append')
     parser.add_argument("-t", "--tasks", type=str, help="Option, Which tasks to execute", action='append')
     parser.add_argument("-l", "--libraries", type=str, help="Option, Which libraries to execute", action='append')
+    parser.add_argument("-to", "--timeout", type=int, help="After how many seconds to kill the experiment", default=3600)
 
     values= vars(parser.parse_args())
 
