@@ -1,4 +1,5 @@
 """Submodule with methods from iGraph to benchmark."""
+import numpy as np
 from typing import Dict
 from igraph import Graph
 from ..utils import build_directed_path
@@ -28,3 +29,42 @@ def load_graph_igraph(
     The loaded graph.
     """
     return Graph.Read_Ncol(build_directed_path(edge_path, directed=True),  directed=False)
+
+
+
+def execute_first_order_walk_igraph(
+    graph: Graph,
+    length: int,
+    iterations: int,
+    p: float = 1.0,
+    q: float = 1.0
+) -> np.ndarray:
+    """Execute first/second order walks using Ensmallen walker.
+
+    Parameters
+    --------------------------
+    graph: EnsmallenGraph,
+        The graph on which to run the walks.
+    length: int,
+        Lenght of the walks.
+    iterations: int,
+        Number of walks to start from each node.
+    p: float = 1.0,
+        Inverse weight for making the walk local.
+        By default, the walk will be uniform.
+    q: float = 1.0,
+        Inverse weight for making the walk a deep first.
+        By default, the walk will be uniform.
+
+    Returns
+    --------------------------
+    Computed walks as numpy array.
+    """
+    return [
+        graph.random_walk(
+                start=node,
+                steps=length,
+            )
+        for i in range(iterations)
+        for node in range(graph.vcount())
+    ]

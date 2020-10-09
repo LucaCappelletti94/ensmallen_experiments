@@ -13,12 +13,20 @@ def get_graph_libraries_names() -> List[str]:
     ]
 
 
-def get_walks_libraries_names() -> List[str]:
+def get_first_order_walk_libraries_names() -> List[str]:
     """Return name of available libraries that execute walks."""
     return [
         library
         for library, data in libraries.items()
-        if "execute_walks" in data
+        if "first_order_walk" in data
+    ]
+
+def get_second_order_walk_libraries_names() -> List[str]:
+    """Return name of available libraries that execute walks."""
+    return [
+        library
+        for library, data in libraries.items()
+        if "second_order_walk" in data
     ]
 
 

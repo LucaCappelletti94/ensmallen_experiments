@@ -59,15 +59,13 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
         )
 
 
-def bench_random_walks(
+def bench_first_order_walks(
     library: str,
     graph_name: str,
     metadata_path: str,
     root: str,
     length: int = 100,
     iterations: int = 1,
-    p: float = 1.0,
-    q: float = 1.0
 ):
     """Benches executing random walks the given graph using given library.
 
@@ -91,7 +89,7 @@ def bench_random_walks(
     data = metadata[graph_name]
     report = get_graph_report(data, root)
 
-    walkers = libraries[library]["execute_walks"]
+    walkers = libraries[library]["first_order_walk"]
 
     graph = walkers["load_graph"](
         edge_path=build_path_path(data, root),
@@ -100,11 +98,69 @@ def bench_random_walks(
         has_weights=report["has_weights"] == "true"
     )
 
-    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_walks.csv".format(
+    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_first_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
         library=library,
-        type="first_order" if p==q==1.0 else "second_order"
+        type="first_order"
+    )
+
+    if os.path.exists(log_path):
+        return
+
+    with Tracker(log_path):
+        walkers["walk"](
+            graph,
+            length=length,
+            iterations=iterations
+        )
+
+def bench_second_order_walks(
+    library: str,
+    graph_name: str,
+    metadata_path: str,
+    root: str,
+    length: int = 100,
+    iterations: int = 1,
+    p: float = 2.0,
+    q: float = 2.0
+):
+    """Benches executing random walks the given graph using given library.
+
+    Parameters
+    -----------------------
+    library: str,
+        Library to use for the benchmark.
+    graph_name: str,
+        Graph to use for the benchmark.
+    metadata_path: str,
+        Path from where to load the graph metadata.
+    root: str,
+        Directory from where to load the graph.
+    p: float = 1.0,
+        Inverse of the return weight.
+    q: float = 1.0,
+        Invert of the explore weight.
+    """
+    validate_graph_and_library(library, graph_name, metadata_path)
+    metadata = compress_json.load(metadata_path)
+    data = metadata[graph_name]
+    report = get_graph_report(data, root)
+
+    walkers = libraries[library]["second_order_walk"]
+
+    graph = walkers["load_graph"](
+        edge_path=build_path_path(data, root),
+        nodes_number=int(report["nodes_number"]),
+        edges_number=int(report["edges_number"]),
+        has_weights=report["has_weights"] == "true"
+    )
+
+    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_second_order_walk.csv".format(
+        root=root,
+        graph_name=graph_name,
+        library=library,
+        type="second_order"
     )
 
     if os.path.exists(log_path):
@@ -116,5 +172,5 @@ def bench_random_walks(
             length=length,
             iterations=iterations,
             p=p,
-            q=q
+            q=q,
         )
