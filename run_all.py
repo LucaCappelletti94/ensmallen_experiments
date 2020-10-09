@@ -7,9 +7,10 @@ import shlex
 import subprocess
 import sys
 from time import sleep
+import gc
 
 from notipy_me import Notipy
-from tqdm.auto import tqdm
+from tqdm.auto import tqdm, trange
 
 from ensmallen_experiments import retrieve_graphs
 
@@ -22,21 +23,23 @@ logger.addHandler(handler)
 
 LOG_LEVELS = {
     "debug": logging.DEBUG,
-    "info":logging.INFO,
-    "warn":logging.WARN,
-    "warning":logging.WARNING,
-    "error":logging.ERROR,
-    "critical":logging.CRITICAL
+    "info": logging.INFO,
+    "warn": logging.WARN,
+    "warning": logging.WARNING,
+    "error": logging.ERROR,
+    "critical": logging.CRITICAL
 }
 
 LIBRARY_TAKS_LIST = {
-    "load":"graph_libraries",
-    "first_order_walk":"first_order_walk",
-    "second_order_walk":"second_order_walk",
+    "load": "graph_libraries",
+    "first_order_walk": "first_order_walk",
+    "second_order_walk": "second_order_walk",
 }
 
+
 def run_experiment(**kwargs):
-    command = "python {executor_path} run {graph} {task} {library}".format(**kwargs)
+    command = "python {executor_path} run {graph} {task} {library}".format(
+        **kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
         command,
@@ -47,40 +50,56 @@ def run_experiment(**kwargs):
         p.wait(timeout=kwargs["timeout"])
         logger.info("Process with pid {} terminated".format(p.pid))
     except subprocess.TimeoutExpired:
-        logger.warning("Process with pid {} killed because it timeouted".format(p.pid))
+        logger.warning(
+            "Process with pid {} killed because it timeouted".format(p.pid))
         p.kill()
 
 
 def run_experiments(**kwargs):
-    graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output("python {executor_path} list graphs".format(**kwargs), shell=True))
-    tasks  = kwargs.get("tasks", None) or json.loads(subprocess.check_output("python {executor_path} list tasks".format(**kwargs), shell=True))
+    graphs = kwargs.get("graphs", None) or json.loads(subprocess.check_output(
+        "python {executor_path} list graphs".format(**kwargs), shell=True))
+    tasks = kwargs.get("tasks", None) or json.loads(subprocess.check_output(
+        "python {executor_path} list tasks".format(**kwargs), shell=True))
     with Notipy() as ntp:
         for graph in tqdm(graphs, desc="Graphs"):
             for task in tqdm(tasks, desc="Tasks", leave=False):
                 libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
-                    "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs)
-                , shell=True))
+                    "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
                 for library in tqdm(libraries, desc="Libraries", leave=False):
-                    run_experiment(graph=graph, task=task, library=library, **kwargs)
-                    ntp.add_report({"graph":graph, "task":task, "library":library})
-                    sleep(30)
+                    run_experiment(graph=graph, task=task,
+                                   library=library, **kwargs)
+                    ntp.add_report(
+                        {"graph": graph, "task": task, "library": library})
+                    for _ in trange(60*10, desc="Waiting for RAM to free."):
+                        sleep(1)
+                        # Should not be necessary but apparently it is.
+                        gc.collect()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--executor_path", type=str, help="Path to the entrypoint to execute", default="run_experiment.py")
-    parser.add_argument("-m", "--metadata", type=str, help="Path to where to load the experiments metadata", default="./graphs.json")
-    parser.add_argument("-r", "--root", type=str, help="Path to where to load the experiments metadata", default="./graphs")
-    parser.add_argument("-v", "--verbosity", type=str, help="Lowercase log level. Default='error'", default="error")
-    parser.add_argument("-g", "--graphs", type=str, help="Optional, Which graphs to execute", action='append')
-    parser.add_argument("-t", "--tasks", type=str, help="Option, Which tasks to execute", action='append')
-    parser.add_argument("-l", "--libraries", type=str, help="Option, Which libraries to execute", action='append')
-    parser.add_argument("-to", "--timeout", type=int, help="After how many seconds to kill the experiment", default=3600)
+    parser.add_argument("-e", "--executor_path", type=str,
+                        help="Path to the entrypoint to execute", default="run_experiment.py")
+    parser.add_argument("-m", "--metadata", type=str,
+                        help="Path to where to load the experiments metadata", default="./graphs.json")
+    parser.add_argument("-r", "--root", type=str,
+                        help="Path to where to load the experiments metadata", default="./graphs")
+    parser.add_argument("-v", "--verbosity", type=str,
+                        help="Lowercase log level. Default='error'", default="error")
+    parser.add_argument("-g", "--graphs", type=str,
+                        help="Optional, Which graphs to execute", action='append')
+    parser.add_argument("-t", "--tasks", type=str,
+                        help="Option, Which tasks to execute", action='append')
+    parser.add_argument("-l", "--libraries", type=str,
+                        help="Option, Which libraries to execute", action='append')
+    parser.add_argument("-to", "--timeout", type=int,
+                        help="After how many seconds to kill the experiment", default=3600)
 
-    values= vars(parser.parse_args())
+    values = vars(parser.parse_args())
 
     if values["verbosity"].lower() not in LOG_LEVELS:
-        logger.error("The verbosity level {} not known. The available ones are {}".format(values["verbosity"], list(LOG_LEVELS.keys())))
+        logger.error("The verbosity level {} not known. The available ones are {}".format(
+            values["verbosity"], list(LOG_LEVELS.keys())))
         sys.exit(1)
 
     logger.setLevel(LOG_LEVELS[values.pop("verbosity").lower()])
