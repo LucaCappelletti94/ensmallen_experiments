@@ -1,6 +1,6 @@
 from .get_refresh_delay import get_refresh_delay
 from .get_used_ram import get_used_ram
-from time import sleep, perf_counter
+from time import sleep, time
 from queue import Queue
 from multiprocessing import Event
 
@@ -22,7 +22,7 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
 
     tracked = []
     tracked.append((0, get_used_ram() - calibration_offset))
-    start = perf_counter()
+    start = time()
     last_delta = 0
 
     fp = open(path, "w")
@@ -30,7 +30,7 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
     while not stop.is_set():
         refresh_rate = get_refresh_delay(last_delta)
         sleep(refresh_rate)
-        last_delta = perf_counter() - start
+        last_delta = time() - start
         tracked.append((
             last_delta,
             get_used_ram() - calibration_offset
@@ -41,8 +41,8 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
             while len(tracked):
                 fp.write("{},{}\n".format(*tracked.pop(0)))
 
-    for time, ram in tracked:
-        fp.write("{},{}\n".format(time, ram))
+    for delta, ram in tracked:
+        fp.write("{},{}\n".format(delta, ram))
 
     fp.write("0,0\n")
 

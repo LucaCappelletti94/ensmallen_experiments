@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import multiprocessing as mp
-from time import sleep, perf_counter
+from time import sleep, time
 from typing import List, Tuple
 from tqdm.auto import tqdm
 from .get_used_ram import get_used_ram
@@ -73,8 +73,8 @@ class Tracker(object):
                 For how many seconds the function will measure the ram used
         """
         measurements = []
-        start = perf_counter()
-        while (perf_counter() - start) < number_of_seconds:
+        start = time()
+        while (time() - start) < number_of_seconds:
             measurements.append(get_used_ram())
             sleep(0.1)
         return measurements
@@ -115,10 +115,10 @@ class Tracker(object):
         self.process.start()
         sleep(self.start_delay)
         self.stop.clear()
-        self.start_time = perf_counter()
+        self.start_time = time()
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        self.end_time = perf_counter()
+        self.end_time = time()
         self.stop.set()
         self.process.join()
 
