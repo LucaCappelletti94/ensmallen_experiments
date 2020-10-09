@@ -31,8 +31,8 @@ LOG_LEVELS = {
 
 LIBRARY_TAKS_LIST = {
     "load":"graph_libraries",
-    "first_order_walk":"walks_libraries",
-    "second_order_walk":"walks_libraries",
+    "first_order_walk":"first_order_walk",
+    "second_order_walk":"second_order_walk",
 }
 
 def run_experiment(**kwargs):
