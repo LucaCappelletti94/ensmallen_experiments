@@ -70,7 +70,7 @@ def run_experiments(**kwargs):
                                    library=library, **kwargs)
                     ntp.add_report(
                         {"graph": graph, "task": task, "library": library})
-                    for _ in trange(60*10, desc="Waiting for RAM to free."):
+                    for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
                         sleep(1)
                         # Should not be necessary but apparently it is.
                         gc.collect()
