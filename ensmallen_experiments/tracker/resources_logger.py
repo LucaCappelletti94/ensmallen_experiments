@@ -22,7 +22,7 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
         pass
 
     tracked = []
-    tracked.append((0, get_used_ram() - calibration_offset))
+    tracked.append((0, get_used_ram() - calibration_offset, time()))
     start = timer()
     last_delta = 0
 
@@ -42,7 +42,6 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
         if refresh_rate > 5:
             while len(tracked):
                 fp.write("{},{},{}\n".format(*tracked.pop(0)))
-
     for delta, ram, epoch in tracked:
         fp.write("{},{},{}\n".format(delta, ram, epoch))
 
