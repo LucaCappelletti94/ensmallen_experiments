@@ -112,6 +112,7 @@ class Tracker(object):
 
     def __enter__(self):
         self.stop.set()
+        self.process.daemon=True
         self.process.start()
         sleep(self.start_delay)
         self.stop.clear()

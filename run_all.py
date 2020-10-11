@@ -78,7 +78,7 @@ def run_experiments(**kwargs):
                         "elapsed_time": delta,
                         "human_elapsed_time": naturaldelta(delta)
                     })
-                    for _ in trange(60, desc="Waiting for RAM to free.", leave=False):
+                    for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
                         sleep(1)
                         # Should not be necessary but apparently it is.
                         gc.collect()
