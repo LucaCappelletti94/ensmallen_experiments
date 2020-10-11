@@ -101,7 +101,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--libraries", type=str,
                         help="Option, Which libraries to execute", action='append')
     parser.add_argument("-to", "--timeout", type=int,
-                        help="After how many seconds to kill the experiment", default=3600)
+                        help="After how many seconds to kill the experiment", default=60)
 
     values = vars(parser.parse_args())
 
