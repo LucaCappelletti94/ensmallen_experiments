@@ -8,7 +8,8 @@ import subprocess
 import sys
 from time import sleep
 import gc
-
+from time import time
+from humanize import naturaldelta
 from notipy_me import Notipy
 from tqdm.auto import tqdm, trange
 
@@ -66,11 +67,18 @@ def run_experiments(**kwargs):
                 libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
                     "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
                 for library in tqdm(libraries, desc="Libraries", leave=False):
+                    start = time()
                     run_experiment(graph=graph, task=task,
                                    library=library, **kwargs)
-                    ntp.add_report(
-                        {"graph": graph, "task": task, "library": library})
-                    for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
+                    delta = time() - start
+                    ntp.add_report({
+                        "graph": graph,
+                        "task": task,
+                        "library": library,
+                        "elapsed_time": delta,
+                        "human_elapsed_time": naturaldelta(delta)
+                    })
+                    for _ in trange(60, desc="Waiting for RAM to free.", leave=False):
                         sleep(1)
                         # Should not be necessary but apparently it is.
                         gc.collect()
