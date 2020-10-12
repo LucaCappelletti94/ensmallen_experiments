@@ -42,8 +42,10 @@ def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
         if refresh_rate > 5:
             while len(tracked):
                 fp.write("{},{},{}\n".format(*tracked.pop(0)))
+            fp.flush()
     for delta, ram, epoch in tracked:
         fp.write("{},{},{}\n".format(delta, ram, epoch))
+    fp.flush()
 
     fp.write("0,0,0\n")
 
