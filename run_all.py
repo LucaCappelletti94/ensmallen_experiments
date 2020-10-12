@@ -1,14 +1,16 @@
 #!~/anaconda3/bin/python
 import argparse
+import gc
 import json
 import logging
 import os
 import shlex
+import signal
 import subprocess
 import sys
-from time import sleep
-import gc
-from time import time
+from time import sleep, time
+
+import psutil
 from humanize import naturaldelta
 from notipy_me import Notipy
 from tqdm.auto import tqdm, trange
@@ -38,6 +40,25 @@ LIBRARY_TAKS_LIST = {
 }
 
 
+def kill_proc_tree(pid, sig=signal.SIGTERM, include_parent=True,
+                   timeout=None, on_terminate=None):
+    """Kill a process tree (including grandchildren) with signal
+    "sig" and return a (gone, still_alive) tuple.
+    "on_terminate", if specified, is a callabck function which is
+    called as soon as a child terminates.
+    """
+    assert pid != os.getpid(), "won't kill myself"
+    parent = psutil.Process(pid)
+    children = parent.children(recursive=True)
+    if include_parent:
+        children.append(parent)
+    for p in children:
+        p.send_signal(sig)
+    gone, alive = psutil.wait_procs(children, timeout=timeout,
+                                    callback=on_terminate)
+    return (gone, alive)
+
+
 def run_experiment(**kwargs):
     command = "python {executor_path} run {graph} {task} {library}".format(
         **kwargs)
@@ -53,7 +74,7 @@ def run_experiment(**kwargs):
     except subprocess.TimeoutExpired:
         logger.warning(
             "Process with pid {} killed because it timeouted".format(p.pid))
-        p.kill()
+        kill_proc_tree(p.pid)
 
 
 def run_experiments(**kwargs):
