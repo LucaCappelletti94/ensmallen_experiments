@@ -99,10 +99,10 @@ def run_experiments(**kwargs):
                         "elapsed_time": delta,
                         "human_elapsed_time": naturaldelta(delta)
                     })
-                    # for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
-                    #     sleep(1)
-                    #     # Should not be necessary but apparently it is.
-                    #     gc.collect()
+                    for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
+                        sleep(1)
+                        # Should not be necessary but apparently it is.
+                        gc.collect()
 
 
 if __name__ == "__main__":
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--libraries", type=str,
                         help="Option, Which libraries to execute", action='append')
     parser.add_argument("-to", "--timeout", type=int,
-                        help="After how many seconds to kill the experiment", default=60)
+                        help="After how many seconds to kill the experiment", default=3600)
 
     values = vars(parser.parse_args())
 

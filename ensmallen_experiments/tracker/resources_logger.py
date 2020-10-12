@@ -1,9 +1,10 @@
-from .get_refresh_delay import get_refresh_delay
-from .get_used_ram import get_used_ram
+from multiprocessing import Event
+from queue import Queue
 from time import sleep, time
 from timeit import default_timer as timer
-from queue import Queue
-from multiprocessing import Event
+
+from .get_refresh_delay import get_refresh_delay
+from .get_used_ram import get_used_ram
 
 
 def resources_logger(stop: Event, path: str, calibration_offset: int = 0):
