@@ -98,11 +98,10 @@ def bench_first_order_walks(
         has_weights=report["has_weights"] == "true"
     )
 
-    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_first_order_walk.csv".format(
+    log_path = "{root}/results/{graph_name}/{library}/first_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
-        library=library,
-        type="first_order"
+        library=library
     )
 
     if os.path.exists(log_path):
@@ -156,11 +155,10 @@ def bench_second_order_walks(
         has_weights=report["has_weights"] == "true"
     )
 
-    log_path = "{root}/results/{graph_name}/{library}/execute_{type}_second_order_walk.csv".format(
+    log_path = "{root}/results/{graph_name}/{library}/second_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
-        library=library,
-        type="second_order"
+        library=library
     )
 
     if os.path.exists(log_path):
