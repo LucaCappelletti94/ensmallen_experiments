@@ -1,5 +1,6 @@
 import os
-
+import gc
+from time import sleep
 import compress_json
 
 from .libraries import libraries
@@ -20,6 +21,13 @@ def validate_graph_and_library(library: str, graph: str, metadata_path: str):
                 libraries
             )
         )
+
+
+def wait_10_minutes():
+    for _ in range(60*10):
+        sleep(1)
+        # Should not be necessary but apparently it is.
+        gc.collect()
 
 
 def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str):
@@ -57,6 +65,7 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
             edges_number=int(report["edges_number"]),
             has_weights=report["has_weights"] == "true"
         )
+    wait_10_minutes()
 
 
 def bench_first_order_walks(
@@ -91,13 +100,6 @@ def bench_first_order_walks(
 
     walkers = libraries[library]["first_order_walk"]
 
-    graph = walkers["load_graph"](
-        edge_path=build_path_path(data, root),
-        nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
-    )
-
     log_path = "{root}/results/{graph_name}/{library}/first_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
@@ -107,12 +109,20 @@ def bench_first_order_walks(
     if os.path.exists(log_path):
         return
 
+    graph = walkers["load_graph"](
+        edge_path=build_path_path(data, root),
+        nodes_number=int(report["nodes_number"]),
+        edges_number=int(report["edges_number"]),
+        has_weights=report["has_weights"] == "true"
+    )
+
     with Tracker(log_path):
         walkers["walk"](
             graph,
             length=length,
             iterations=iterations
         )
+    wait_10_minutes()
 
 def bench_second_order_walks(
     library: str,
@@ -148,13 +158,6 @@ def bench_second_order_walks(
 
     walkers = libraries[library]["second_order_walk"]
 
-    graph = walkers["load_graph"](
-        edge_path=build_path_path(data, root),
-        nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
-    )
-
     log_path = "{root}/results/{graph_name}/{library}/second_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
@@ -164,6 +167,13 @@ def bench_second_order_walks(
     if os.path.exists(log_path):
         return
 
+    graph = walkers["load_graph"](
+        edge_path=build_path_path(data, root),
+        nodes_number=int(report["nodes_number"]),
+        edges_number=int(report["edges_number"]),
+        has_weights=report["has_weights"] == "true"
+    )
+
     with Tracker(log_path):
         walkers["walk"](
             graph,
@@ -172,3 +182,4 @@ def bench_second_order_walks(
             p=p,
             q=q,
         )
+    wait_10_minutes()
