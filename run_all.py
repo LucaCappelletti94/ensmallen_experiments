@@ -89,8 +89,12 @@ def run_experiments(**kwargs):
                     "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
                 for library in tqdm(libraries, desc="Libraries for {}".format(task), leave=False):
                     start = time()
-                    run_experiment(graph=graph, task=task,
-                                   library=library, **kwargs)
+                    run_experiment(
+                        graph=graph,
+                        task=task,
+                        library=library,
+                        **kwargs
+                    )
                     delta = time() - start
                     ntp.add_report({
                         "graph": graph,
