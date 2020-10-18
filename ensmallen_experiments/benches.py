@@ -48,7 +48,7 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
     last_line = fp.readlines()[-1]
     fp.close()
 
-    return set(last_line.strip()) == {"0", ","}
+    return set(last_line.strip()) != {"0", ","}
 
 
 def load_graph(library: str, data: Dict, root: str, report: Dict):

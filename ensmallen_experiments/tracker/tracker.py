@@ -127,7 +127,7 @@ class Tracker(object):
             if self.verbose:
                 print("The program had an exception %s"%str(exc_value))
             with open(self.file_name, "a") as f:
-                f.write("-1,-1,-1\n")
+                f.write("-1,-1\n")
 
         end_ram, end_std = self._measure_mean_ram_usage(self.end_delay)
         if self.verbose:
