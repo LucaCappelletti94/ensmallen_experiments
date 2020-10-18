@@ -134,7 +134,7 @@ def bench_first_order_walks(
 
     # If the library has already been tracked we skip it.
     # The same applies also when it is known that the graph cannot be handled with this library.
-    if os.path.exists(log_path) or can_load(root, walkers["load_graph"], graph_name):
+    if os.path.exists(log_path) or not can_load(root, walkers["load_graph"], graph_name):
         return
 
     graph = load_graph(walkers["load_graph"], data, root, report)
@@ -190,7 +190,7 @@ def bench_second_order_walks(
 
     # If the library has already been tracked we skip it.
     # The same applies also when it is known that the graph cannot be handled with this library.
-    if os.path.exists(log_path) or can_load(root, walkers["load_graph"], graph_name):
+    if os.path.exists(log_path) or not can_load(root, walkers["load_graph"], graph_name):
         return
 
     graph = load_graph(walkers["load_graph"], data, root, report)
