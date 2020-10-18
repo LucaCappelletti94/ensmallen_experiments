@@ -1,6 +1,9 @@
+from typing import Dict
 import os
 import gc
 from time import sleep
+import pandas as pd
+import numpy as np
 import compress_json
 
 from .libraries import libraries
@@ -28,6 +31,33 @@ def wait_10_minutes():
         sleep(1)
         # Should not be necessary but apparently it is.
         gc.collect()
+
+
+def can_load(root: str, library: str, graph_name: str) -> bool:
+    """Return boolean representing if given library can load the given graph."""
+    path = "{root}/results/{graph}/{library}/load_graph.csv".format(
+        root=root,
+        graph=graph_name,
+        library=library
+    )
+    if not os.path.exists(path):
+        return False
+
+    fp = open(path, "rb")
+    fp.seek(80, 2)  # 2 means "from the end of the file"
+    last_line = fp.readlines()[-1]
+    fp.close()
+
+    return set(last_line) == {"0", ","}
+
+
+def load_graph(library: str, data: Dict, root: str, report: Dict):
+    return libraries[library]["load_graph"](
+        edge_path=build_path_path(data, root),
+        nodes_number=int(report["nodes_number"]),
+        edges_number=int(report["edges_number"]),
+        has_weights=report["has_weights"] == "true"
+    )
 
 
 def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str):
@@ -59,12 +89,8 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
         return
 
     with Tracker(log_path):
-        libraries[library]["load_graph"](
-            edge_path=build_path_path(data, root),
-            nodes_number=int(report["nodes_number"]),
-            edges_number=int(report["edges_number"]),
-            has_weights=report["has_weights"] == "true"
-        )
+        load_graph(library, data, root, report)
+
     wait_10_minutes()
 
 
@@ -106,15 +132,12 @@ def bench_first_order_walks(
         library=library
     )
 
-    if os.path.exists(log_path):
+    # If the library has already been tracked we skip it.
+    # The same applies also when it is known that the graph cannot be handled with this library.
+    if os.path.exists(log_path) or can_load(root, walkers["load_graph"], graph_name):
         return
 
-    graph = walkers["load_graph"](
-        edge_path=build_path_path(data, root),
-        nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
-    )
+    graph = load_graph(walkers["load_graph"], data, root, report)
 
     with Tracker(log_path):
         walkers["walk"](
@@ -123,6 +146,7 @@ def bench_first_order_walks(
             iterations=iterations
         )
     wait_10_minutes()
+
 
 def bench_second_order_walks(
     library: str,
@@ -164,15 +188,12 @@ def bench_second_order_walks(
         library=library
     )
 
-    if os.path.exists(log_path):
+    # If the library has already been tracked we skip it.
+    # The same applies also when it is known that the graph cannot be handled with this library.
+    if os.path.exists(log_path) or can_load(root, walkers["load_graph"], graph_name):
         return
 
-    graph = walkers["load_graph"](
-        edge_path=build_path_path(data, root),
-        nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
-    )
+    graph = load_graph(walkers["load_graph"], data, root, report)
 
     with Tracker(log_path):
         walkers["walk"](

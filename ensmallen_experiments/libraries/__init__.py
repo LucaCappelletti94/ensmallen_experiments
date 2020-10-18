@@ -12,29 +12,29 @@ libraries = {
     "CSRgraph": {
         "load_graph": load_graph_csrgraph,
         "first_order_walk": {
-            "load_graph": load_graph_csrgraph,
+            "load_graph": "CSRgraph",
             "walk": execute_walks_csrgraph
         },
         "second_order_walk": {
-            "load_graph": load_graph_csrgraph,
+            "load_graph": "CSRgraph",
             "walk": execute_walks_csrgraph
         }
     },
     "EnsmallenGraph": {
         "load_graph": load_graph_ensmallen,
         "first_order_walk": {
-            "load_graph": load_graph_ensmallen,
+            "load_graph": "EnsmallenGraph",
             "walk": execute_walks_ensmallen
         },
         "second_order_walk": {
-            "load_graph": load_graph_ensmallen,
+            "load_graph": "EnsmallenGraph",
             "walk": execute_walks_ensmallen
         }
     },
     "iGraph": {
         "load_graph": load_graph_igraph,
         "first_order_walk": {
-            "load_graph": load_graph_igraph,
+            "load_graph": "iGraph",
             "walk": execute_first_order_walk_igraph
         },
     },
@@ -43,21 +43,21 @@ libraries = {
     },
     "GraphEmbedding": {
         "first_order_walk": {
-            "load_graph": load_graph_networkx,
+            "load_graph": "Networkx",
             "walk": execute_walks_graph_embedding
         },
         "second_order_walk": {
-            "load_graph": load_graph_networkx,
+            "load_graph": "Networkx",
             "walk": execute_walks_graph_embedding
         }
     },
     "Node2Vec": {
         "first_order_walk": {
-            "load_graph": load_graph_networkx,
+            "load_graph": "Networkx",
             "walk": execute_walks_node2vec
         },
         "second_order_walk": {
-            "load_graph": load_graph_networkx,
+            "load_graph": "Networkx",
             "walk": execute_walks_node2vec
         }
     },
