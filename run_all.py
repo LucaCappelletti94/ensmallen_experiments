@@ -84,10 +84,10 @@ def run_experiments(**kwargs):
         "python {executor_path} list tasks".format(**kwargs), shell=True))
     with Notipy() as ntp:
         for graph in tqdm(graphs, desc="Graphs"):
-            for task in tqdm(tasks, desc="Tasks", leave=False):
+            for task in tqdm(tasks, desc="Tasks for {}".format(graph), leave=False):
                 libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
                     "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
-                for library in tqdm(libraries, desc="Libraries", leave=False):
+                for library in tqdm(libraries, desc="Libraries for {}".format(task), leave=False):
                     start = time()
                     run_experiment(graph=graph, task=task,
                                    library=library, **kwargs)
