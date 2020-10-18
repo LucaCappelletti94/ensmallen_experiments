@@ -44,7 +44,7 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
         return False
 
     fp = open(path, "rb")
-    fp.seek(80, 2)  # 2 means "from the end of the file"
+    fp.seek(-80, 2)  # 2 means "from the end of the file"
     last_line = fp.readlines()[-1]
     fp.close()
 
