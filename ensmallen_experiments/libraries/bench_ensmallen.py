@@ -10,6 +10,7 @@ def load_graph_ensmallen(
     nodes_number: int,
     edges_number: int,
     has_weights: bool,
+    fast: bool = False,
     **kwargs: Dict
 ) -> EnsmallenGraph:
     """Load graph object using EnsmallenGraph.
@@ -35,6 +36,8 @@ def load_graph_ensmallen(
     has_weights: bool,
         Wether the graph has weights and we should load them.
         The weights, if present, are expected to be in column 3.
+    fast: bool = False,
+        Wether to run the fast version that uses more memory.
     **kwargs: Dict,
         Additional parameters that are used in other libraries but not this one.
 
@@ -42,7 +45,7 @@ def load_graph_ensmallen(
     -------------------------
     The loaded graph.
     """
-    return EnsmallenGraph.from_sorted_csv(
+    graph: EnsmallenGraph = EnsmallenGraph.from_sorted_csv(
         build_directed_path(edge_path, directed=True),
         directed=False,
         nodes_number=nodes_number,
@@ -57,6 +60,28 @@ def load_graph_ensmallen(
         verbose=False,
         edge_header=False
     )
+
+    if fast:
+        graph.enable_fast_walk()
+
+    return graph
+
+
+def load_graph_fast_ensmallen(
+    **kwargs: Dict
+) -> EnsmallenGraph:
+    """Load graph object using fast EnsmallenGraph.
+
+    Parameters
+    -----------------------
+    **kwargs: Dict,
+        Additional parameters that are used in other libraries but not this one.
+
+    Returns
+    -------------------------
+    The loaded graph.
+    """
+    return load_graph_ensmallen(fast=True, **kwargs)
 
 
 def execute_walks_ensmallen(
