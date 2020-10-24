@@ -54,7 +54,7 @@ def sanitize_graph(graph_data: str, root: str):
         return
 
     logger.info("Loading the file %s" % kwargs["edge_path"])
-    graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(**kwargs)
+    graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(**kwargs, name=graph_data["graph"])
     logger.info("Computing metadata")
     report = graph.report()
     compress_json.dump(report, report_path)
