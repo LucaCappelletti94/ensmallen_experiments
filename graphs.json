@@ -48,19 +48,6 @@
             "destinations_column": "object"
         }
     },
-    "Twitter": {
-        "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
-        "folder_name": "twitter",
-        "graph": "Twitter",
-        "edge_file": "soc-twitter-konect.edges",
-        "loading_settings": {
-            "edge_separator": " ",
-            "edge_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 1
-        }
-    },
     "Flikr": {
         "url": "http://nrvis.com/download/data/heter/flickr.zip",
         "folder_name": "flickr",
