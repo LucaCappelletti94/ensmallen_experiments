@@ -24,6 +24,7 @@ def retrieve_graphs(
     # If there is a failure while downloading the graph, the library automatically
     # cleans afer itself and afterwards raises the exception.
     download_graphs(graphs_data, root)
+    raise ValueError("For now stopping here")
     # Secondly we sanitize the downloaded files to remove elements such as:
     # - file headers (descriptors added in top of the files that include licenses etc...)
     # - duplicated edges (in some file there are duplicated edges)
