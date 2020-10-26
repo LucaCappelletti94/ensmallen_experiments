@@ -355,18 +355,6 @@
             "weights_column_number": 2
         }
     },
-    "bio-wormnet-v3": {
-        "url": "http://nrvis.com/download/data/bio/bio-WormNet-v3.zip",
-        "folder_name": "bio-wormnet-v3",
-        "graph": "bio-wormnet-v3",
-        "edge_file": "bio-WormNet-v3.edges",
-        "loading_settings": {
-            "edge_separator": " ",
-            "edge_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
-    },
     "bio-celegans-dir": {
         "url": "http://nrvis.com/download/data/bio/bio-celegans-dir.zip",
         "folder_name": "bio-celegans-dir",
