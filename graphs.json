@@ -131,7 +131,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-ce-gn": {
@@ -144,7 +144,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-ce-gt": {
@@ -157,7 +157,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-ce-ht": {
@@ -170,7 +170,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-ce-lc": {
@@ -183,7 +183,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-ce-pg": {
@@ -196,7 +196,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-dm-cx": {
@@ -209,7 +209,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-dm-ht": {
@@ -222,7 +222,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-dm-lc": {
@@ -235,7 +235,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-dr-cx": {
@@ -248,7 +248,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-hs-cx": {
@@ -261,7 +261,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-hs-ht": {
@@ -274,7 +274,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-hs-lc": {
@@ -287,20 +287,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
-        }
-    },
-    "bio-mutag-g1": {
-        "url": "http://nrvis.com/download/data/bio/bio-MUTAG-g1.zip",
-        "folder_name": "bio-mutag-g1",
-        "graph": "bio-mutag-g1",
-        "edge_file": "bio-MUTAG-g1.edges",
-        "loading_settings": {
-            "edge_separator": " ",
-            "edge_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-sc-cc": {
@@ -313,7 +300,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-sc-gt": {
@@ -326,7 +313,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-sc-ht": {
@@ -339,7 +326,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-sc-lc": {
@@ -352,7 +339,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-sc-ts": {
@@ -365,20 +352,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
-        }
-    },
-    "bio-wormnet-v3-benchmark": {
-        "url": "http://nrvis.com/download/data/bio/bio-WormNet-v3-benchmark.zip",
-        "folder_name": "bio-wormnet-v3-benchmark",
-        "graph": "bio-wormnet-v3-benchmark",
-        "edge_file": "bio-WormNet-v3-benchmark.edges",
-        "loading_settings": {
-            "edge_separator": " ",
-            "edge_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "weights_column_number": 2
         }
     },
     "bio-wormnet-v3": {
@@ -390,8 +364,7 @@
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "destinations_column_number": 1
         }
     },
     "bio-celegans-dir": {
@@ -403,47 +376,46 @@
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "destinations_column_number": 1
         }
     },
     "bio-celegans": {
         "url": "http://nrvis.com/download/data/bio/bio-celegans.zip",
         "folder_name": "bio-celegans",
         "graph": "bio-celegans",
-        "edge_file": "bio-celegans.edges",
+        "edge_file": "bio-celegans.mtx",
         "loading_settings": {
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 2
         }
     },
     "bio-diseasome": {
         "url": "http://nrvis.com/download/data/bio/bio-diseasome.zip",
         "folder_name": "bio-diseasome",
         "graph": "bio-diseasome",
-        "edge_file": "bio-diseasome.edges",
+        "edge_file": "bio-diseasome.mtx",
         "loading_settings": {
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 2
         }
     },
     "bio-dmela": {
         "url": "http://nrvis.com/download/data/bio/bio-dmela.zip",
         "folder_name": "bio-dmela",
         "graph": "bio-dmela",
-        "edge_file": "bio-dmela.edges",
+        "edge_file": "bio-dmela.mtx",
         "loading_settings": {
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 2
         }
     },
     "bio-grid-fission-yeast": {
@@ -452,11 +424,11 @@
         "graph": "bio-grid-fission-yeast",
         "edge_file": "bio-grid-fission-yeast.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-fruitfly": {
@@ -465,11 +437,11 @@
         "graph": "bio-grid-fruitfly",
         "edge_file": "bio-grid-fruitfly.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-human": {
@@ -478,11 +450,11 @@
         "graph": "bio-grid-human",
         "edge_file": "bio-grid-human.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-mouse": {
@@ -491,11 +463,11 @@
         "graph": "bio-grid-mouse",
         "edge_file": "bio-grid-mouse.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-plant": {
@@ -504,11 +476,11 @@
         "graph": "bio-grid-plant",
         "edge_file": "bio-grid-plant.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-worm": {
@@ -517,11 +489,11 @@
         "graph": "bio-grid-worm",
         "edge_file": "bio-grid-worm.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-grid-yeast": {
@@ -530,11 +502,11 @@
         "graph": "bio-grid-yeast",
         "edge_file": "bio-grid-yeast.edges",
         "loading_settings": {
-            "edge_separator": " ",
+            "edge_separator": ",",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 1
         }
     },
     "bio-human-gene1": {
@@ -547,7 +519,8 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 3,
+            "weights_column_number": 2
         }
     },
     "bio-human-gene2": {
@@ -560,7 +533,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 18
         }
     },
     "bio-mouse-gene": {
@@ -585,21 +558,20 @@
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "destinations_column_number": 1
         }
     },
     "bio-yeast": {
         "url": "http://nrvis.com/download/data/bio/bio-yeast.zip",
         "folder_name": "bio-yeast",
         "graph": "bio-yeast",
-        "edge_file": "bio-yeast.edges",
+        "edge_file": "bio-yeast.mtx",
         "loading_settings": {
             "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
+            "edge_rows_to_skip": 2
         }
     }
 }
