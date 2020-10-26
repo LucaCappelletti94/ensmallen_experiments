@@ -84,6 +84,7 @@ def run_experiments(**kwargs):
     tasks = kwargs.get("tasks", None) or json.loads(subprocess.check_output(
         "python {executor_path} list tasks".format(**kwargs), shell=True))
     with Notipy() as ntp:
+        retrieve_graphs(values["metadata"])
         for graph in tqdm(graphs, desc="Graphs"):
             for task in tqdm(tasks, desc="Tasks for {}".format(graph), leave=False):
                 libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
@@ -135,5 +136,4 @@ if __name__ == "__main__":
 
     logger.setLevel(LOG_LEVELS[values.pop("verbosity").lower()])
 
-    retrieve_graphs(values["metadata"])
     run_experiments(**values)
