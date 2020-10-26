@@ -1,4 +1,5 @@
 #!~/anaconda3/bin/python
+import silence_tensorflow.auto
 import argparse
 import gc
 import json
@@ -96,13 +97,14 @@ def run_experiments(**kwargs):
                         **kwargs
                     )
                     delta = time() - start
-                    ntp.add_report({
-                        "graph": graph,
-                        "task": task,
-                        "library": library,
-                        "elapsed_time": delta,
-                        "human_elapsed_time": naturaldelta(delta)
-                    })
+                    if delta > 10:
+                        ntp.add_report({
+                            "graph": graph,
+                            "task": task,
+                            "library": library,
+                            "elapsed_time": delta,
+                            "human_elapsed_time": naturaldelta(delta)
+                        })
 
 
 if __name__ == "__main__":
