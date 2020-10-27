@@ -61,7 +61,7 @@ def kill_proc_tree(pid, sig=signal.SIGTERM, include_parent=True,
 
 
 def run_experiment(**kwargs):
-    command = "python {executor_path} run {graph} {task} {library}".format(
+    command = "python {executor_path} run {graph} {task} {library} {wait_time}".format(
         **kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
@@ -126,6 +126,8 @@ if __name__ == "__main__":
                         help="Option, Which libraries to execute", action='append')
     parser.add_argument("-to", "--timeout", type=int,
                         help="After how many seconds to kill the experiment", default=60*60*4 + 10*60)
+    parser.add_argument("-wt", "--wait-time", type=int,
+                        help="How many seconds to wait after each experiment", default=10*60)
 
     values = vars(parser.parse_args())
 
