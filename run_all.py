@@ -61,7 +61,7 @@ def kill_proc_tree(pid, sig=signal.SIGTERM, include_parent=True,
 
 
 def run_experiment(**kwargs):
-    command = "python {executor_path} run {graph} {task} {library} -wt {wait_time}".format(
+    command = "python {executor_path} run {graph} {task} {library} {wait_time}".format(
         **kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
