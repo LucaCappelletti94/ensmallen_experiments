@@ -26,8 +26,15 @@ def validate_graph_and_library(library: str, graph: str, metadata_path: str):
         )
 
 
-def wait_10_minutes():
-    for _ in range(60*10):
+def wait_k_seconds(k: int):
+    """Sleeps for given amount of seconds running the garbage collector each time.
+
+    Parameters
+    -----------------------
+    k: int,
+        Number of seconds to sleep for.
+    """
+    for _ in range(k):
         sleep(1)
         # Should not be necessary but apparently it is.
         gc.collect()
@@ -60,7 +67,7 @@ def load_graph(library: str, data: Dict, root: str, report: Dict):
     )
 
 
-def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str):
+def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str, seconds: int):
     """Benches loading the given graph using given library.
 
     Parameters
@@ -73,6 +80,8 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
         Path from where to load the graph metadata.
     root: str,
         Directory from where to load the graph.
+    seconds: int,
+        Number of seconds to wait for after a successfull execution.
     """
     validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
@@ -91,7 +100,7 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
     with Tracker(log_path):
         load_graph(library, data, root, report)
 
-    wait_10_minutes()
+    wait_k_seconds(seconds)
 
 
 def bench_first_order_walks(
@@ -99,6 +108,7 @@ def bench_first_order_walks(
     graph_name: str,
     metadata_path: str,
     root: str,
+    seconds: int,
     length: int = 100,
     iterations: int = 1,
 ):
@@ -114,10 +124,12 @@ def bench_first_order_walks(
         Path from where to load the graph metadata.
     root: str,
         Directory from where to load the graph.
-    p: float = 1.0,
-        Inverse of the return weight.
-    q: float = 1.0,
-        Invert of the explore weight.
+    seconds: int,
+        Number of seconds to wait for after a successfull execution.
+    length: int = 100,
+        Length of the random walks.
+    iterations: int = 1,
+        Number of iterations to execute.
     """
     validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
@@ -145,7 +157,7 @@ def bench_first_order_walks(
             length=length,
             iterations=iterations
         )
-    wait_10_minutes()
+    wait_k_seconds(seconds)
 
 
 def bench_second_order_walks(
@@ -153,6 +165,7 @@ def bench_second_order_walks(
     graph_name: str,
     metadata_path: str,
     root: str,
+    seconds: int,
     length: int = 100,
     iterations: int = 1,
     p: float = 2.0,
@@ -170,6 +183,12 @@ def bench_second_order_walks(
         Path from where to load the graph metadata.
     root: str,
         Directory from where to load the graph.
+    seconds: int,
+        Number of seconds to wait for after a successfull execution.
+    length: int = 100,
+        Length of the random walks.
+    iterations: int = 1,
+        Number of iterations to execute.
     p: float = 1.0,
         Inverse of the return weight.
     q: float = 1.0,
@@ -203,4 +222,4 @@ def bench_second_order_walks(
             p=p,
             q=q,
         )
-    wait_10_minutes()
+    wait_k_seconds(seconds)

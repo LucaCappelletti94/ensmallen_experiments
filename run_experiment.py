@@ -7,7 +7,7 @@ from ensmallen_experiments.utils import get_graph_libraries_names, get_first_ord
 from ensmallen_experiments.benches import bench_load_graph, bench_first_order_walks, bench_second_order_walks
 
 
-def run_entrypoint(root, metadata_path, args):
+def run_entrypoint(root, metadata_path, seconds, args):
     parser = argparse.ArgumentParser()
     parser.add_argument("graph", type=str,
                         help="Which graph to use for the experiment")
@@ -44,7 +44,8 @@ def run_entrypoint(root, metadata_path, args):
         library,
         graph,
         metadata_path,
-        root
+        root,
+        seconds
     )
 
 
@@ -91,9 +92,11 @@ if __name__ == "__main__":
                         help="Path to where to load the experiments metadata", default="./graphs.json")
     parser.add_argument("-r", "--root", type=str,
                         help="Path to where to load the experiments metadata", default="./graphs")
+    parser.add_argument("-wt", "--wait-time", type=int,
+                        help="How many seconds to wait after each experiment", default=10*60)
 
     values, arguments_left = parser.parse_known_args(sys.argv[1:])
-    subcommand, metadata_path, root = values.subcommand, values.metadata, values.root
+    subcommand, metadata_path, root, seconds = values.subcommand, values.metadata, values.root, values.wait_time
 
     if subcommand not in SUB_COMMANDS:
         print("Subcommand {} not known. The available ones are : {}".format(
@@ -104,4 +107,4 @@ if __name__ == "__main__":
         print("The metadata file {} does not exists.".format(metadata_path))
         sys.exit(1)
 
-    SUB_COMMANDS[subcommand](root, metadata_path, arguments_left)
+    SUB_COMMANDS[subcommand](root, metadata_path, seconds, arguments_left)
