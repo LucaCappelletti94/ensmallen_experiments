@@ -15,8 +15,10 @@ def run_entrypoint(root, metadata_path, args):
         "task", type=str, help="Which task to benchmark for the experiment")
     parser.add_argument("library", type=str,
                         help="Which library to use for the experiment")
+    parser.add_argument("seconds", type=int,
+                        help="How many seconds to wait after each experiment", default=10*60)
     values = vars(parser.parse_args(args))
-    graph, library, task = values["graph"], values["library"], values["task"]
+    graph, library, task, seconds = values["graph"], values["library"], values["task"], values["seconds"]
 
     graphs = get_graph_names(metadata_path)
     if graph not in graphs:
@@ -44,7 +46,8 @@ def run_entrypoint(root, metadata_path, args):
         library,
         graph,
         metadata_path,
-        root
+        root,
+        seconds
     )
 
 

@@ -47,6 +47,12 @@ def sanitize_graph(graph_data: str, root: str):
         "report.json"
     )
 
+    textual_report_path = os.path.join(
+        root,
+        graph_data["folder_name"],
+        "report.txt"
+    )
+
     if all(
         os.path.exists(p)
         for p in (directed_dst_path, undirected_dst_path)
@@ -54,10 +60,16 @@ def sanitize_graph(graph_data: str, root: str):
         return
 
     logger.info("Loading the file %s" % kwargs["edge_path"])
-    graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(**kwargs)
+    graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(
+        **kwargs,
+        name=graph_data["graph"]
+    )
     logger.info("Computing metadata")
     report = graph.report()
+    textual_report = str(graph)
     compress_json.dump(report, report_path)
+    with open(textual_report_path, "w") as f:
+        f.write(textual_report)
 
     if not os.path.exists(undirected_dst_path):
         logger.info("Writing the file {}".format(undirected_dst_path))

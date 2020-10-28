@@ -1,0 +1,132 @@
+\subsection{Bio-grid-fruitfly}
+The undirected graph bio-grid-fruitfly has \(7274\) nodes and \(24894\) unweighted edges, of which none are self-loops. The graph is quite sparse as it has a density of \(0.00094\) and has \(53\) connected components, where the component with most nodes has \(7163\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(3\), the mean node degree is \(6.84\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(147\) (degree \(176\)), \(4505\) (degree \(141\)), \(4753\) (degree \(119\)), \(6257\) (degree \(116\)) and \(5085\) (degree \(110\)).
+
+\subsection{Bn-human-jung}
+The undirected graph bn-human-Jung has \(975930\) nodes and \(146109300\) unweighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.08990\) and has \(1042\) connected components, where the component with most nodes has \(969582\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(176\), the mean node degree is \(299.43\) and the node degree mode is \(35\). The top \(5\) most central nodes are \(1126893\) (degree \(8009\)), \(1126784\) (degree \(8008\)), \(1127000\) (degree \(7538\)), \(1126999\) (degree \(7520\)) and \(1127111\) (degree \(7354\)).
+
+\subsection{Bio-yeast-protein-inter}
+The undirected graph bio-yeast-protein-inter has \(1870\) nodes and \(2277\) unweighted edges, of which \(74\) are self-loops. The graph is sparse as it has a density of \(0.00128\) and has \(173\) connected components, where the component with most nodes has \(1458\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(1\), the mean node degree is \(2.40\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(224\) (degree \(56\)), \(1183\) (degree \(38\)), \(150\) (degree \(30\)), \(1219\) (degree \(29\)) and \(819\) (degree \(29\)).
+
+\subsection{Bn-macaque-rhesus-brain-1}
+The undirected graph bn-macaque-rhesus-brain-1 has \(242\) nodes and \(3054\) unweighted edges, of which none are self-loops. The graph is quite dense as it has a density of \(0.10473\) and is connected, as it has a single component. The graph median node degree is \(22\), the mean node degree is \(25.24\) and the node degree mode is \(18\). The top \(5\) most central nodes are \(113\) (degree \(111\)), \(73\) (degree \(79\)), \(31\) (degree \(76\)), \(75\) (degree \(74\)) and \(1\) (degree \(74\)).
+
+\subsection{Bio-diseasome}
+The undirected graph bio-diseasome has \(516\) nodes and \(1188\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00894\) and is connected, as it has a single component. The graph median node degree is \(4\), the mean node degree is \(4.60\) and the node degree mode is \(2\). The top \(5\) most central nodes are \(93\) (degree \(50\)), \(71\) (degree \(30\)), \(163\) (degree \(27\)), \(252\) (degree \(26\)) and \(457\) (degree \(26\)).
+
+\subsection{Bio-dm-lc}
+The undirected graph bio-dm-lc has \(658\) nodes and \(1129\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00522\) and has \(55\) connected components, where the component with most nodes has \(483\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(2\), the mean node degree is \(3.43\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(20\) (degree \(50\)), \(19\) (degree \(50\)), \(21\) (degree \(42\)), \(24\) (degree \(37\)) and \(18\) (degree \(36\)).
+
+\subsection{Bio-grid-worm}
+The undirected graph bio-grid-worm has \(3507\) nodes and \(6531\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00106\) and has \(71\) connected components, where the component with most nodes has \(3343\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(1\), the mean node degree is \(3.72\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(1257\) (degree \(523\)), \(2775\) (degree \(202\)), \(2305\) (degree \(181\)), \(2820\) (degree \(178\)) and \(3262\) (degree \(164\)).
+
+\subsection{Bio-hs-lc}
+The undirected graph bio-hs-lc has \(4227\) nodes and \(39484\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00442\) and has \(6\) connected components, where the component with most nodes has \(4215\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(7\), the mean node degree is \(18.68\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(349\) (degree \(397\)), \(18\) (degree \(326\)), \(992\) (degree \(224\)), \(546\) (degree \(221\)) and \(313\) (degree \(218\)).
+
+\subsection{Bio-sc-gt}
+The undirected graph bio-sc-gt has \(1716\) nodes and \(33987\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.02310\) and has \(4\) connected components, where the component with most nodes has \(1708\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(21\), the mean node degree is \(39.61\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(35\) (degree \(549\)), \(29\) (degree \(413\)), \(116\) (degree \(242\)), \(521\) (degree \(237\)) and \(519\) (degree \(237\)).
+
+\subsection{Bio-ce-cx}
+The undirected graph bio-ce-cx has \(15229\) nodes and \(245952\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00212\) and has \(78\) connected components, where the component with most nodes has \(15063\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(13\), the mean node degree is \(32.30\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(69\) (degree \(375\)), \(2335\) (degree \(373\)), \(829\) (degree \(352\)), \(1401\) (degree \(347\)) and \(407\) (degree \(335\)).
+
+\subsection{Bio-grid-mouse}
+The undirected graph bio-grid-mouse has \(1450\) nodes and \(1636\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00156\) and has \(177\) connected components, where the component with most nodes has \(791\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(1\), the mean node degree is \(2.26\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(64\) (degree \(111\)), \(162\) (degree \(74\)), \(154\) (degree \(46\)), \(33\) (degree \(45\)) and \(1361\) (degree \(44\)).
+
+\subsection{Bio-sc-lc}
+The undirected graph bio-sc-lc has \(2004\) nodes and \(20452\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01019\) and has \(3\) connected components, where the component with most nodes has \(1999\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(11\), the mean node degree is \(20.41\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(77\) (degree \(167\)), \(756\) (degree \(147\)), \(726\) (degree \(144\)), \(193\) (degree \(134\)) and \(191\) (degree \(134\)).
+
+\subsection{Bio-mouse-gene}
+The undirected graph bio-mouse-gene has \(45101\) nodes and \(14506196\) unweighted edges, of which \(45101\) are self-loops. The graph is dense as it has a density of \(0.01424\) and has \(2072\) connected components, where the component with most nodes has \(42923\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(235\), the mean node degree is \(642.28\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(26572\) (degree \(8032\)), \(34044\) (degree \(7131\)), \(34642\) (degree \(6823\)), \(6685\) (degree \(6790\)) and \(22509\) (degree \(6751\)).
+
+\subsection{Flickr}
+The undirected graph Flikr has \(2406556\) nodes and \(31383583\) unweighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.03315\) and has \(30769\) connected components, where the component with most nodes has \(2277001\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(2\), the mean node degree is \(26.08\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(2302966\) (degree \(34989\)), \(2302938\) (degree \(30310\)), \(784\) (degree \(28184\)), \(2302973\) (degree \(27543\)) and \(2302948\) (degree \(22097\)).
+
+\subsection{Bio-ce-ht}
+The undirected graph bio-ce-ht has \(2617\) nodes and \(2985\) weighted edges, of which none are self-loops. The graph is quite sparse as it has a density of \(0.00087\) and has \(127\) connected components, where the component with most nodes has \(2194\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(1\), the mean node degree is \(2.28\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(7\) (degree \(44\)), \(142\) (degree \(26\)), \(444\) (degree \(23\)), \(117\) (degree \(23\)) and \(532\) (degree \(21\)).
+
+\subsection{Bio-grid-yeast}
+The undirected graph bio-grid-yeast has \(6008\) nodes and \(156945\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00870\) and is connected, as it has a single component. The graph median node degree is \(26\), the mean node degree is \(52.25\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(814\) (degree \(2557\)), \(1875\) (degree \(1234\)), \(1388\) (degree \(1187\)), \(1656\) (degree \(1132\)) and \(35\) (degree \(818\)).
+
+\subsection{Bn-fly-drosophila-medulla-1}
+The undirected graph bn-fly-drosophila-medulla-1 has \(1781\) nodes and \(9016\) unweighted edges, of which \(105\) are self-loops. The graph is sparse as it has a density of \(0.00565\) and has \(6\) connected components, where the component with most nodes has \(1770\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(4\), the mean node degree is \(10.07\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(1472\) (degree \(927\)), \(50\) (degree \(152\)), \(146\) (degree \(110\)), \(48\) (degree \(109\)) and \(179\) (degree \(102\)).
+
+\subsection{Bio-grid-human}
+The undirected graph bio-grid-human has \(9436\) nodes and \(31182\) unweighted edges, of which none are self-loops. The graph is quite sparse as it has a density of \(0.00070\) and has \(111\) connected components, where the component with most nodes has \(9186\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(3\), the mean node degree is \(6.61\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(2035\) (degree \(308\)), \(455\) (degree \(266\)), \(105\) (degree \(166\)), \(8759\) (degree \(165\)) and \(31\) (degree \(157\)).
+
+\subsection{Bio-ce-pg}
+The undirected graph bio-ce-pg has \(1871\) nodes and \(47754\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.02730\) and has \(20\) connected components, where the component with most nodes has \(1692\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(21\), the mean node degree is \(51.05\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(57\) (degree \(913\)), \(117\) (degree \(565\)), \(89\) (degree \(479\)), \(27\) (degree \(446\)) and \(20\) (degree \(440\)).
+
+\subsection{Kg\_covid\_19}
+The undirected graph KG-COVID-19 has \(439411\) nodes and \(15611957\) unweighted edges, of which \(480\) are self-loops. The graph is sparse as it has a density of \(0.00761\) and has \(752\) connected components, where the component with most nodes has \(435728\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(4\), the mean node degree is \(71.06\) and the node degree mode is \(1\). The top \(5\) most central nodes are MESH:D014780 (degree \(90378\)), MESH:D006801 (degree \(78249\)), WD:Q30 (degree \(65223\)), MESH:D014777 (degree \(54155\)) and MESH:D017934 (degree \(45196\)).
+
+\subsection{Bio-dr-cx}
+The undirected graph bio-dr-cx has \(3289\) nodes and \(84940\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01571\) and has \(2\) connected components, where the component with most nodes has \(3287\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(27\), the mean node degree is \(51.65\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(486\) (degree \(497\)), \(58\) (degree \(397\)), \(419\) (degree \(381\)), \(421\) (degree \(355\)) and \(632\) (degree \(343\)).
+
+\subsection{Bio-human-gene2}
+The undirected graph bio-human-gene2 has \(14340\) nodes and \(9041364\) unweighted edges, of which \(14340\) are self-loops. The graph is dense as it has a density of \(0.08787\) and has \(320\) connected components, where the component with most nodes has \(14020\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(750\), the mean node degree is \(1260.00\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(1312\) (degree \(7229\)), \(6351\) (degree \(6857\)), \(8470\) (degree \(6834\)), \(6871\) (degree \(6765\)) and \(8738\) (degree \(6709\)).
+
+\subsection{Bio-celegans-dir}
+The undirected graph bio-celegans-dir has \(453\) nodes and \(2040\) unweighted edges, of which \(15\) are self-loops. The graph is dense as it has a density of \(0.01985\) and is connected, as it has a single component. The graph median node degree is \(5\), the mean node degree is \(8.97\) and the node degree mode is \(3\). The top \(5\) most central nodes are \(15\) (degree \(238\)), \(2\) (degree \(124\)), \(5\) (degree \(109\)), \(97\) (degree \(105\)) and \(9\) (degree \(75\)).
+
+\subsection{Bio-grid-plant}
+The undirected graph bio-grid-plant has \(1717\) nodes and \(3098\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00210\) and has \(131\) connected components, where the component with most nodes has \(1272\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(2\), the mean node degree is \(3.61\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(179\) (degree \(71\)), \(100\) (degree \(59\)), \(75\) (degree \(40\)), \(69\) (degree \(40\)) and \(679\) (degree \(39\)).
+
+\subsection{Bn-mouse\_retina-1}
+The undirected graph bn-mouse\_retina-1 has \(1076\) nodes and \(90811\) unweighted edges, of which none are self-loops. The graph is quite dense as it has a density of \(0.15702\) and is connected, as it has a single component. The graph median node degree is \(121\), the mean node degree is \(168.79\) and the node degree mode is \(87\). The top \(5\) most central nodes are \(841\) (degree \(744\)), \(280\) (degree \(712\)), \(18\) (degree \(697\)), \(10\) (degree \(690\)) and \(299\) (degree \(668\)).
+
+\subsection{Bio-dm-cx}
+The undirected graph bio-dm-cx has \(4040\) nodes and \(76717\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00940\) and has \(5\) connected components, where the component with most nodes has \(4032\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(20\), the mean node degree is \(37.98\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(581\) (degree \(362\)), \(505\) (degree \(357\)), \(467\) (degree \(334\)), \(327\) (degree \(276\)) and \(568\) (degree \(274\)).
+
+\subsection{Bio-yeast}
+The undirected graph bio-yeast has \(1458\) nodes and \(1948\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00183\) and is connected, as it has a single component. The graph median node degree is \(2\), the mean node degree is \(2.67\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(147\) (degree \(56\)), \(819\) (degree \(38\)), \(98\) (degree \(30\)), \(844\) (degree \(29\)) and \(567\) (degree \(29\)).
+
+\subsection{Bio-dmela}
+The undirected graph bio-dmela has \(7393\) nodes and \(25569\) unweighted edges, of which none are self-loops. The graph is quite sparse as it has a density of \(0.00094\) and is connected, as it has a single component. The graph median node degree is \(3\), the mean node degree is \(6.92\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(215\) (degree \(190\)), \(663\) (degree \(149\)), \(708\) (degree \(122\)), \(209\) (degree \(115\)) and \(76\) (degree \(113\)).
+
+\subsection{Bio-sc-ht}
+The undirected graph bio-sc-ht has \(2084\) nodes and \(63027\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.02904\) and has \(4\) connected components, where the component with most nodes has \(2077\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(26\), the mean node degree is \(60.49\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(288\) (degree \(472\)), \(148\) (degree \(472\)), \(233\) (degree \(419\)), \(231\) (degree \(419\)) and \(230\) (degree \(419\)).
+
+\subsection{Bio-hs-cx}
+The undirected graph bio-hs-cx has \(4413\) nodes and \(108818\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01118\) and has \(3\) connected components, where the component with most nodes has \(4409\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(25\), the mean node degree is \(49.32\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(271\) (degree \(473\)), \(270\) (degree \(462\)), \(83\) (degree \(451\)), \(965\) (degree \(411\)) and \(50\) (degree \(375\)).
+
+\subsection{Imdb}
+The undirected graph IMDB has \(896305\) nodes and \(3782454\) unweighted edges, of which \(7\) are self-loops. The graph is dense as it has a density of \(0.03729\) and is connected, as it has a single component. The graph median node degree is \(2\), the mean node degree is \(8.44\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(704908\) (degree \(1590\)), \(109046\) (degree \(1336\)), \(21504\) (degree \(1298\)), \(408682\) (degree \(1200\)) and \(404933\) (degree \(1124\)).
+
+\subsection{Bio-ce-lc}
+The undirected graph bio-ce-lc has \(1387\) nodes and \(1648\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00171\) and has \(89\) connected components, where the component with most nodes has \(993\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(1\), the mean node degree is \(2.38\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(14\) (degree \(131\)), \(16\) (degree \(68\)), \(61\) (degree \(48\)), \(122\) (degree \(42\)) and \(210\) (degree \(29\)).
+
+\subsection{Bio-ce-gt}
+The undirected graph bio-ce-gt has \(924\) nodes and \(3239\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00760\) and has \(13\) connected components, where the component with most nodes has \(878\) nodes and the component with least nodes has \(3\) nodes. The graph median node degree is \(4\), the mean node degree is \(7.01\) and the node degree mode is \(2\). The top \(5\) most central nodes are \(15\) (degree \(151\)), \(7\) (degree \(149\)), \(12\) (degree \(119\)), \(87\) (degree \(117\)) and \(51\) (degree \(102\)).
+
+\subsection{Bio-celegans}
+The undirected graph bio-celegans has \(453\) nodes and \(2025\) unweighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01978\) and is connected, as it has a single component. The graph median node degree is \(5\), the mean node degree is \(8.94\) and the node degree mode is \(3\). The top \(5\) most central nodes are \(186\) (degree \(237\)), \(147\) (degree \(123\)), \(408\) (degree \(109\)), \(145\) (degree \(104\)) and \(228\) (degree \(75\)).
+
+\subsection{String}
+The undirected graph StringPPI has \(16073\) nodes and \(544538\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00422\) and has \(23\) connected components, where the component with most nodes has \(16025\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(27\), the mean node degree is \(67.76\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(9606\).ENSP00000272317 (degree \(1665\)), \(9606\).ENSP00000388107 (degree \(1608\)), \(9606\).ENSP00000304697 (degree \(1338\)), \(9606\).ENSP00000441543 (degree \(1336\)) and \(9606\).ENSP00000377086 (degree \(1330\)).
+
+\subsection{Bio-human-gene}
+The undirected graph bio-human-gene has \(22283\) nodes and \(12345963\) unweighted edges, of which \(22283\) are self-loops. The graph is dense as it has a density of \(0.04969\) and has \(410\) connected components, where the component with most nodes has \(21853\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(537\), the mean node degree is \(1107.11\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(20435\) (degree \(7939\)), \(15280\) (degree \(7724\)), \(7206\) (degree \(7587\)), \(8022\) (degree \(7579\)) and \(16204\) (degree \(7571\)).
+
+\subsection{Bio-sc-cc}
+The undirected graph bio-sc-cc has \(2223\) nodes and \(34879\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01412\) and is connected, as it has a single component. The graph median node degree is \(18\), the mean node degree is \(31.38\) and the node degree mode is \(4\). The top \(5\) most central nodes are \(1\) (degree \(571\)), \(4\) (degree \(549\)), \(15\) (degree \(466\)), \(36\) (degree \(408\)) and \(248\) (degree \(370\)).
+
+\subsection{Bio-hs-ht}
+The undirected graph bio-hs-ht has \(2570\) nodes and \(13691\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00415\) and has \(32\) connected components, where the component with most nodes has \(2499\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(5\), the mean node degree is \(10.65\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(95\) (degree \(149\)), \(134\) (degree \(146\)), \(63\) (degree \(132\)), \(314\) (degree \(112\)) and \(89\) (degree \(109\)).
+
+\subsection{Bio-ce-gn}
+The undirected graph bio-ce-gn has \(2220\) nodes and \(53683\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.02179\) and has \(3\) connected components, where the component with most nodes has \(2215\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(33\), the mean node degree is \(48.36\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(318\) (degree \(242\)), \(52\) (degree \(237\)), \(100\) (degree \(234\)), \(357\) (degree \(228\)) and \(192\) (degree \(228\)).
+
+\subsection{Blog\_catalog}
+The undirected graph BlogCatalog has \(88784\) nodes and \(2093195\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00117\) and is connected, as it has a single component. The graph median node degree is \(5\), the mean node degree is \(47.15\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(32\) (degree \(9444\)), \(94\) (degree \(9417\)), \(35\) (degree \(9192\)), \(1082\) (degree \(9162\)) and \(1140\) (degree \(9131\)).
+
+\subsection{Bio-sc-ts}
+The undirected graph bio-sc-ts has \(636\) nodes and \(3959\) weighted edges, of which none are self-loops. The graph is dense as it has a density of \(0.01961\) and has \(81\) connected components, where the component with most nodes has \(67\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(4\), the mean node degree is \(12.45\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(70\) (degree \(66\)), \(69\) (degree \(66\)), \(68\) (degree \(66\)), \(67\) (degree \(66\)) and \(66\) (degree \(66\)).
+
+\subsection{Bio-human-gene1}
+The undirected graph bio-human-gene1 has \(22283\) nodes and \(12345963\) weighted edges, of which \(22283\) are self-loops. The graph is dense as it has a density of \(0.04969\) and has \(410\) connected components, where the component with most nodes has \(21853\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(537\), the mean node degree is \(1107.11\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(20435\) (degree \(7939\)), \(15280\) (degree \(7724\)), \(7206\) (degree \(7587\)), \(8022\) (degree \(7579\)) and \(16204\) (degree \(7571\)).
+
+\subsection{Bio-grid-fission-yeast}
+The undirected graph bio-grid-fission-yeast has \(2026\) nodes and \(12637\) unweighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00616\) and has \(22\) connected components, where the component with most nodes has \(1972\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(3\), the mean node degree is \(12.47\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(1678\) (degree \(439\)), \(645\) (degree \(160\)), \(392\) (degree \(159\)), \(1148\) (degree \(151\)) and \(1132\) (degree \(150\)).
+
+\subsection{Bio-dm-ht}
+The undirected graph bio-dm-ht has \(2989\) nodes and \(4660\) weighted edges, of which none are self-loops. The graph is sparse as it has a density of \(0.00104\) and has \(62\) connected components, where the component with most nodes has \(2831\) nodes and the component with least nodes has \(2\) nodes. The graph median node degree is \(2\), the mean node degree is \(3.12\) and the node degree mode is \(1\). The top \(5\) most central nodes are \(552\) (degree \(37\)), \(615\) (degree \(29\)), \(412\) (degree \(26\)), \(409\) (degree \(26\)) and \(719\) (degree \(25\)).
+

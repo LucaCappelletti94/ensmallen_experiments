@@ -1,14 +1,18 @@
 #!~/anaconda3/bin/python
+import silence_tensorflow.auto
 import argparse
+import gc
 import json
 import logging
 import os
 import shlex
+import signal
 import subprocess
 import sys
-from time import sleep
-import gc
+from time import sleep, time
 
+import psutil
+from humanize import naturaldelta
 from notipy_me import Notipy
 from tqdm.auto import tqdm, trange
 
@@ -37,8 +41,27 @@ LIBRARY_TAKS_LIST = {
 }
 
 
+def kill_proc_tree(pid, sig=signal.SIGTERM, include_parent=True,
+                   timeout=None, on_terminate=None):
+    """Kill a process tree (including grandchildren) with signal
+    "sig" and return a (gone, still_alive) tuple.
+    "on_terminate", if specified, is a callabck function which is
+    called as soon as a child terminates.
+    """
+    assert pid != os.getpid(), "won't kill myself"
+    parent = psutil.Process(pid)
+    children = parent.children(recursive=True)
+    if include_parent:
+        children.append(parent)
+    for p in children:
+        p.send_signal(sig)
+    gone, alive = psutil.wait_procs(children, timeout=timeout,
+                                    callback=on_terminate)
+    return (gone, alive)
+
+
 def run_experiment(**kwargs):
-    command = "python {executor_path} run {graph} {task} {library}".format(
+    command = "python {executor_path} run {graph} {task} {library} {wait_time}".format(
         **kwargs)
     logger.info("Running {}".format(command))
     p = subprocess.Popen(
@@ -52,7 +75,7 @@ def run_experiment(**kwargs):
     except subprocess.TimeoutExpired:
         logger.warning(
             "Process with pid {} killed because it timeouted".format(p.pid))
-        p.kill()
+        kill_proc_tree(p.pid)
 
 
 def run_experiments(**kwargs):
@@ -61,19 +84,28 @@ def run_experiments(**kwargs):
     tasks = kwargs.get("tasks", None) or json.loads(subprocess.check_output(
         "python {executor_path} list tasks".format(**kwargs), shell=True))
     with Notipy() as ntp:
+        retrieve_graphs(values["metadata"])
         for graph in tqdm(graphs, desc="Graphs"):
-            for task in tqdm(tasks, desc="Tasks", leave=False):
+            for task in tqdm(tasks, desc="Tasks for {}".format(graph), leave=False):
                 libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
                     "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
-                for library in tqdm(libraries, desc="Libraries", leave=False):
-                    run_experiment(graph=graph, task=task,
-                                   library=library, **kwargs)
-                    ntp.add_report(
-                        {"graph": graph, "task": task, "library": library})
-                    for _ in trange(60*10, desc="Waiting for RAM to free.", leave=False):
-                        sleep(1)
-                        # Should not be necessary but apparently it is.
-                        gc.collect()
+                for library in tqdm(libraries, desc="Libraries for {}".format(task), leave=False):
+                    start = time()
+                    run_experiment(
+                        graph=graph,
+                        task=task,
+                        library=library,
+                        **kwargs
+                    )
+                    delta = time() - start
+                    if delta > 10:
+                        ntp.add_report({
+                            "graph": graph,
+                            "task": task,
+                            "library": library,
+                            "elapsed_time": delta,
+                            "human_elapsed_time": naturaldelta(delta)
+                        })
 
 
 if __name__ == "__main__":
@@ -93,7 +125,9 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--libraries", type=str,
                         help="Option, Which libraries to execute", action='append')
     parser.add_argument("-to", "--timeout", type=int,
-                        help="After how many seconds to kill the experiment", default=3600)
+                        help="After how many seconds to kill the experiment", default=60*60*4 + 10*60)
+    parser.add_argument("-wt", "--wait-time", type=int,
+                        help="How many seconds to wait after each experiment", default=10*60)
 
     values = vars(parser.parse_args())
 
@@ -104,5 +138,4 @@ if __name__ == "__main__":
 
     logger.setLevel(LOG_LEVELS[values.pop("verbosity").lower()])
 
-    retrieve_graphs(values["metadata"])
     run_experiments(**values)
