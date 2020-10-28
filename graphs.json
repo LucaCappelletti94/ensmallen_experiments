@@ -108,19 +108,6 @@
             "destinations_column_number": 1
         }
     },
-    "bio-human-gene": {
-        "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
-        "folder_name": "bio-human-gene",
-        "graph": "bio-human-gene",
-        "edge_file": "bio-human-gene1.edges",
-        "loading_settings": {
-            "edge_separator": " ",
-            "edge_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_rows_to_skip": 3
-        }
-    },
     "bio-ce-cx": {
         "url": "http://nrvis.com/download/data/bio/bio-CE-CX.zip",
         "folder_name": "bio-ce-cx",
