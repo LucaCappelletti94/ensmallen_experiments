@@ -548,5 +548,18 @@
             "destinations_column_number": 1,
             "edge_rows_to_skip": 2
         }
+    },
+    "giant-tn": {
+        "url": "https://zenodo.org/record/3352348/files/Supervised-learning%20is%20an%20accurate%20method%20for%20network-based%20gene%20classification%20-%20Data.tar.gz",
+        "folder_name": "GIANT-TN",
+        "graph": "giant-tn",
+        "edge_file": "Supervised-learning is an accurate method for network-based gene classification - Data/networks/GIANT-TN.edg",
+        "loading_settings": {
+            "edge_header": false,
+            "edge_separator": "\t",
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "weights_column_number": 2
+        }
     }
 }
