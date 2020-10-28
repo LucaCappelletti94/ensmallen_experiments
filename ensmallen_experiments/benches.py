@@ -58,12 +58,15 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
     return set(last_line.strip()) == {"0", ","}
 
 
-def load_graph(library: str, data: Dict, root: str, report: Dict):
+def load_graph(library: str, data: Dict, root: str, report: Dict, p: float = 1.0, q: float = 1.0):
     return libraries[library]["load_graph"](
         edge_path=build_path_path(data, root),
         nodes_number=int(report["nodes_number"]),
         edges_number=int(report["edges_number"]),
-        has_weights=report["has_weights"] == "true"
+        density=float(report["density"]),
+        has_weights=report["has_weights"] == "true",
+        p=p,
+        q=q
     )
 
 
@@ -212,7 +215,7 @@ def bench_second_order_walks(
     if os.path.exists(log_path) or not can_load(root, walkers["load_graph"], graph_name):
         return
 
-    graph = load_graph(walkers["load_graph"], data, root, report)
+    graph = load_graph(walkers["load_graph"], data, root, report, p=p, q=q)
 
     with Tracker(log_path):
         walkers["walk"](
