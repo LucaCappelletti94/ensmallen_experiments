@@ -30,6 +30,7 @@ def load_graph_pecampy(
     -------------------------
     The loaded graph.
     """
+    edge_path = build_directed_path(edge_path, True)
     if nodes_number < 10000:
         graph = node2vec.PreComp(p, q, cpu_count(), verbose=False)
         graph.read_edg(edge_path, has_weights, False)
