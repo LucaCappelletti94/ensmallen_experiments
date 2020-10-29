@@ -1,4 +1,4 @@
-"""Submodule with methods from pecampy to benchmark."""
+"""Submodule with methods from pecanpy to benchmark."""
 from typing import Dict, Union
 from pecanpy import node2vec
 import numpy as np
@@ -6,7 +6,7 @@ from multiprocessing import cpu_count
 from ..utils import build_directed_path
 
 
-def load_graph_pecampy(
+def load_graph_pecanpy(
     edge_path: str,
     has_weights: bool,
     nodes_number: int,
@@ -15,7 +15,7 @@ def load_graph_pecampy(
     q: float,
     **kwargs: Dict
 ) -> Union[node2vec.PreComp, node2vec.SparseOTF, node2vec.DenseOTF]:
-    """Load graph object using pecampy.
+    """Load graph object using pecanpy.
 
     Parameters
     -----------------------
@@ -43,13 +43,13 @@ def load_graph_pecampy(
     return graph
 
 
-def execute_walks_pecampy(
+def execute_walks_pecanpy(
     graph: Union[node2vec.PreComp, node2vec.SparseOTF, node2vec.DenseOTF],
     length: int,
     iterations: int,
     **kwargs
 ) -> np.ndarray:
-    """Execute first/second order walks using pecampy walker.
+    """Execute first/second order walks using pecanpy walker.
 
     Parameters
     --------------------------
