@@ -5,7 +5,7 @@ from .bench_graph_embedding import execute_walks_graph_embedding
 from .bench_igraph import load_graph_igraph, execute_first_order_walk_igraph
 from .bench_networkx import load_graph_networkx
 from .bench_node2vec import execute_walks_node2vec
-from .bench_pecanpy import load_graph_pecampy, execute_walks_pecampy
+from .bench_pecanpy import load_graph_pecanpy, execute_walks_pecanpy
 
 
 libraries = {
@@ -73,14 +73,14 @@ libraries = {
         }
     },
     "PecanPy": {
-        "load_graph": load_graph_pecampy,
+        "load_graph": load_graph_pecanpy,
         "first_order_walk": {
             "load_graph": "PecanPy",
-            "walk": execute_walks_pecampy
+            "walk": execute_walks_pecanpy
         },
         "second_order_walk": {
             "load_graph": "PecanPy",
-            "walk": execute_walks_pecampy
+            "walk": execute_walks_pecanpy
         }
     },
 }
