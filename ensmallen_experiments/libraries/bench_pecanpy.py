@@ -66,4 +66,6 @@ def execute_walks_pecampy(
     --------------------------
     Computed walks as numpy array.
     """
+    if isinstance(graph, node2vec.PreComp):
+        graph.preprocess_transition_probs()
     return graph.simulate_walks(iterations, length)
