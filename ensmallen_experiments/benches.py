@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 import os
 import gc
 from time import sleep
