@@ -38,9 +38,11 @@ def run_entrypoint(root, metadata_path, args):
         sys.exit(1)
 
     if library not in libraries:
-        print("Library [{}] not known. The available ones are {}".format(
-            library, libraries))
-        sys.exit(1)
+        if task != "load":
+            print("Library [{}] not known. The available ones are {}".format(
+                library, libraries))
+            sys.exit(1)
+        return
 
     TASKS[task](
         library,
