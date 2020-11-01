@@ -204,10 +204,18 @@ def bench_second_order_walks(
 
     walkers = libraries[library]["second_order_walk"]
 
-    log_path = "{root}/results/{graph_name}/{library}/second_order_walk.csv".format(
+    if p==2.0 and q==1.0:
+        task_name = "second_order_walk_only_q"
+    elif q==2.0 and p==1.0:
+        task_name = "second_order_walk_only_q"
+    else:
+        task_name = "second_order_walk"
+
+    log_path = "{root}/results/{graph_name}/{library}/{task_name}.csv".format(
         root=root,
         graph_name=graph_name,
-        library=library
+        library=library,
+        task_name=task_name
     )
 
     # If the library has already been tracked we skip it.
