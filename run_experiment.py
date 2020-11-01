@@ -28,9 +28,9 @@ def run_entrypoint(root, metadata_path, args):
 
     if task == "load":
         libraries = get_graph_libraries_names()
-    elif task == "first_order_walk":
+    elif task.startswith("first_order_walk"):
         libraries = get_first_order_walk_libraries_names()
-    elif task == "second_order_walk":
+    elif task.startswith("second_order_walk"):
         libraries = get_second_order_walk_libraries_names()
     else:
         print("Task [{}] not known. The available ones are {}".format(
