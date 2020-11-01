@@ -38,6 +38,8 @@ LIBRARY_TAKS_LIST = {
     "load": "graph_libraries",
     "first_order_walk": "first_order_walk",
     "second_order_walk": "second_order_walk",
+    "second_order_walk_only_q": "second_order_walk_only_q",
+    "second_order_walk_only_p": "second_order_walk_only_p",
 }
 
 

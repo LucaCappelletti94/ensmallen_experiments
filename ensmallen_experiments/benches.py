@@ -204,9 +204,9 @@ def bench_second_order_walks(
 
     walkers = libraries[library]["second_order_walk"]
 
-    if p==2.0 and q==1.0:
+    if p == 2.0 and q == 1.0:
         task_name = "second_order_walk_only_q"
-    elif q==2.0 and p==1.0:
+    elif q == 2.0 and p == 1.0:
         task_name = "second_order_walk_only_q"
     else:
         task_name = "second_order_walk"
