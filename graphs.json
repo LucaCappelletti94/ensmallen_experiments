@@ -561,5 +561,43 @@
             "destinations_column_number": 1,
             "weights_column_number": 2
         }
+    },
+    "Friendster": {
+        "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
+        "folder_name": "friendster",
+        "graph": "Friendster",
+        "separator": " ",
+        "subject_col": 0,
+        "object_col": 1,
+        "weight_col": null,
+        "rows_to_skip": 2,
+        "extraction_path": "",
+        "edge_file": "soc-friendster.mtx"
+    },
+    "Twitter": {
+        "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
+        "folder_name": "twitter",
+        "graph": "Twitter",
+        "edge_file": "soc-twitter-konect.edges",
+        "loading_settings": {
+            "edge_separator": " ",
+            "edge_header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "edge_rows_to_skip": 1
+        }
+    },
+    "Wikipedia": {
+        "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
+        "folder_name": "wikipedia",
+        "graph": "Wikipedia",
+        "edge_file": "web-wikipedia2009.mtx",
+        "loading_settings": {
+            "edge_separator": " ",
+            "edge_header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "edge_rows_to_skip": 2
+        }
     }
 }
