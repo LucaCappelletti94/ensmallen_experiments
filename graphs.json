@@ -568,7 +568,7 @@
         "graph": "Friendster",
         "edge_file": "soc-friendster.mtx",
         "loading_settings": {
-            "edge_separator": "\t",
+            "edge_separator": " ",
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
