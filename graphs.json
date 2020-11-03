@@ -572,7 +572,7 @@
             "edge_header": false,
             "sources_column_number": 0,
             "destinations_column_number": 1,
-            "edge_rows_to_skip": 1
+            "edge_rows_to_skip": 2
         }
     },
     "Twitter": {
