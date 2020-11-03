@@ -42,7 +42,7 @@ def wait_k_seconds(k: int):
 
 def can_load(root: str, library: str, graph_name: str) -> bool:
     """Return boolean representing if given library can load the given graph."""
-    path = "{root}/results/{graph}/{library}/load_graph.csv".format(
+    path = "results/{graph}/{library}/load_graph.csv".format(
         root=root,
         graph=graph_name,
         library=library
@@ -91,7 +91,7 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
     data = metadata[graph_name]
     report = get_graph_report(data, root)
 
-    log_path = "{root}/results/{graph}/{library}/load_graph.csv".format(
+    log_path = "results/{graph}/{library}/load_graph.csv".format(
         root=root,
         graph=graph_name,
         library=library
@@ -141,7 +141,7 @@ def bench_first_order_walks(
 
     walkers = libraries[library]["first_order_walk"]
 
-    log_path = "{root}/results/{graph_name}/{library}/first_order_walk.csv".format(
+    log_path = "results/{graph_name}/{library}/first_order_walk.csv".format(
         root=root,
         graph_name=graph_name,
         library=library
@@ -211,7 +211,7 @@ def bench_second_order_walks(
     else:
         task_name = "second_order_walk"
 
-    log_path = "{root}/results/{graph_name}/{library}/{task_name}.csv".format(
+    log_path = "results/{graph_name}/{library}/{task_name}.csv".format(
         root=root,
         graph_name=graph_name,
         library=library,
