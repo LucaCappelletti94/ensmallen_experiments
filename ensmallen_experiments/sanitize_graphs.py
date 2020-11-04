@@ -65,11 +65,13 @@ def sanitize_graph(graph_data: str, root: str):
         name=graph_data["graph"]
     )
     logger.info("Computing metadata")
-    report = graph.report()
-    compress_json.dump(report, report_path)
-    textual_report = str(graph)
-    with open(textual_report_path, "w") as f:
-        f.write(textual_report)
+    if not os.path.exists(report_path):
+        report = graph.report()
+        compress_json.dump(report, report_path)
+    if not os.path.exists(textual_report_path):
+        textual_report = str(graph)
+        with open(textual_report_path, "w") as f:
+            f.write(textual_report)
 
     if not os.path.exists(undirected_dst_path):
         logger.info("Writing the file {}".format(undirected_dst_path))
