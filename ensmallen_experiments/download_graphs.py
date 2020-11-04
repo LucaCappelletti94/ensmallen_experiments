@@ -2,7 +2,7 @@
 import os
 from multiprocessing import Pool, cpu_count
 from typing import Dict
-
+from glob import glob
 import compress_json
 import pandas as pd
 from encodeproject import download
@@ -35,7 +35,7 @@ def download_graph(graph_data: Dict, root: str):
 
     extracted_folder = os.path.join(
         folder, graph_data.get("extraction_path", "")).strip("/")
-    if not os.path.exists(extracted_folder):
+    if not os.path.exists(extracted_folder) or len(glob("{}/report.*".format(extracted_folder))) <= 2:
         logger.info("Extracting %s -> %s", path, extracted_folder)
         extract(path, extracted_folder)
 
