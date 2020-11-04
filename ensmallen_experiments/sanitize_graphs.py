@@ -66,8 +66,8 @@ def sanitize_graph(graph_data: str, root: str):
     )
     logger.info("Computing metadata")
     report = graph.report()
-    textual_report = str(graph)
     compress_json.dump(report, report_path)
+    textual_report = str(graph)
     with open(textual_report_path, "w") as f:
         f.write(textual_report)
 
