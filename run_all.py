@@ -104,9 +104,7 @@ def run_experiments(**kwargs):
                         ntp.add_report({
                             "graph": graph,
                             "task": task,
-                            "library": library,
-                            "elapsed_time": delta,
-                            "human_elapsed_time": naturaldelta(delta)
+                            "library": library
                         })
 
 
