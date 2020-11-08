@@ -46,9 +46,11 @@ def load_graph_ensmallen(
     -------------------------
     The loaded graph.
     """
+    directed_edge_list = nodes_number > 1_000_000
     graph: EnsmallenGraph = EnsmallenGraph.from_sorted_csv(
-        build_directed_path(edge_path, directed=True),
+        build_directed_path(edge_path, directed=not directed_edge_list),
         directed=False,
+        directed_edge_list=directed_edge_list,
         nodes_number=nodes_number,
         edges_number=edges_number,
         sources_column_number=0,
