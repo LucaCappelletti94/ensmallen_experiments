@@ -421,6 +421,7 @@ def execute_walks_ensmallen(
     graph: EnsmallenGraph,
     length: int,
     iterations: int,
+    nodes_number: int,
     max_degree: int,
     p: float = 1.0,
     q: float = 1.0,
@@ -436,6 +437,8 @@ def execute_walks_ensmallen(
         Lenght of the walks.
     iterations: int,
         Number of walks to start from each node.
+    nodes_number: int,
+        Number of nodes in the graph.
     max_degree: int,
         Maximum degree of the graph.
     p: float = 1.0,
@@ -456,5 +459,5 @@ def execute_walks_ensmallen(
         iterations=iterations,
         return_weight=1/p,
         explore_weight=1/q,
-        max_neighbours=None if max_degree < 100_000 else 100_100
+        max_neighbours=10_100 if max_degree > 10_000 and nodes_number > 500_000 else None
     )
