@@ -169,7 +169,6 @@ def bench_second_order_walks(
     metadata_path: str,
     root: str,
     seconds: int,
-    max_degree: int,
     length: int = 100,
     iterations: int = 1,
     p: float = 2.0,
@@ -189,8 +188,6 @@ def bench_second_order_walks(
         Directory from where to load the graph.
     seconds: int,
         Number of seconds to wait for after a successfull execution.
-    max_degree: int,
-        Maximum degree of the graph.
     length: int = 100,
         Length of the random walks.
     iterations: int = 1,
@@ -233,6 +230,7 @@ def bench_second_order_walks(
             graph,
             length=length,
             iterations=iterations,
+            max_degree=int(report["max_degree"]),
             p=p,
             q=q,
         )
