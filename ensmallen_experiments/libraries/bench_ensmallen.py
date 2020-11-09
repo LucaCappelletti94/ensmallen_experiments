@@ -421,8 +421,10 @@ def execute_walks_ensmallen(
     graph: EnsmallenGraph,
     length: int,
     iterations: int,
+    max_degree: int,
     p: float = 1.0,
-    q: float = 1.0
+    q: float = 1.0,
+    **kwargs: Dict
 ) -> np.ndarray:
     """Execute first/second order walks using Ensmallen walker.
 
@@ -434,12 +436,16 @@ def execute_walks_ensmallen(
         Lenght of the walks.
     iterations: int,
         Number of walks to start from each node.
+    max_degree: int,
+        Maximum degree of the graph.
     p: float = 1.0,
         Inverse weight for making the walk local.
         By default, the walk will be uniform.
     q: float = 1.0,
         Inverse weight for making the walk a deep first.
         By default, the walk will be uniform.
+    kwargs: Dict,
+        Additional parameters to be used in other libraries but not this one.
 
     Returns
     --------------------------
@@ -449,5 +455,6 @@ def execute_walks_ensmallen(
         length=length,
         iterations=iterations,
         return_weight=1/p,
-        explore_weight=1/q
+        explore_weight=1/q,
+        max_neighbours=None if max_degree < 100_000 else 100_100
     )
