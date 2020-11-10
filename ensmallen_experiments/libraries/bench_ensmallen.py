@@ -46,9 +46,11 @@ def load_graph_ensmallen(
     -------------------------
     The loaded graph.
     """
+    directed_edge_list = edges_number > 1_000_000
     graph: EnsmallenGraph = EnsmallenGraph.from_sorted_csv(
-        build_directed_path(edge_path, directed=True),
+        build_directed_path(edge_path, directed=not directed_edge_list),
         directed=False,
+        directed_edge_list=directed_edge_list,
         nodes_number=nodes_number,
         edges_number=edges_number,
         sources_column_number=0,
@@ -419,8 +421,11 @@ def execute_walks_ensmallen(
     graph: EnsmallenGraph,
     length: int,
     iterations: int,
+    nodes_number: int,
+    max_degree: int,
     p: float = 1.0,
-    q: float = 1.0
+    q: float = 1.0,
+    **kwargs: Dict
 ) -> np.ndarray:
     """Execute first/second order walks using Ensmallen walker.
 
@@ -432,12 +437,18 @@ def execute_walks_ensmallen(
         Lenght of the walks.
     iterations: int,
         Number of walks to start from each node.
+    nodes_number: int,
+        Number of nodes in the graph.
+    max_degree: int,
+        Maximum degree of the graph.
     p: float = 1.0,
         Inverse weight for making the walk local.
         By default, the walk will be uniform.
     q: float = 1.0,
         Inverse weight for making the walk a deep first.
         By default, the walk will be uniform.
+    kwargs: Dict,
+        Additional parameters to be used in other libraries but not this one.
 
     Returns
     --------------------------
@@ -447,5 +458,6 @@ def execute_walks_ensmallen(
         length=length,
         iterations=iterations,
         return_weight=1/p,
-        explore_weight=1/q
+        explore_weight=1/q,
+        max_neighbours=10_100 if max_degree > 10_000 and nodes_number > 500_000 else None
     )
