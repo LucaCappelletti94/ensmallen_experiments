@@ -88,6 +88,8 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
     """
     validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
+    if "disabled" in metadata:
+        return
     data = metadata[graph_name]
     report = get_graph_report(data, root)
 
@@ -136,6 +138,8 @@ def bench_first_order_walks(
     """
     validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
+    if "disabled" in metadata:
+        return
     data = metadata[graph_name]
     report = get_graph_report(data, root)
 
@@ -199,6 +203,8 @@ def bench_second_order_walks(
     """
     validate_graph_and_library(library, graph_name, metadata_path)
     metadata = compress_json.load(metadata_path)
+    if "disabled" in metadata:
+        return
     data = metadata[graph_name]
     report = get_graph_report(data, root)
 
