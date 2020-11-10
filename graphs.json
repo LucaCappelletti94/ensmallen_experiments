@@ -606,6 +606,7 @@
         "folder_name": "WEB-CLUEWEB09",
         "graph": "WEB-CLUEWEB09",
         "edge_file": "IHAVENOCLUE",
+        "disabled": true,
         "loading_settings": {
             "edge_separator": " ",
             "edge_header": false,

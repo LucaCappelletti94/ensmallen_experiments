@@ -59,6 +59,7 @@ def download_graphs(graphs_data: Dict, root: str):
     tasks = [
         dict(graph_data=graph_data, root=root)
         for graph_data in graphs_data.values()
+        if "disabled" not in graph_data
     ]
 
     with Pool(min(cpu_count(), len(graphs_data))) as p:

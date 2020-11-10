@@ -114,4 +114,6 @@ def sanitize_graphs(graphs_data: List[Dict], root: str):
         desc="Retrieving graphs",
         total=len(graphs_data)
     ):
+        if "disabled" in graph_data:
+            continue
         sanitize_graph(graph_data, root)
