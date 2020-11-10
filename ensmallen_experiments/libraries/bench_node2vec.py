@@ -2,6 +2,7 @@
 from node2vec import Node2Vec
 import networkx as nx
 import numpy as np
+from typing import Dict
 from multiprocessing import cpu_count
 
 
