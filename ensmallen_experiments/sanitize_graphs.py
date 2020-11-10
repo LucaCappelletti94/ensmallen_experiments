@@ -55,7 +55,7 @@ def sanitize_graph(graph_data: str, root: str):
 
     if all(
         os.path.exists(p)
-        for p in (directed_dst_path, undirected_dst_path)
+        for p in (directed_dst_path, undirected_dst_path, report_path, textual_report_path)
     ):
         return
 
