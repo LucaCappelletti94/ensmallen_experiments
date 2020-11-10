@@ -37,7 +37,8 @@ def execute_first_order_walk_igraph(
     length: int,
     iterations: int,
     p: float = 1.0,
-    q: float = 1.0
+    q: float = 1.0,
+    **kwargs: Dict
 ) -> np.ndarray:
     """Execute first/second order walks using Ensmallen walker.
 
@@ -55,6 +56,8 @@ def execute_first_order_walk_igraph(
     q: float = 1.0,
         Inverse weight for making the walk a deep first.
         By default, the walk will be uniform.
+    kwargs: Dict,
+        Additional parameters to be used in other libraries but not this one.
 
     Returns
     --------------------------
