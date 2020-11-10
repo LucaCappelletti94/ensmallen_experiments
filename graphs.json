@@ -600,5 +600,18 @@
             "destinations_column_number": 1,
             "edge_rows_to_skip": 2
         }
+    },
+    "WEB-CLUEWEB09": {
+        "url": "http://nrvis.com/download/data/massive/web-ClueWeb09.zip",
+        "folder_name": "WEB-CLUEWEB09",
+        "graph": "WEB-CLUEWEB09",
+        "edge_file": "IHAVENOCLUE",
+        "loading_settings": {
+            "edge_separator": " ",
+            "edge_header": false,
+            "sources_column_number": 0,
+            "destinations_column_number": 1,
+            "edge_rows_to_skip": 2
+        }
     }
 }
