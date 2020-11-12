@@ -64,6 +64,8 @@ def sanitize_graph(graph_data: str, root: str):
         **kwargs,
         name=graph_data["graph"]
     )
+    logger.info("Enabling fast version")
+    graph.enable_fast_walk()
     logger.info("Computing metadata")
     if not os.path.exists(report_path):
         report = graph.report()
