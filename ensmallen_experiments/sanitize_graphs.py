@@ -64,11 +64,15 @@ def sanitize_graph(graph_data: str, root: str):
         **kwargs,
         name=graph_data["graph"]
     )
+    logger.info("Enabling fast version")
+    graph.enable_fast_walk()
     logger.info("Computing metadata")
     if not os.path.exists(report_path):
+        logger.info("Computing JSON report")
         report = graph.report()
         compress_json.dump(report, report_path)
     if not os.path.exists(textual_report_path):
+        logger.info("Computing textual report")
         textual_report = str(graph)
         with open(textual_report_path, "w") as f:
             f.write(textual_report)
