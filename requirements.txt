@@ -17,3 +17,4 @@ git+https://github.com/shenweichen/GraphEmbedding
 tensorflow
 notipy_me
 pecanpy
+dgl
