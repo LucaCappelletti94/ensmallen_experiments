@@ -1,5 +1,5 @@
 pytest
-pytest-cov
+pytest-covc
 coveralls
 validate_version_code
 pylint
@@ -16,5 +16,5 @@ python-igraph
 git+https://github.com/shenweichen/GraphEmbedding
 tensorflow
 notipy_me
-pecanpy
+git+https://github.com/krishnanlab/PecanPy
 dgl
