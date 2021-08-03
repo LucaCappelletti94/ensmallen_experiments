@@ -60,12 +60,12 @@ def sanitize_graph(graph_data: str, root: str):
         return
 
     logger.info("Loading the file %s" % kwargs["edge_path"])
-    graph: EnsmallenGraph = EnsmallenGraph.from_unsorted_csv(
+    graph: EnsmallenGraph = EnsmallenGraph.from_csv(
         **kwargs,
         name=graph_data["graph"]
     )
     logger.info("Enabling fast version")
-    graph.enable_fast_walk()
+    graph.enable()
     logger.info("Computing metadata")
     if not os.path.exists(report_path):
         logger.info("Computing JSON report")

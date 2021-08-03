@@ -63,8 +63,11 @@ def execute_first_order_walk_igraph(
     --------------------------
     Computed walks as numpy array.
     """
-    return dgl.sampling.random_walk(
-        graph,
-        nodes=np.arange(graph.num_nodes),
-        length=length,
-    )
+    return [
+        dgl.sampling.random_walk(
+            graph,
+            nodes=np.arange(graph.num_nodes),
+            length=length,
+        )
+        for i in iterations
+    ]
