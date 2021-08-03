@@ -12,7 +12,7 @@ node2vec
 barplots
 sanitize_ml_labels>=1.0.13
 csrgraph
-python-igraph
+#python-igraph
 git+https://github.com/shenweichen/GraphEmbedding
 tensorflow
 notipy_me
