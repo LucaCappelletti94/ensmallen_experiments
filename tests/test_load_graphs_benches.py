@@ -21,7 +21,8 @@ def test_load_graphs_benches():
                 library,
                 graph,
                 metadata_path,
-                root
+                root,
+                2, # Hardcoded default of how much seconds to wait at the end of the benchmakr (this is needed to give the OS time to actually free the memory used by the process)
             )
         for library in tqdm(get_first_order_walk_libraries_names(), desc="Testing available random walks libraries"):
             bench_first_order_walks(
