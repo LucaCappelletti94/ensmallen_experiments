@@ -62,7 +62,7 @@ def load_graph(library: str, data: Dict, root: str, report: Dict, p: float = 1.0
     return libraries[library]["load_graph"](
         edge_path=build_path_path(data, root),
         nodes_number=int(report["nodes_number"]),
-        edges_number=int(report["edges_number"]),
+        edges_number=int(report["directed_edges_number"]),
         density=float(report["density"]),
         has_weights=report["has_weights"] == "true",
         p=p,
