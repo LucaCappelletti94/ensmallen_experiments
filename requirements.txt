@@ -5,6 +5,7 @@ validate_version_code
 pylint
 silence_tensorflow
 compress_json
+psutil
 encodeproject>=1.0.22
 tqdm
 ensmallen_graph>=0.4.3
