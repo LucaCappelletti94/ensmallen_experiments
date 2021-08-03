@@ -15,6 +15,5 @@ csrgraph
 #python-igraph
 git+https://github.com/shenweichen/GraphEmbedding
 tensorflow
-notipy_me
 git+https://github.com/krishnanlab/PecanPy
 dgl
