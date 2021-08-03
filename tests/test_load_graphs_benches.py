@@ -29,14 +29,16 @@ def test_load_graphs_benches():
                 library,
                 graph,
                 metadata_path,
-                root
+                root,
+                2, # Hardcoded default of how much seconds to wait at the end of the benchmakr (this is needed to give the OS time to actually free the memory used by the process)
             )
         for library in tqdm(get_second_order_walk_libraries_names(), desc="Testing available random walks libraries"):
             bench_second_order_walks(
                 library,
                 graph,
                 metadata_path,
-                root
+                root,
+                2, # Hardcoded default of how much seconds to wait at the end of the benchmakr (this is needed to give the OS time to actually free the memory used by the process)
             )
 
 
@@ -45,7 +47,8 @@ def test_load_graphs_benches():
             "unexistant",
             get_graph_names(metadata_path)[0],
             metadata_path,
-            root
+            root,
+            2, # Hardcoded default of how much seconds to wait at the end of the benchmakr (this is needed to give the OS time to actually free the memory used by the process)
         )
 
     with pytest.raises(ValueError):
@@ -53,5 +56,6 @@ def test_load_graphs_benches():
             get_graph_libraries_names()[0],
             "unexistant",
             metadata_path,
-            root
+            root,
+            2, # Hardcoded default of how much seconds to wait at the end of the benchmakr (this is needed to give the OS time to actually free the memory used by the process)
         )

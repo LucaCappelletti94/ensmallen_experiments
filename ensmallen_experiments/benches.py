@@ -51,7 +51,8 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
         return False
 
     fp = open(path, "rb")
-    fp.seek(-80, 2)  # 2 means "from the end of the file"
+    if os.path.getsize(path) > 80:
+        fp.seek(-80, 2)  # 2 means "from the end of the file"
     last_line = fp.readlines()[-1].decode("utf-8")
     fp.close()
 
