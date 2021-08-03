@@ -14,4 +14,4 @@ def test_load_graphs_benches():
     with open(TEST_FILE) as f:
         txt = f.read()
 
-    assert len(txt.split("\n")) > 1000
+    assert len(txt.split("\n")) > 500
