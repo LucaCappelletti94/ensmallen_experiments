@@ -1,5 +1,5 @@
 pytest
-pytest-covc
+pytest-cov
 coveralls
 validate_version_code
 pylint
