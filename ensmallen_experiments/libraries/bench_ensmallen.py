@@ -11,7 +11,6 @@ def load_graph_ensmallen(
     edges_number: int,
     has_weights: bool,
     fast: bool = False,
-    cache_size: float = None,
     **kwargs: Dict
 ) -> EnsmallenGraph:
     """Load graph object using EnsmallenGraph.
@@ -46,11 +45,9 @@ def load_graph_ensmallen(
     -------------------------
     The loaded graph.
     """
-    directed_edge_list = edges_number > 1_000_000
     graph: EnsmallenGraph = EnsmallenGraph.from_sorted_csv(
-        build_directed_path(edge_path, directed=not directed_edge_list),
+        build_directed_path(edge_path, directed=True),
         directed=False,
-        directed_edge_list=directed_edge_list,
         nodes_number=nodes_number,
         edges_number=edges_number,
         sources_column_number=0,
@@ -61,18 +58,13 @@ def load_graph_ensmallen(
         ),
         numeric_node_ids=True,
         verbose=False,
-        edge_header=False
+        edge_header=False,
+        sorted=True,
+        complete=True
     )
 
     if fast:
-        graph.enable_fast_walk()
-
-    if cache_size is not None:
-        graph.enable_fast_walk(
-            vector_destinations=False,
-            vector_outbounds=False,
-            cache_size=cache_size
-        )
+        graph.enable()
 
     return graph
 
