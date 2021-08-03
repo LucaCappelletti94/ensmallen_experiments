@@ -1,5 +1,4 @@
 #!~/anaconda3/bin/python
-import silence_tensorflow.auto
 import argparse
 import gc
 import json
