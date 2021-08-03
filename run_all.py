@@ -13,7 +13,6 @@ from time import sleep, time
 
 import psutil
 from humanize import naturaldelta
-from notipy_me import Notipy
 from tqdm.auto import tqdm, trange
 
 from ensmallen_experiments import retrieve_graphs
@@ -85,27 +84,19 @@ def run_experiments(**kwargs):
         "python {executor_path} list graphs".format(**kwargs), shell=True))
     tasks = kwargs.get("tasks", None) or json.loads(subprocess.check_output(
         "python {executor_path} list tasks".format(**kwargs), shell=True))
-    with Notipy() as ntp:
-        retrieve_graphs(values["metadata"])
-        for graph in tqdm(graphs, desc="Graphs"):
-            for task in tqdm(tasks, desc="Tasks for {}".format(graph), leave=False):
-                libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
-                    "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
-                for library in tqdm(libraries, desc="Libraries for {}".format(task), leave=False):
-                    start = time()
-                    run_experiment(
-                        graph=graph,
-                        task=task,
-                        library=library,
-                        **kwargs
-                    )
-                    delta = time() - start
-                    if delta > 10:
-                        ntp.add_report({
-                            "graph": graph,
-                            "task": task,
-                            "library": library
-                        })
+    retrieve_graphs(values["metadata"])
+    for graph in tqdm(graphs, desc="Graphs"):
+        for task in tqdm(tasks, desc="Tasks for {}".format(graph), leave=False):
+            libraries = kwargs.get("libraries", None) or json.loads(subprocess.check_output(
+                "python {executor_path} list {} ".format(LIBRARY_TAKS_LIST[task], **kwargs), shell=True))
+            for library in tqdm(libraries, desc="Libraries for {}".format(task), leave=False):
+                start = time()
+                run_experiment(
+                    graph=graph,
+                    task=task,
+                    library=library,
+                    **kwargs
+                )
 
 
 if __name__ == "__main__":

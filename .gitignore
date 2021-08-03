@@ -6,4 +6,3 @@ _MACOSX
 .ipynb_checkpoints
 .coverage*
 htmlcov
-.notipy
