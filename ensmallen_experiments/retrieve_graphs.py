@@ -1,8 +1,8 @@
 """Methods to automatically retrieve, extract and clean the graph files."""
 import compress_json
-from .download_graphs import download_graphs
-from .sanitize_graphs import sanitize_graphs
-from .utils import extract, logger
+from ensmallen_graph import EnsmallenGraph
+from ensmallen_graph.datasets import get_dataset
+from .utils import store_graph_report, logger
 
 
 def retrieve_graphs(
@@ -18,13 +18,20 @@ def retrieve_graphs(
     root: str = "graphs",
         Position where to download graphs
     """
-    # First we load the graphs metadata
-    graphs_data = compress_json.load(informations_path)
-    # First we proceed to download the graphs in multi-processing
-    # If there is a failure while downloading the graph, the library automatically
-    # cleans afer itself and afterwards raises the exception.
-    download_graphs(graphs_data, root)
-    # Secondly we sanitize the downloaded files to remove elements such as:
-    # - file headers (descriptors added in top of the files that include licenses etc...)
-    # - duplicated edges (in some file there are duplicated edges)
-    sanitize_graphs(graphs_data, root)
+    for graph_data in compress_json.load(informations_path):
+        logger.info("Retrieving graph {}".format(graph_data["graph_data"]))
+        for directed in (True, False):
+            graph_generator = get_dataset(**graph_data)
+            if graph_generator.is_preprocessed():
+                continue
+            graph: EnsmallenGraph = graph_generator(
+                # We want to avoid loading edge types and node types
+                # because we do not care for them in these benchmarks
+                edge_list_edge_types_column_number=None,
+                edge_list_edge_types_column=None,
+                node_list_node_types_column_number=None,
+                node_list_node_types_column=None,
+                directed=directed
+            )
+        # We only store the report for the undirected version.
+        store_graph_report(graph, graph_data, root)

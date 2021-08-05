@@ -1,617 +1,196 @@
-{
-    "StringPPI": {
-        "url": "https://stringdb-static.org/download/protein.actions.v11.0/9606.protein.actions.v11.0.txt.gz",
-        "folder_name": "string",
-        "graph": "StringPPI",
-        "extraction_path": "string.tsv",
-        "edge_file": "string.tsv",
-        "loading_settings": {
-            "sources_column": "item_id_a",
-            "destinations_column": "item_id_b",
-            "weights_column": "score"
-        }
+[
+    {
+        "graph_name": "HomoSapiens",
+        "repository": "string",
+        "version": "links.v11.0"
     },
-    "BlogCatalog": {
-        "url": "http://nrvis.com/download/data/soc/soc-BlogCatalog.zip",
-        "folder_name": "blog_catalog",
-        "graph": "BlogCatalog",
-        "edge_file": "soc-BlogCatalog.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "SocFlickr",
+        "repository": "networkrepository"
     },
-    "KG-COVID-19": {
-        "url": "https://kg-hub.berkeleybop.io/kg-covid-19/current/kg-covid-19.tar.gz",
-        "folder_name": "kg_covid_19",
-        "graph": "KG-COVID-19",
-        "edge_file": "merged-kg_edges.tsv",
-        "loading_settings": {
-            "edge_list_separator": "\t",
-            "sources_column": "subject",
-            "destinations_column": "object"
-        }
+    {
+        "graph_name": "SocTwitter",
+        "repository": "networkrepository"
     },
-    "Flikr": {
-        "url": "http://nrvis.com/download/data/heter/flickr.zip",
-        "folder_name": "flickr",
-        "graph": "Flikr",
-        "edge_file": "flickr.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "SocFriendster",
+        "repository": "networkrepository"
     },
-    "IMDB": {
-        "url": "http://nrvis.com/download/data/labeled/IMDB.zip",
-        "folder_name": "IMDB",
-        "graph": "IMDB",
-        "edge_file": "IMDB.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 56
-        }
+    {
+        "graph_name": "KGCOVID19",
+        "repository": "kghub"
     },
-    "bn-human-Jung": {
-        "url": "http://nrvis.com/download/data/bn/bn-human-Jung2015_M87126525.zip",
-        "folder_name": "bn-human-Jung",
-        "graph": "bn-human-Jung",
-        "edge_file": "bn-human-Jung2015_M87126525.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "IMDB",
+        "repository": "networkrepository",
+        "version": "labeled"
     },
-    "bn-fly-drosophila-medulla-1": {
-        "url": "http://nrvis.com/download/data/bn/bn-fly-drosophila_medulla_1.zip",
-        "folder_name": "bn-fly-drosophila-medulla-1",
-        "graph": "bn-fly-drosophila-medulla-1",
-        "edge_file": "bn/bn-fly-drosophila_medulla_1.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "BNHumanJung",
+        "repository": "networkrepository"
     },
-    "bn-mouse_retina-1": {
-        "url": "http://nrvis.com/download/data/bn/bn-mouse_retina_1.zip",
-        "folder_name": "bn-mouse_retina-1",
-        "graph": "bn-mouse_retina-1",
-        "edge_file": "bn/bn-mouse_retina_1.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "BNFlyDrosophilaMedulla",
+        "repository": "networkrepository"
     },
-    "bn-macaque-rhesus-brain-1": {
-        "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
-        "folder_name": "bn-macaque-rhesus-brain-1",
-        "graph": "bn-macaque-rhesus-brain-1",
-        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "BNMouseRetina",
+        "repository": "networkrepository"
     },
-    "bio-ce-cx": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-CX.zip",
-        "folder_name": "bio-ce-cx",
-        "graph": "bio-ce-cx",
-        "edge_file": "bio-CE-CX.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BNMacaqueRhesusBrain",
+        "repository": "networkrepository"
     },
-    "bio-ce-gn": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-GN.zip",
-        "folder_name": "bio-ce-gn",
-        "graph": "bio-ce-gn",
-        "edge_file": "bio-CE-GN.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BNMacaqueRhesusBrain",
+        "repository": "networkrepository"
     },
-    "bio-ce-gt": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-GT.zip",
-        "folder_name": "bio-ce-gt",
-        "graph": "bio-ce-gt",
-        "edge_file": "bio-CE-GT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCeCx",
+        "repository": "networkrepository"
     },
-    "bio-ce-ht": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-HT.zip",
-        "folder_name": "bio-ce-ht",
-        "graph": "bio-ce-ht",
-        "edge_file": "bio-CE-HT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCeGn",
+        "repository": "networkrepository"
     },
-    "bio-ce-lc": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-LC.zip",
-        "folder_name": "bio-ce-lc",
-        "graph": "bio-ce-lc",
-        "edge_file": "bio-CE-LC.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCeGt",
+        "repository": "networkrepository"
     },
-    "bio-ce-pg": {
-        "url": "http://nrvis.com/download/data/bio/bio-CE-PG.zip",
-        "folder_name": "bio-ce-pg",
-        "graph": "bio-ce-pg",
-        "edge_file": "bio-CE-PG.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCeHt",
+        "repository": "networkrepository"
     },
-    "bio-dm-cx": {
-        "url": "http://nrvis.com/download/data/bio/bio-DM-CX.zip",
-        "folder_name": "bio-dm-cx",
-        "graph": "bio-dm-cx",
-        "edge_file": "bio-DM-CX.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCeLc",
+        "repository": "networkrepository"
     },
-    "bio-dm-ht": {
-        "url": "http://nrvis.com/download/data/bio/bio-DM-HT.zip",
-        "folder_name": "bio-dm-ht",
-        "graph": "bio-dm-ht",
-        "edge_file": "bio-DM-HT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioCePg",
+        "repository": "networkrepository"
     },
-    "bio-dm-lc": {
-        "url": "http://nrvis.com/download/data/bio/bio-DM-LC.zip",
-        "folder_name": "bio-dm-lc",
-        "graph": "bio-dm-lc",
-        "edge_file": "bio-DM-LC.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioDmCx",
+        "repository": "networkrepository"
     },
-    "bio-dr-cx": {
-        "url": "http://nrvis.com/download/data/bio/bio-DR-CX.zip",
-        "folder_name": "bio-dr-cx",
-        "graph": "bio-dr-cx",
-        "edge_file": "bio-DR-CX.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioDmHt",
+        "repository": "networkrepository"
     },
-    "bio-hs-cx": {
-        "url": "http://nrvis.com/download/data/bio/bio-HS-CX.zip",
-        "folder_name": "bio-hs-cx",
-        "graph": "bio-hs-cx",
-        "edge_file": "bio-HS-CX.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioDmLc",
+        "repository": "networkrepository"
     },
-    "bio-hs-ht": {
-        "url": "http://nrvis.com/download/data/bio/bio-HS-HT.zip",
-        "folder_name": "bio-hs-ht",
-        "graph": "bio-hs-ht",
-        "edge_file": "bio-HS-HT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioDmela",
+        "repository": "networkrepository"
     },
-    "bio-hs-lc": {
-        "url": "http://nrvis.com/download/data/bio/bio-HS-LC.zip",
-        "folder_name": "bio-hs-lc",
-        "graph": "bio-hs-lc",
-        "edge_file": "bio-HS-LC.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioDrCx",
+        "repository": "networkrepository"
     },
-    "bio-sc-cc": {
-        "url": "http://nrvis.com/download/data/bio/bio-SC-CC.zip",
-        "folder_name": "bio-sc-cc",
-        "graph": "bio-sc-cc",
-        "edge_file": "bio-SC-CC.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioHsCx",
+        "repository": "networkrepository"
     },
-    "bio-sc-gt": {
-        "url": "http://nrvis.com/download/data/bio/bio-SC-GT.zip",
-        "folder_name": "bio-sc-gt",
-        "graph": "bio-sc-gt",
-        "edge_file": "bio-SC-GT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioHsHt",
+        "repository": "networkrepository"
     },
-    "bio-sc-ht": {
-        "url": "http://nrvis.com/download/data/bio/bio-SC-HT.zip",
-        "folder_name": "bio-sc-ht",
-        "graph": "bio-sc-ht",
-        "edge_file": "bio-SC-HT.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioHsLc",
+        "repository": "networkrepository"
     },
-    "bio-sc-lc": {
-        "url": "http://nrvis.com/download/data/bio/bio-SC-LC.zip",
-        "folder_name": "bio-sc-lc",
-        "graph": "bio-sc-lc",
-        "edge_file": "bio-SC-LC.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioScCc",
+        "repository": "networkrepository"
     },
-    "bio-sc-ts": {
-        "url": "http://nrvis.com/download/data/bio/bio-SC-TS.zip",
-        "folder_name": "bio-sc-ts",
-        "graph": "bio-sc-ts",
-        "edge_file": "bio-SC-TS.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioScGt",
+        "repository": "networkrepository"
     },
-    "bio-celegans-dir": {
-        "url": "http://nrvis.com/download/data/bio/bio-celegans-dir.zip",
-        "folder_name": "bio-celegans-dir",
-        "graph": "bio-celegans-dir",
-        "edge_file": "bio-celegans-dir.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "BioScHt",
+        "repository": "networkrepository"
     },
-    "bio-celegans": {
-        "url": "http://nrvis.com/download/data/bio/bio-celegans.zip",
-        "folder_name": "bio-celegans",
-        "graph": "bio-celegans",
-        "edge_file": "bio-celegans.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "BioScLc",
+        "repository": "networkrepository"
     },
-    "bio-diseasome": {
-        "url": "http://nrvis.com/download/data/bio/bio-diseasome.zip",
-        "folder_name": "bio-diseasome",
-        "graph": "bio-diseasome",
-        "edge_file": "bio-diseasome.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "BioScTs",
+        "repository": "networkrepository"
     },
-    "bio-dmela": {
-        "url": "http://nrvis.com/download/data/bio/bio-dmela.zip",
-        "folder_name": "bio-dmela",
-        "graph": "bio-dmela",
-        "edge_file": "bio-dmela.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "BioCelegansDir",
+        "repository": "networkrepository"
     },
-    "bio-grid-fission-yeast": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-fission-yeast.zip",
-        "folder_name": "bio-grid-fission-yeast",
-        "graph": "bio-grid-fission-yeast",
-        "edge_file": "bio-grid-fission-yeast.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioCelegans",
+        "repository": "networkrepository"
     },
-    "bio-grid-fruitfly": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-fruitfly.zip",
-        "folder_name": "bio-grid-fruitfly",
-        "graph": "bio-grid-fruitfly",
-        "edge_file": "bio-grid-fruitfly.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioDiseasome",
+        "repository": "networkrepository"
     },
-    "bio-grid-human": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-human.zip",
-        "folder_name": "bio-grid-human",
-        "graph": "bio-grid-human",
-        "edge_file": "bio-grid-human.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioDmela",
+        "repository": "networkrepository"
     },
-    "bio-grid-mouse": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-mouse.zip",
-        "folder_name": "bio-grid-mouse",
-        "graph": "bio-grid-mouse",
-        "edge_file": "bio-grid-mouse.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioGridFissionYeast",
+        "repository": "networkrepository"
     },
-    "bio-grid-plant": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-plant.zip",
-        "folder_name": "bio-grid-plant",
-        "graph": "bio-grid-plant",
-        "edge_file": "bio-grid-plant.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioGridFruitfly",
+        "repository": "networkrepository"
     },
-    "bio-grid-worm": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-worm.zip",
-        "folder_name": "bio-grid-worm",
-        "graph": "bio-grid-worm",
-        "edge_file": "bio-grid-worm.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioGridHuman",
+        "repository": "networkrepository"
     },
-    "bio-grid-yeast": {
-        "url": "http://nrvis.com/download/data/bio/bio-grid-yeast.zip",
-        "folder_name": "bio-grid-yeast",
-        "graph": "bio-grid-yeast",
-        "edge_file": "bio-grid-yeast.edges",
-        "loading_settings": {
-            "edge_list_separator": ",",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioGridMouse",
+        "repository": "networkrepository"
     },
-    "bio-human-gene1": {
-        "url": "http://nrvis.com/download/data/bio/bio-human-gene1.zip",
-        "folder_name": "bio-human-gene1",
-        "graph": "bio-human-gene1",
-        "edge_file": "bio-human-gene1.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 3,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioGridPlant",
+        "repository": "networkrepository"
     },
-    "bio-human-gene2": {
-        "url": "http://nrvis.com/download/data/bio/bio-human-gene2.zip",
-        "folder_name": "bio-human-gene2",
-        "graph": "bio-human-gene2",
-        "edge_file": "bio-human-gene2.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 18
-        }
+    {
+        "graph_name": "BioGridWorm",
+        "repository": "networkrepository"
     },
-    "bio-mouse-gene": {
-        "url": "http://nrvis.com/download/data/bio/bio-mouse-gene.zip",
-        "folder_name": "bio-mouse-gene",
-        "graph": "bio-mouse-gene",
-        "edge_file": "bio-mouse-gene.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 3
-        }
+    {
+        "graph_name": "BioGridYeast",
+        "repository": "networkrepository"
     },
-    "bio-yeast-protein-inter": {
-        "url": "http://nrvis.com/download/data/bio/bio-yeast-protein-inter.zip",
-        "folder_name": "bio-yeast-protein-inter",
-        "graph": "bio-yeast-protein-inter",
-        "edge_file": "bio-yeast-protein-inter.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "BioHumanGene1",
+        "repository": "networkrepository"
     },
-    "bio-yeast": {
-        "url": "http://nrvis.com/download/data/bio/bio-yeast.zip",
-        "folder_name": "bio-yeast",
-        "graph": "bio-yeast",
-        "edge_file": "bio-yeast.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "BioHumanGene2",
+        "repository": "networkrepository"
     },
-    "giant-tn": {
-        "url": "https://zenodo.org/record/3352348/files/Supervised-learning%20is%20an%20accurate%20method%20for%20network-based%20gene%20classification%20-%20Data.tar.gz",
-        "folder_name": "GIANT-TN",
-        "graph": "giant-tn",
-        "edge_file": "Supervised-learning is an accurate method for network-based gene classification - Data/networks/GIANT-TN.edg",
-        "loading_settings": {
-            "edge_list_header": false,
-            "edge_list_separator": "\t",
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "weights_column_number": 2
-        }
+    {
+        "graph_name": "BioMouseGene",
+        "repository": "networkrepository"
     },
-    "Friendster": {
-        "url": "http://nrvis.com/download/data/massive/soc-friendster.zip",
-        "folder_name": "friendster",
-        "graph": "Friendster",
-        "edge_file": "soc-friendster.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "BioYeastProteinInter",
+        "repository": "networkrepository"
     },
-    "Twitter": {
-        "url": "http://nrvis.com/download/data/massive/soc-twitter.zip",
-        "folder_name": "twitter",
-        "graph": "Twitter",
-        "edge_file": "soc-twitter-konect.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 1
-        }
+    {
+        "graph_name": "BioYeast",
+        "repository": "networkrepository"
     },
-    "Wikipedia": {
-        "url": "http://nrvis.com/download/data/web/web-wikipedia2009.zip",
-        "folder_name": "wikipedia",
-        "graph": "Wikipedia",
-        "edge_file": "web-wikipedia2009.mtx",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1,
-            "edge_list_rows_to_skip": 2
-        }
+    {
+        "graph_name": "GiantTN",
+        "repository": "zenodo"
     },
-    "WEB-CLUEWEB09": {
-        "url": "http://nrvis.com/download/data/massive/web-ClueWeb09.zip",
-        "folder_name": "WEB-CLUEWEB09",
-        "graph": "WEB-CLUEWEB09",
-        "edge_file": "web-ClueWeb09.edges",
-        "disabled": true,
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+    {
+        "graph_name": "WebWikipedia2009",
+        "repository": "networkrepository"
     }
-}
+]

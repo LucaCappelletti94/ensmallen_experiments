@@ -8,7 +8,7 @@ import compress_json
 
 from .libraries import libraries
 from .tracker import Tracker
-from .utils import build_path_path, get_graph_names, get_graph_report
+from .utils import build_graph_path, get_graph_names, get_graph_report
 
 
 def validate_graph_and_library(library: str, graph: str, metadata_path: str):
@@ -61,7 +61,7 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
 
 def load_graph(library: str, data: Dict, root: str, report: Dict, p: float = 1.0, q: float = 1.0):
     return libraries[library]["load_graph"](
-        edge_path=build_path_path(data, root),
+        edge_path=build_graph_path(data, root),
         nodes_number=int(report["nodes_number"]),
         edges_number=int(report["directed_edges_number"]),
         density=float(report["density"]),

@@ -1,14 +1,14 @@
-{
-    "bn-macaque-rhesus-brain-1": {
-        "url": "http://nrvis.com/download/data/bn/bn-macaque-rhesus_brain_1.zip",
-        "folder_name": "bn-macaque-rhesus-brain-1",
-        "graph": "bn-macaque-rhesus-brain-1",
-        "edge_file": "bn/bn-macaque-rhesus_brain_1.edges",
-        "loading_settings": {
-            "edge_list_separator": " ",
-            "edge_list_header": false,
-            "sources_column_number": 0,
-            "destinations_column_number": 1
-        }
+[
+    {
+        "graph_name": "BioCeGt",
+        "repository": "networkrepository"
+    },
+    {
+        "graph_name": "BioCeHt",
+        "repository": "networkrepository"
+    },
+    {
+        "graph_name": "BioCeLc",
+        "repository": "networkrepository"
     }
-}
+]

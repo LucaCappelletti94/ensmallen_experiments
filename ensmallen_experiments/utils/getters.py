@@ -32,4 +32,7 @@ def get_second_order_walk_libraries_names() -> List[str]:
 
 def get_graph_names(metadata_path: str) -> List[str]:
     """Return name of available graphs."""
-    return list(compress_json.load(metadata_path).keys())
+    return [
+        g["graph_name"]
+        for g in compress_json.load(metadata_path)
+    ]
