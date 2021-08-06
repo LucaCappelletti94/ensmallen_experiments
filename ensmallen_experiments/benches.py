@@ -206,7 +206,8 @@ def bench_first_order_walks(
 def bench_second_order_walks(
     library: str,
     graph_name: str,
-    metadata_path: str,
+    repository: str,
+    version: str,
     root: str,
     seconds: int,
     length: int = 100,
@@ -221,9 +222,11 @@ def bench_second_order_walks(
     library: str,
         Library to use for the benchmark.
     graph_name: str,
-        Graph to use for the benchmark.
-    metadata_path: str,
-        Path from where to load the graph metadata.
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to
     root: str,
         Directory from where to load the graph.
     seconds: int,
@@ -237,12 +240,7 @@ def bench_second_order_walks(
     q: float = 1.0,
         Invert of the explore weight.
     """
-    validate_graph_and_library(library, graph_name, metadata_path)
-    metadata = compress_json.load(metadata_path)
-    if "disabled" in metadata:
-        return
-    data = metadata[graph_name]
-    report = get_graph_report(data, root)
+    report = get_graph_report(graph_name, root)
 
     walkers = libraries[library]["second_order_walk"]
 
@@ -253,7 +251,7 @@ def bench_second_order_walks(
     else:
         task_name = "second_order_walk"
 
-    log_path = "results/{graph_name}/{library}/{task_name}.csv".format(
+    log_path = "{root}/results/{graph_name}/{library}/{task_name}.csv".format(
         root=root,
         graph_name=graph_name,
         library=library,
@@ -265,7 +263,15 @@ def bench_second_order_walks(
     if os.path.exists(log_path) or not can_load(root, walkers["load_graph"], graph_name):
         return
 
-    graph = load_graph(walkers["load_graph"], data, root, report, p=p, q=q)
+    graph = load_graph(
+        library=walkers["load_graph"],
+        graph_name=graph_name,
+        repository=repository,
+        version=version,
+        report=report,
+        p=p,
+        q=q
+    )
 
     with Tracker(log_path):
         walkers["walk"](
