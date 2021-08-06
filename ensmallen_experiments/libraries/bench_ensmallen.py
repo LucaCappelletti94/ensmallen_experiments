@@ -62,6 +62,7 @@ def load_graph_ensmallen(
             if has_weights else {}
         ),
         numeric_node_ids=True,
+        node_list_is_correct=True,
         edge_list_numeric_node_ids=True,
         verbose=False,
         edge_list_header=False,
