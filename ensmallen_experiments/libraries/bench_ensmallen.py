@@ -136,7 +136,7 @@ def execute_walks_ensmallen(
     if max_degree is not None and nodes_number is not None:
         max_neighbours = 10_100 if max_degree > 10_000 and nodes_number > 500_000 else None
     return graph.complete_walks(
-        length=length,
+        walk_length=length,
         iterations=iterations,
         return_weight=1/p,
         explore_weight=1/q,
