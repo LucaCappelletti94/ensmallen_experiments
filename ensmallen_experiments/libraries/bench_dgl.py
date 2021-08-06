@@ -1,8 +1,7 @@
 """Submodule with methods from DGL to benchmark."""
-from typing import Dict, Union
+from typing import Dict
 import numpy as np
 import dgl
-from multiprocessing import cpu_count
 from ..utils import build_directed_path
 
 

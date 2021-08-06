@@ -47,13 +47,13 @@ libraries = {
             "walk": execute_walks_ensmallen
         }
     },
-    "DGL": {
-        "load_graph": load_graph_dgl,
-        "first_order_walk": {
-            "load_graph": "FastEnsmallenGraph",
-            "walk": execute_first_order_walk_dgl
-        }
-    },
+    # "DGL": {
+    #     "load_graph": load_graph_dgl,
+    #     "first_order_walk": {
+    #         "load_graph": "FastEnsmallenGraph",
+    #         "walk": execute_first_order_walk_dgl
+    #     }
+    # },
     # "iGraph": {
     #     "load_graph": load_graph_igraph,
     #     "first_order_walk": {
