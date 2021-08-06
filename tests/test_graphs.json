@@ -1,14 +1,17 @@
 [
     {
         "graph_name": "BioCeGt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeHt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeLc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     }
 ]

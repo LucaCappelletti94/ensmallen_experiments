@@ -11,4 +11,3 @@ def test_graph_retrieval():
     if os.path.exists(root):
         shutil.rmtree(root)
     retrieve_graphs(metadata_path, root)
-    retrieve_graphs(metadata_path, root)

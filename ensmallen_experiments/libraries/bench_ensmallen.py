@@ -6,7 +6,9 @@ from ..utils import build_directed_path
 
 
 def load_graph_ensmallen(
-    edge_path: str,
+    graph_name: str,
+    repository: str,
+    version: str,
     nodes_number: int,
     edges_number: int,
     has_weights: bool,
@@ -17,14 +19,12 @@ def load_graph_ensmallen(
 
     Parameters
     -----------------------
-    edge_path: str,
-        Path from where to load the edgelist.
-        File is expected to be in directed fashion and sorted.
-        The node IDs will be extracted from the numeric node IDs of the graph.
-        The file is expected to be without header and the first column
-        is expected to be the sources, while the second is expected to be
-        the destinations. The third column, optionally, is expected to
-        contain the weights if they are present in the considered graph.
+    graph_name: str,
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to
     nodes_number: int,
         Upper bound of nodes number present in the graph.
         The closer the number is to the actual number of nodes of the graph
@@ -45,8 +45,13 @@ def load_graph_ensmallen(
     -------------------------
     The loaded graph.
     """
-    graph: EnsmallenGraph = EnsmallenGraph.from_sorted_csv(
-        build_directed_path(edge_path, directed=True),
+    graph: EnsmallenGraph = EnsmallenGraph.from_csv(
+        build_directed_path(
+            graph_name=graph_name,
+            repository=repository,
+            version=version,
+            undirected=True
+        ),
         directed=False,
         nodes_number=nodes_number,
         edges_number=edges_number,
@@ -57,10 +62,14 @@ def load_graph_ensmallen(
             if has_weights else {}
         ),
         numeric_node_ids=True,
+        edge_list_numeric_node_ids=True,
         verbose=False,
         edge_header=False,
-        sorted=True,
-        complete=True
+        edge_list_is_complete=True,
+        edge_list_may_contain_duplicates=False,
+        edge_list_is_sorted=True,
+        edge_list_is_correct=True,
+        load_edge_list_in_parallel=True
     )
 
     if fast:
@@ -84,329 +93,6 @@ def load_graph_fast_ensmallen(
     The loaded graph.
     """
     return load_graph_ensmallen(fast=True, **kwargs)
-
-
-def load_graph_ensmallen_5_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 5% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.05, **kwargs)
-
-
-def load_graph_ensmallen_10_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 10% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.1, **kwargs)
-
-
-def load_graph_ensmallen_15_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 15% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.15, **kwargs)
-
-
-def load_graph_ensmallen_20_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 20% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.20, **kwargs)
-
-
-def load_graph_ensmallen_25_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 25% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.25, **kwargs)
-
-
-def load_graph_ensmallen_30_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 30% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.30, **kwargs)
-
-
-def load_graph_ensmallen_35_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 35% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.35, **kwargs)
-
-
-def load_graph_ensmallen_40_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 40% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.40, **kwargs)
-
-
-def load_graph_ensmallen_45_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 45% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.45, **kwargs)
-
-
-def load_graph_ensmallen_50_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 50% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.50, **kwargs)
-
-
-def load_graph_ensmallen_55_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 55% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.55, **kwargs)
-
-
-def load_graph_ensmallen_60_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 60% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.60, **kwargs)
-
-
-def load_graph_ensmallen_65_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 65% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.65, **kwargs)
-
-
-def load_graph_ensmallen_70_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 70% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.70, **kwargs)
-
-
-def load_graph_ensmallen_75_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 75% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.75, **kwargs)
-
-
-def load_graph_ensmallen_80_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 80% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.80, **kwargs)
-
-
-def load_graph_ensmallen_85_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 85% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.85, **kwargs)
-
-
-def load_graph_ensmallen_90_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 90% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.90, **kwargs)
-
-
-def load_graph_ensmallen_95_percent_cache(
-    **kwargs: Dict
-) -> EnsmallenGraph:
-    """Load graph object using EnsmallenGraph with 95% cache.
-
-    Parameters
-    -----------------------
-    **kwargs: Dict,
-        Additional parameters that are used in other libraries but not this one.
-
-    Returns
-    -------------------------
-    The loaded graph.
-    """
-    return load_graph_ensmallen(cache_size=0.95, **kwargs)
 
 
 def execute_walks_ensmallen(

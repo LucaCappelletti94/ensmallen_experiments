@@ -59,9 +59,29 @@ def can_load(root: str, library: str, graph_name: str) -> bool:
     return set(last_line.strip()) == {"0", ","}
 
 
-def load_graph(library: str, data: Dict, root: str, report: Dict, p: float = 1.0, q: float = 1.0):
+def load_graph(
+    library: str,
+    graph_name: str,
+    repository: str,
+    version: str,
+    report: Dict,
+    p: float = 1.0,
+    q: float = 1.0
+):
+    """
+    Parameters
+    ---------------------------
+    graph_name: str,
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to load.
+    """
     return libraries[library]["load_graph"](
-        edge_path=build_graph_path(data, root),
+        graph_name = graph_name,
+        repository=repository,
+        version=version,
         nodes_number=int(report["nodes_number"]),
         edges_number=int(report["directed_edges_number"]),
         density=float(report["density"]),
@@ -71,7 +91,14 @@ def load_graph(library: str, data: Dict, root: str, report: Dict, p: float = 1.0
     )
 
 
-def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: str, seconds: int):
+def bench_load_graph(
+    library: str,
+    graph_name: str,
+    repository: str,
+    version: str,
+    root: str,
+    seconds: int = 1
+):
     """Benches loading the given graph using given library.
 
     Parameters
@@ -79,20 +106,17 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
     library: str,
         Library to use for the benchmark.
     graph_name: str,
-        Graph to use for the benchmark.
-    metadata_path: str,
-        Path from where to load the graph metadata.
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to
     root: str,
         Directory from where to load the graph.
-    seconds: int,
+    seconds: int = 1,
         Number of seconds to wait for after a successfull execution.
     """
-    validate_graph_and_library(library, graph_name, metadata_path)
-    metadata = compress_json.load(metadata_path)
-    if "disabled" in metadata:
-        return
-    data = metadata[graph_name]
-    report = get_graph_report(data, root)
+    report = get_graph_report(graph_name, root)
 
     log_path = "results/{graph}/{library}/load_graph.csv".format(
         root=root,
@@ -104,7 +128,14 @@ def bench_load_graph(library: str, graph_name: str, metadata_path: str, root: st
         return
 
     with Tracker(log_path):
-        load_graph(library, data, root, report)
+        load_graph(
+            library,
+            graph_name,
+            repository,
+            version,
+            root,
+            report
+        )
 
     wait_k_seconds(seconds)
 
