@@ -209,7 +209,7 @@ def bench_second_order_walks(
     repository: str,
     version: str,
     root: str,
-    seconds: int,
+    seconds: int = 1,
     length: int = 100,
     iterations: int = 1,
     p: float = 2.0,
@@ -229,7 +229,7 @@ def bench_second_order_walks(
         Version of the graph to
     root: str,
         Directory from where to load the graph.
-    seconds: int,
+    seconds: int = 1,
         Number of seconds to wait for after a successfull execution.
     length: int = 100,
         Length of the random walks.
