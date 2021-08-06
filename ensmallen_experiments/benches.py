@@ -278,7 +278,7 @@ def bench_second_order_walks(
             graph,
             length=length,
             iterations=iterations,
-            max_degree=int(report["max_degree"]),
+            max_degree=int(report["maximum_node_degree"]),
             nodes_number=int(report["nodes_number"]),
             p=p,
             q=q,
