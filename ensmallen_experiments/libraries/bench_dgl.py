@@ -7,7 +7,9 @@ from ..utils import build_directed_path
 
 
 def load_graph_dgl(
-    edge_path: str,
+    graph_name: str,
+    repository: str,
+    version: str,
     has_weights: bool,
     **kwargs: Dict
 ) -> dgl.DGLGraph:
@@ -21,10 +23,12 @@ def load_graph_dgl(
 
     Parameters
     -----------------------
-    nodes_number: int,
-        Number of nodes of the graph.
-    edge_path: str,
-        Path from where to load the edgelist.
+    graph_name: str,
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to load.
     **kwargs: Dict,
         Additional parameters that are used in other libraries but not this one.
 
@@ -32,7 +36,12 @@ def load_graph_dgl(
     -------------------------
     The loaded graph.
     """
-    edge_path = build_directed_path(edge_path, True)
+    edge_path=build_directed_path(
+        graph_name=graph_name,
+        repository=repository,
+        version=version,
+        undirected=True
+    )
     data = np.genfromtxt(edge_path, delimiter='\t')
     graph = dgl.graph((data[:, 0], data[:, 1]), )
     if has_weights:
@@ -40,7 +49,7 @@ def load_graph_dgl(
     return graph
 
 
-def execute_first_order_walk_igraph(
+def execute_first_order_walk_dgl(
     graph: dgl.DGLGraph,
     length: int,
     iterations: int,
