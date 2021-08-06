@@ -29,7 +29,7 @@ def test_load_graphs_benches():
         for library in tqdm(
             get_first_order_walk_libraries_names(),
             leave=False,
-            desc="Testing available random walks libraries"
+            desc="Testing available first-order random walks libraries"
         ):
             bench_first_order_walks(
                 library=library,
@@ -39,7 +39,7 @@ def test_load_graphs_benches():
         for library in tqdm(
             get_second_order_walk_libraries_names(),
             leave=False,
-            desc="Testing available random walks libraries"
+            desc="Testing available second-order random walks libraries"
         ):
             bench_second_order_walks(
                 library,
