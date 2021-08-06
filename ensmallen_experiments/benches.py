@@ -129,12 +129,12 @@ def bench_load_graph(
 
     with Tracker(log_path):
         load_graph(
-            library,
-            graph_name,
-            repository,
-            version,
-            root,
-            report
+            library=library,
+            graph_name=graph_name,
+            repository=repository,
+            version=version,
+            root=root,
+            report=report
         )
 
     wait_k_seconds(seconds)
