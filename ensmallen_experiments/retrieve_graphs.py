@@ -22,8 +22,6 @@ def retrieve_graphs(
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
             graph_generator = get_dataset(**graph_data)
-            if graph_generator.is_preprocessed():
-                continue
             graph: EnsmallenGraph = graph_generator(
                 # We want to avoid loading edge types and node types
                 # because we do not care for them in these benchmarks
