@@ -85,7 +85,7 @@ def load_graph(
         nodes_number=int(report["nodes_number"]),
         edges_number=int(report["directed_edges_number"]),
         density=float(report["density"]),
-        has_weights=report["has_weights"] == "true",
+        has_weights=report["has_edge_weights"] == "true",
         p=p,
         q=q
     )
