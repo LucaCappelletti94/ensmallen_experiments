@@ -9,10 +9,6 @@
         "repository": "networkrepository"
     },
     {
-        "graph_name": "SocTwitter",
-        "repository": "networkrepository"
-    },
-    {
         "graph_name": "SocFriendster",
         "repository": "networkrepository"
     },
