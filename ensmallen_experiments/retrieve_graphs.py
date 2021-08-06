@@ -32,4 +32,4 @@ def retrieve_graphs(
                 directed=directed
             )
         # We only store the report for the undirected version.
-        store_graph_report(graph, graph_data, root)
+        store_graph_report(graph, graph_data["graph_name"], root)
