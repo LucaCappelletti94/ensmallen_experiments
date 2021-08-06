@@ -26,14 +26,21 @@ def test_load_graphs_benches():
                 **graph_data,
                 root=root
             )
-        # for library in tqdm(get_first_order_walk_libraries_names(), desc="Testing available random walks libraries"):
-        #     bench_first_order_walks(
-        #         library,
-        #         graph,
-        #         metadata_path,
-        #         root,
-        #     )
-        # for library in tqdm(get_second_order_walk_libraries_names(), desc="Testing available random walks libraries"):
+        for library in tqdm(
+            get_first_order_walk_libraries_names(),
+            leave=False,
+            desc="Testing available random walks libraries"
+        ):
+            bench_first_order_walks(
+                library=library,
+                **graph_data,
+                root=root
+            )
+        # for library in tqdm(
+        #     get_second_order_walk_libraries_names(),
+        #     leave=False,
+        #     desc="Testing available random walks libraries"
+        # ):
         #     bench_second_order_walks(
         #         library,
         #         graph,

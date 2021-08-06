@@ -79,7 +79,7 @@ def load_graph(
         Version of the graph to load.
     """
     return libraries[library]["load_graph"](
-        graph_name = graph_name,
+        graph_name=graph_name,
         repository=repository,
         version=version,
         nodes_number=int(report["nodes_number"]),
@@ -142,9 +142,10 @@ def bench_load_graph(
 def bench_first_order_walks(
     library: str,
     graph_name: str,
-    metadata_path: str,
+    repository: str,
+    version: str,
     root: str,
-    seconds: int,
+    seconds: int = 1,
     length: int = 100,
     iterations: int = 1,
 ):
@@ -155,24 +156,21 @@ def bench_first_order_walks(
     library: str,
         Library to use for the benchmark.
     graph_name: str,
-        Graph to use for the benchmark.
-    metadata_path: str,
-        Path from where to load the graph metadata.
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to
     root: str,
         Directory from where to load the graph.
-    seconds: int,
+    seconds: int = 1,
         Number of seconds to wait for after a successfull execution.
     length: int = 100,
         Length of the random walks.
     iterations: int = 1,
         Number of iterations to execute.
     """
-    validate_graph_and_library(library, graph_name, metadata_path)
-    metadata = compress_json.load(metadata_path)
-    if "disabled" in metadata:
-        return
-    data = metadata[graph_name]
-    report = get_graph_report(data, root)
+    report = get_graph_report(graph_name, root)
 
     walkers = libraries[library]["first_order_walk"]
 
@@ -187,7 +185,13 @@ def bench_first_order_walks(
     if os.path.exists(log_path) or not can_load(root, walkers["load_graph"], graph_name):
         return
 
-    graph = load_graph(walkers["load_graph"], data, root, report)
+    graph = load_graph(
+        library=walkers["load_graph"],
+        graph_name=graph_name,
+        repository=repository,
+        version=version,
+        report=report
+    )
 
     with Tracker(log_path):
         walkers["walk"](
@@ -195,6 +199,7 @@ def bench_first_order_walks(
             length=length,
             iterations=iterations
         )
+
     wait_k_seconds(seconds)
 
 
