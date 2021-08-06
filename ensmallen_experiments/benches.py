@@ -133,7 +133,6 @@ def bench_load_graph(
             graph_name=graph_name,
             repository=repository,
             version=version,
-            root=root,
             report=report
         )
 

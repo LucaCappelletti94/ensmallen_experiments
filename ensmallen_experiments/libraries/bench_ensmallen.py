@@ -24,7 +24,7 @@ def load_graph_ensmallen(
     repository: str,
         Repository from where to load the graph.
     version: str,
-        Version of the graph to
+        Version of the graph to load.
     nodes_number: int,
         Upper bound of nodes number present in the graph.
         The closer the number is to the actual number of nodes of the graph

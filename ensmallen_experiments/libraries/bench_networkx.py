@@ -5,7 +5,9 @@ from ..utils import build_directed_path
 
 
 def load_graph_networkx(
-    edge_path: str,
+    graph_name: str,
+    repository: str,
+    version: str,
     has_weights: bool,
     **kwargs: Dict
 ) -> nx.Graph:
@@ -13,14 +15,12 @@ def load_graph_networkx(
 
     Parameters
     -----------------------
-    edge_path: str,
-        Path from where to load the edgelist.
-        File is expected to be in directed fashion and sorted.
-        The node IDs will be extracted from the numeric node IDs of the graph.
-        The file is expected to be without header and the first column
-        is expected to be the sources, while the second is expected to be
-        the destinations. The third column, optionally, is expected to
-        contain the weights if they are present in the considered graph.
+    graph_name: str,
+        Name of the graph to load.
+    repository: str,
+        Repository from where to load the graph.
+    version: str,
+        Version of the graph to load.
     has_weights: bool,
         Wether the graph has weights and we should load them.
         The weights, if present, are expected to be in column 3.
@@ -33,12 +33,22 @@ def load_graph_networkx(
     """
     if has_weights:
         return nx.read_weighted_edgelist(
-            build_directed_path(edge_path, directed=True),
+            build_directed_path(
+                graph_name=graph_name,
+                repository=repository,
+                version=version,
+                undirected=True
+            ),
             delimiter="\t",
         )
 
     return nx.read_edgelist(
-        build_directed_path(edge_path, directed=True),
+        build_directed_path(
+            graph_name=graph_name,
+            repository=repository,
+            version=version,
+            undirected=True
+        ),
         data=False,
         delimiter="\t",
     )
