@@ -6,11 +6,13 @@
     },
     {
         "graph_name": "SocFlickr",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "SocFriendster",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "KGCOVID19",
@@ -23,163 +25,203 @@
     },
     {
         "graph_name": "BNHumanJung",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BNFlyDrosophilaMedulla",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BNMouseRetina",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BNMacaqueRhesusBrain",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BNMacaqueRhesusBrain",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeCx",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeGn",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeGt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeHt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCeLc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCePg",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDmCx",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDmHt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDmLc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDmela",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDrCx",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioHsCx",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioHsHt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioHsLc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioScCc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioScGt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioScHt",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioScLc",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioScTs",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCelegansDir",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioCelegans",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDiseasome",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioDmela",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridFissionYeast",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridFruitfly",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridHuman",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridMouse",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridPlant",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridWorm",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioGridYeast",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioHumanGene1",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioHumanGene2",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioMouseGene",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioYeastProteinInter",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "BioYeast",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     },
     {
         "graph_name": "GiantTN",
@@ -187,6 +229,7 @@
     },
     {
         "graph_name": "WebWikipedia2009",
-        "repository": "networkrepository"
+        "repository": "networkrepository",
+        "version": "latest"
     }
 ]
