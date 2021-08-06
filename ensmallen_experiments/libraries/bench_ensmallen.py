@@ -64,7 +64,7 @@ def load_graph_ensmallen(
         numeric_node_ids=True,
         edge_list_numeric_node_ids=True,
         verbose=False,
-        edge_header=False,
+        edge_list_header=False,
         edge_list_is_complete=True,
         edge_list_may_contain_duplicates=False,
         edge_list_is_sorted=True,
