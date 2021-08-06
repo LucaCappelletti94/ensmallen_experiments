@@ -46,7 +46,7 @@ def load_graph_ensmallen(
     The loaded graph.
     """
     graph: EnsmallenGraph = EnsmallenGraph.from_csv(
-        build_directed_path(
+        edge_path=build_directed_path(
             graph_name=graph_name,
             repository=repository,
             version=version,
