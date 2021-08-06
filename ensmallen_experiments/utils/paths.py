@@ -32,7 +32,7 @@ def get_graph_report(data: Dict, root: str) -> Dict:
 
 def store_graph_report(graph: EnsmallenGraph, data: Dict, root: str) -> Dict:
     """Build path to edge file from given metadata."""
-    return compress_json.load(
+    return compress_json.dump(
         {
             "textual_report": graph.textual_report(),
             "report": graph.report()
