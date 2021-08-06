@@ -19,7 +19,7 @@ def retrieve_graphs(
         Position where to download graphs
     """
     for graph_data in compress_json.load(informations_path):
-        logger.info("Retrieving graph {}".format(graph_data["graph_data"]))
+        logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
             graph_generator = get_dataset(**graph_data)
             if graph_generator.is_preprocessed():
