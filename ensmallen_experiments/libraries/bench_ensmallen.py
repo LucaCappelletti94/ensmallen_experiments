@@ -1,5 +1,5 @@
 """Submodule with methods from Ensmallen to benchmark."""
-from typing import Dict
+from typing import Dict, Optional
 from ensmallen_graph import EnsmallenGraph  # pylint: disable=no-name-in-module
 import numpy as np
 from ..utils import build_directed_path
@@ -99,8 +99,8 @@ def execute_walks_ensmallen(
     graph: EnsmallenGraph,
     length: int,
     iterations: int,
-    nodes_number: int,
-    max_degree: int,
+    nodes_number: Optional[int] = None,
+    max_degree: Optional[int] = None,
     p: float = 1.0,
     q: float = 1.0,
     **kwargs: Dict
@@ -132,10 +132,13 @@ def execute_walks_ensmallen(
     --------------------------
     Computed walks as numpy array.
     """
+    max_neighbours = None
+    if max_degree is not None and nodes_number is not None:
+        max_neighbours = 10_100 if max_degree > 10_000 and nodes_number > 500_000 else None
     return graph.complete_walks(
         length=length,
         iterations=iterations,
         return_weight=1/p,
         explore_weight=1/q,
-        max_neighbours=10_100 if max_degree > 10_000 and nodes_number > 500_000 else None
+        max_neighbours=max_neighbours
     )
