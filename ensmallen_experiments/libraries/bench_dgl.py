@@ -43,7 +43,7 @@ def load_graph_dgl(
         undirected=True
     )
     data = np.genfromtxt(edge_path, delimiter='\t')
-    graph = dgl.graph((data[:, 0], data[:, 1]), )
+    graph = dgl.graph((data[:, 0].astype(int), data[:, 1].astype(int)), )
     if has_weights:
         graph.edata['weights'] = data[:, 2]
     return graph
