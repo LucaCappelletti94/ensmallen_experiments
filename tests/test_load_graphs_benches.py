@@ -44,5 +44,5 @@ def test_load_graphs_benches():
             bench_second_order_walks(
                 library,
                 **graph_data,
-                root,
+                root=root,
             )
