@@ -16,7 +16,11 @@ def test_load_graphs_benches():
         shutil.rmtree(root)
     retrieve_graphs(metadata_path, root)
     for graph_data in tqdm(compress_json.load(metadata_path)):
-        for library in tqdm(get_graph_libraries_names(), desc="Testing available graph loading libraries"):
+        for library in tqdm(
+            get_graph_libraries_names(),
+            leave=False,
+            desc="Testing available graph loading libraries"
+        ):
             bench_load_graph(
                 library=library,
                 **graph_data,
