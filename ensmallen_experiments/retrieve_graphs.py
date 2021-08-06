@@ -25,6 +25,7 @@ def retrieve_graphs(
             graph: EnsmallenGraph = graph_generator(
                 # We want to avoid loading edge types and node types
                 # because we do not care for them in these benchmarks
+                node_path=None,
                 edge_list_edge_types_column_number=None,
                 edge_list_edge_types_column=None,
                 node_list_node_types_column_number=None,
