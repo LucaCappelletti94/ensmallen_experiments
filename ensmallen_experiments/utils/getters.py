@@ -35,4 +35,5 @@ def get_graph_names(metadata_path: str) -> List[str]:
     return [
         g["graph_name"]
         for g in compress_json.load(metadata_path)
+        if not g["disabled"]
     ]

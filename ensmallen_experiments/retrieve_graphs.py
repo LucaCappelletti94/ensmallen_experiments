@@ -19,6 +19,8 @@ def retrieve_graphs(
         Position where to download graphs
     """
     for graph_data in compress_json.load(informations_path):
+        if graph_data["disabled"]:
+            continue
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
             graph_generator = get_dataset(**graph_data)
