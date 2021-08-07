@@ -1,5 +1,11 @@
 [
     {
+        "graph_name": "HomoSapiens",
+        "repository": "string",
+        "version": "links.v11.0",
+        "disabled": false
+    },
+    {
         "graph_name": "BioCeGt",
         "repository": "networkrepository",
         "version": "latest",
