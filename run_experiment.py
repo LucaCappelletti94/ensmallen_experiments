@@ -77,8 +77,8 @@ TASKS = {
     "load": bench_load_graph,
     "first_order_walk": bench_first_order_walks,
     "second_order_walk": lambda **x: bench_second_order_walks(**x, p=2.0, q=2.0),
-    "second_order_walk_only_q": lambda **x: bench_second_order_walks(**x, p=1.0, q=2.0),
-    "second_order_walk_only_p": lambda **x: bench_second_order_walks(**x, p=2.0, q=1.0),
+    # "second_order_walk_only_q": lambda **x: bench_second_order_walks(**x, p=1.0, q=2.0),
+    # "second_order_walk_only_p": lambda **x: bench_second_order_walks(**x, p=2.0, q=1.0),
 }
 LISTS = {
     "graphs": get_graph_names,
