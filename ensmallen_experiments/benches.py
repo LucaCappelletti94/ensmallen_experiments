@@ -8,7 +8,7 @@ import compress_json
 
 from .libraries import libraries
 from .tracker import Tracker
-from .utils import build_graph_path, get_graph_names, get_graph_report
+from .utils import get_graph_names, get_graph_report
 
 
 def validate_graph_and_library(library: str, graph: str, metadata_path: str):

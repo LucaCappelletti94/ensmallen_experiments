@@ -3,7 +3,7 @@ import os
 import sys
 import json
 import argparse
-from ensmallen_experiments.utils import get_graph_libraries_names, get_first_order_walk_libraries_names, get_second_order_walk_libraries_names, get_graph_names
+from ensmallen_experiments.utils import get_graph_libraries_names, get_first_order_walk_libraries_names, get_second_order_walk_libraries_names, get_graph_names, get_graph_data_from_graph_name
 from ensmallen_experiments.benches import bench_load_graph, bench_first_order_walks, bench_second_order_walks
 
 
@@ -18,12 +18,13 @@ def run_entrypoint(root, metadata_path, args):
     parser.add_argument("seconds", type=int,
                         help="How many seconds to wait after each experiment", default=10*60)
     values = vars(parser.parse_args(args))
-    graph, library, task, seconds = values["graph"], values["library"], values["task"], values["seconds"]
+    graph_name, library, task, seconds = values["graph"], values["library"], values["task"], values["seconds"]
 
     graphs = get_graph_names(metadata_path)
-    if graph not in graphs:
+    if graph_name not in graphs:
         print("Graph [{}] not known. The available ones are {}".format(
-            task, graphs))
+            task, graphs
+        ))
         sys.exit(1)
 
     if task == "load":
@@ -44,12 +45,15 @@ def run_entrypoint(root, metadata_path, args):
             sys.exit(1)
         return
 
+    graph_data = get_graph_data_from_graph_name(graph_name)
+
     TASKS[task](
-        library,
-        graph,
-        metadata_path,
-        root,
-        seconds
+        library=library,
+        graph_name=graph_name,
+        repository=graph_data["repository"],
+        version=graph_data["version"],
+        root=root,
+        seconds=seconds
     )
 
 
