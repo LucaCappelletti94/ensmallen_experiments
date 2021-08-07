@@ -16,7 +16,7 @@ def run_entrypoint(root, metadata_path, args):
     parser.add_argument("library", type=str,
                         help="Which library to use for the experiment")
     parser.add_argument("seconds", type=int,
-                        help="How many seconds to wait after each experiment", default=10*60)
+                        help="How many seconds to wait after each experiment", default=2*60)
     values = vars(parser.parse_args(args))
     graph_name, library, task, seconds = values["graph"], values["library"], values["task"], values["seconds"]
 
