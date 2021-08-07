@@ -23,7 +23,9 @@ def test_load_graphs_benches():
         ):
             bench_load_graph(
                 library=library,
-                **graph_data,
+                graph_name=graph_data["graph_name"],
+                repository=graph_data["repository"],
+                version=graph_data["version"],
                 root=root
             )
         for library in tqdm(
@@ -33,7 +35,9 @@ def test_load_graphs_benches():
         ):
             bench_first_order_walks(
                 library=library,
-                **graph_data,
+                graph_name=graph_data["graph_name"],
+                repository=graph_data["repository"],
+                version=graph_data["version"],
                 root=root
             )
         for library in tqdm(
@@ -43,6 +47,8 @@ def test_load_graphs_benches():
         ):
             bench_second_order_walks(
                 library,
-                **graph_data,
+                graph_name=graph_data["graph_name"],
+                repository=graph_data["repository"],
+                version=graph_data["version"],
                 root=root,
             )
