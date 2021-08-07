@@ -117,7 +117,7 @@ if __name__ == "__main__":
     parser.add_argument("-to", "--timeout", type=int,
                         help="After how many seconds to kill the experiment", default=60*60*4 + 10*60)
     parser.add_argument("-wt", "--wait-time", type=int,
-                        help="How many seconds to wait after each experiment", default=10*60)
+                        help="How many seconds to wait after each experiment", default=2*60)
 
     values = vars(parser.parse_args())
 
