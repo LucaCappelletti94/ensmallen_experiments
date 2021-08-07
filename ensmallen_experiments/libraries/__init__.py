@@ -10,7 +10,7 @@ from .bench_ensmallen import (
 from .bench_networkx import load_graph_networkx
 #from .bench_node2vec import execute_walks_node2vec
 #from .bench_pecanpy import load_graph_pecanpy, execute_walks_pecanpy
-from .bench_dgl import load_graph_dgl, execute_first_order_walk_dgl
+#from .bench_dgl import load_graph_dgl, execute_first_order_walk_dgl
 
 
 libraries = {
