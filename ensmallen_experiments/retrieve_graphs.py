@@ -23,6 +23,7 @@ def retrieve_graphs(
         if graph_data["disabled"]:
             continue
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
+        skipped_number = 0
         for directed in (True, False):
             if os.path.exists(build_directed_path(
                 graph_name=graph_data["graph_name"],
@@ -30,6 +31,7 @@ def retrieve_graphs(
                 version=graph_data["version"],
                 undirected=not directed
             )):
+                skipped_number += 1
                 continue
             graph_generator = get_dataset(
                 graph_name=graph_data["graph_name"],
@@ -46,5 +48,7 @@ def retrieve_graphs(
                 node_list_node_types_column=None,
                 directed=directed
             )
+        if skipped_number == 2:
+            continue
         # We only store the report for the undirected version.
         store_graph_report(graph, graph_data["graph_name"], root)
