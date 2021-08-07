@@ -44,7 +44,8 @@ def retrieve_graphs(
                 edge_list_edge_types_column=None,
                 node_list_node_types_column_number=None,
                 node_list_node_types_column=None,
-                directed=directed
+                directed=directed,
+                version=graph_data["version"]
             )
             if not directed:
                 # We only store the report for the undirected version.
