@@ -2,7 +2,8 @@
 import compress_json
 from ensmallen_graph import EnsmallenGraph
 from ensmallen_graph.datasets import get_dataset
-from .utils import store_graph_report, logger
+import os
+from .utils import store_graph_report, logger, build_directed_path
 
 
 def retrieve_graphs(
@@ -23,6 +24,13 @@ def retrieve_graphs(
             continue
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
+            if os.path.exists(build_directed_path(
+                graph_data=graph_data["graph_name"],
+                repository=graph_data["repository"],
+                version=graph_data["version"],
+                undirected=not directed
+            )):
+                continue
             graph_generator = get_dataset(
                 graph_name=graph_data["graph_name"],
                 repository=graph_data["repository"],
