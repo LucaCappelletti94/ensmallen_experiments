@@ -23,7 +23,7 @@ def retrieve_graphs(
         if graph_data["disabled"]:
             continue
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
-        for directed in (True, False):
+        for directed in (False, ):
             if os.path.exists(build_directed_path(
                 graph_name=graph_data["graph_name"],
                 repository=graph_data["repository"],
