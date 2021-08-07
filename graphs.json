@@ -3,19 +3,19 @@
         "graph_name": "HomoSapiens",
         "repository": "string",
         "version": "links.v11.0",
-        "disabled": true
+        "disabled": false
     },
     {
         "graph_name": "SocFlickr",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": true
+        "disabled": false
     },
     {
         "graph_name": "SocFriendster",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": true
+        "disabled": false
     },
     {
         "graph_name": "SocTwitter",
@@ -27,7 +27,7 @@
         "graph_name": "KGCOVID19",
         "repository": "kghub",
         "version": "current",
-        "disabled": true
+        "disabled": false
     },
     {
         "graph_name": "IMDB",
