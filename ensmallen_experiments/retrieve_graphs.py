@@ -25,7 +25,7 @@ def retrieve_graphs(
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
             if os.path.exists(build_directed_path(
-                graph_data=graph_data["graph_name"],
+                graph_name=graph_data["graph_name"],
                 repository=graph_data["repository"],
                 version=graph_data["version"],
                 undirected=not directed
