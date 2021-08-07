@@ -23,7 +23,11 @@ def retrieve_graphs(
             continue
         logger.info("Retrieving graph {}".format(graph_data["graph_name"]))
         for directed in (True, False):
-            graph_generator = get_dataset(**graph_data)
+            graph_generator = get_dataset(
+                graph_name=graph_data["graph_name"],
+                repository=graph_data["repository"],
+                version=graph_data["version"]
+            )
             graph: EnsmallenGraph = graph_generator(
                 # We want to avoid loading edge types and node types
                 # because we do not care for them in these benchmarks
