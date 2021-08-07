@@ -45,7 +45,7 @@ def run_entrypoint(root, metadata_path, args):
             sys.exit(1)
         return
 
-    graph_data = get_graph_data_from_graph_name(graph_name)
+    graph_data = get_graph_data_from_graph_name(metadata_path, graph_name)
 
     TASKS[task](
         library=library,
