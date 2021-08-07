@@ -1,5 +1,5 @@
 """Module with getters utility methods."""
-from typing import List
+from typing import List, Dict
 import compress_json
 from ..libraries import libraries
 
