@@ -2,16 +2,19 @@
     {
         "graph_name": "BioCeGt",
         "repository": "networkrepository",
-        "version": "latest"
+        "version": "latest",
+        "disabled": false
     },
     {
         "graph_name": "BioCeHt",
         "repository": "networkrepository",
-        "version": "latest"
+        "version": "latest",
+        "disabled": false
     },
     {
         "graph_name": "BioCeLc",
         "repository": "networkrepository",
-        "version": "latest"
+        "version": "latest",
+        "disabled": false
     }
 ]
