@@ -10,7 +10,7 @@ from .bench_ensmallen import (
 from .bench_networkx import load_graph_networkx
 #from .bench_node2vec import execute_walks_node2vec
 #from .bench_pecanpy import load_graph_pecanpy, execute_walks_pecanpy
-#from .bench_dgl import load_graph_dgl, execute_first_order_walk_dgl
+from .bench_dgl import load_graph_dgl, execute_first_order_walk_dgl
 
 
 libraries = {
@@ -25,35 +25,35 @@ libraries = {
     #         "walk": execute_walks_csrgraph
     #     }
     # },
-    "EnsmallenGraph": {
-        "load_graph": load_graph_ensmallen,
-        "first_order_walk": {
-            "load_graph": "EnsmallenGraph",
-            "walk": execute_walks_ensmallen
-        },
-        "second_order_walk": {
-            "load_graph": "EnsmallenGraph",
-            "walk": execute_walks_ensmallen
-        }
-    },
-    "FastEnsmallenGraph": {
-        "load_graph": load_graph_fast_ensmallen,
-        "first_order_walk": {
-            "load_graph": "FastEnsmallenGraph",
-            "walk": execute_walks_ensmallen
-        },
-        "second_order_walk": {
-            "load_graph": "FastEnsmallenGraph",
-            "walk": execute_walks_ensmallen
-        }
-    },
-    # "DGL": {
-    #     "load_graph": load_graph_dgl,
+    # "EnsmallenGraph": {
+    #     "load_graph": load_graph_ensmallen,
     #     "first_order_walk": {
-    #         "load_graph": "FastEnsmallenGraph",
-    #         "walk": execute_first_order_walk_dgl
+    #         "load_graph": "EnsmallenGraph",
+    #         "walk": execute_walks_ensmallen
+    #     },
+    #     "second_order_walk": {
+    #         "load_graph": "EnsmallenGraph",
+    #         "walk": execute_walks_ensmallen
     #     }
     # },
+    # "FastEnsmallenGraph": {
+    #     "load_graph": load_graph_fast_ensmallen,
+    #     "first_order_walk": {
+    #         "load_graph": "FastEnsmallenGraph",
+    #         "walk": execute_walks_ensmallen
+    #     },
+    #     "second_order_walk": {
+    #         "load_graph": "FastEnsmallenGraph",
+    #         "walk": execute_walks_ensmallen
+    #     }
+    # },
+    "DGL": {
+        "load_graph": load_graph_dgl,
+        "first_order_walk": {
+            "load_graph": "FastEnsmallenGraph",
+            "walk": execute_first_order_walk_dgl
+        }
+    },
     # "iGraph": {
     #     "load_graph": load_graph_igraph,
     #     "first_order_walk": {
