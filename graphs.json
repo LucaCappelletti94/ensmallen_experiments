@@ -18,6 +18,12 @@
         "disabled": false
     },
     {
+        "graph_name": "SocBlogcatalog",
+        "repository": "networkrepository",
+        "version": "latest",
+        "disabled": false
+    },
+    {
         "graph_name": "SocTwitter",
         "repository": "networkrepository",
         "version": "latest",
