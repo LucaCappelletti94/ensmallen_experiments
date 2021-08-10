@@ -3,25 +3,25 @@
         "graph_name": "HomoSapiens",
         "repository": "string",
         "version": "links.v11.0",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "SocFlickr",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "SocFriendster",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "SocBlogcatalog",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "Monarch",
@@ -51,258 +51,258 @@
         "graph_name": "IMDB",
         "repository": "networkrepository",
         "version": "labeled",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BNHumanJung",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BNFlyDrosophilaMedulla",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BNMouseRetina",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BNMacaqueRhesusBrain",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BNMacaqueRhesusBrain",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCeCx",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCeGn",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCeGt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCeHt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCeLc",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCePg",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDmCx",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDmHt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDmLc",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDmela",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDrCx",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioHsCx",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioHsHt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioHsLc",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioScCc",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioScGt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioScHt",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioScLc",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioScTs",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCelegansDir",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioCelegans",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDiseasome",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioDmela",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridFissionYeast",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridFruitfly",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridHuman",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridMouse",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridPlant",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridWorm",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioGridYeast",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioHumanGene1",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioHumanGene2",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioMouseGene",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioYeastProteinInter",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "BioYeast",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "GiantTN",
         "repository": "zenodo",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "WebWikipedia2009",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     }
 ]
