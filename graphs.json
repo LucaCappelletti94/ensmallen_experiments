@@ -24,6 +24,18 @@
         "disabled": false
     },
     {
+        "graph_name": "Monarch",
+        "repository": "monarchinitiative",
+        "version": "202103",
+        "disabled": false
+    },
+    {
+        "graph_name": "PheKnowLator",
+        "repository": "pheknowlatorkg",
+        "version": "v2.1.0-2021-8-01.subclass-relationsOnly-owlnets-purified",
+        "disabled": false
+    },
+    {
         "graph_name": "SocTwitter",
         "repository": "networkrepository",
         "version": "latest",

@@ -20,6 +20,11 @@ def load_graph_dgl(
     To be as fair as possible, we avoid using pandas which ay be slower and directly
     use numpy as the node IDs are all numeric and can be handled best with numpy directly.
 
+    ERRORS
+    -----------------------
+    Removing DGL from benchmarks because of the 
+    error: https://github.com/dmlc/dgl/issues/701
+
     Parameters
     -----------------------
     graph_name: str,
