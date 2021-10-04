@@ -39,7 +39,7 @@
         "graph_name": "SocTwitter",
         "repository": "networkrepository",
         "version": "latest",
-        "disabled": false
+        "disabled": true
     },
     {
         "graph_name": "KGCOVID19",
