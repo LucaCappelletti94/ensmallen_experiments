@@ -78,12 +78,6 @@
         "disabled": false
     },
     {
-        "graph_name": "BNMacaqueRhesusBrain",
-        "repository": "networkrepository",
-        "version": "latest",
-        "disabled": false
-    },
-    {
         "graph_name": "BioCeCx",
         "repository": "networkrepository",
         "version": "latest",
